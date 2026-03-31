@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "firebase deploy --only firestore:rules": "kiwilog-b6dea"
+  },
+  "targets": {},
+  "etags": {}
+}

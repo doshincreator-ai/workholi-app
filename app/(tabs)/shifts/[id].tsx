@@ -1,0 +1,56 @@
+import { useLocalSearchParams, router } from 'expo-router';
+import { View, Text, Pressable, StyleSheet, Alert } from 'react-native';
+import { useShiftStore } from '../../../src/store/shiftStore';
+import { ShiftForm } from '../../../src/components/ShiftForm';
+
+export default function EditShiftScreen() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const shift = useShiftStore((s) => s.shifts.find((sh) => sh.id === Number(id)));
+  const removeShift = useShiftStore((s) => s.remove);
+
+  if (!shift) {
+    return (
+      <View style={styles.notFound}>
+        <Text style={styles.notFoundText}>シフトが見つかりません</Text>
+      </View>
+    );
+  }
+
+  function handleDelete() {
+    Alert.alert('シフトを削除', 'このシフトを削除しますか？', [
+      { text: 'キャンセル', style: 'cancel' },
+      {
+        text: '削除', style: 'destructive', onPress: () => {
+          removeShift(Number(id));
+          router.back();
+        },
+      },
+    ]);
+  }
+
+  return (
+    <View style={styles.container}>
+      <ShiftForm existing={shift} />
+      <Pressable style={styles.deleteBtn} onPress={handleDelete}>
+        <Text style={styles.deleteBtnText}>このシフトを削除する</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  notFound: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  notFoundText: { color: '#9ca3af', fontSize: 16 },
+  deleteBtn: {
+    marginHorizontal: 16,
+    marginBottom: 32,
+    padding: 14,
+    alignItems: 'center',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#fca5a5',
+    backgroundColor: '#fff5f5',
+  },
+  deleteBtnText: { color: '#ef4444', fontWeight: '600', fontSize: 15 },
+});

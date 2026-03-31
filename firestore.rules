@@ -1,0 +1,110 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── ユーザープロファイル ──────────────────────────────────
+    match /users/{uid} {
+      // 認証済みユーザーは誰でも読める（招待コード検索に必要）
+      allow read: if request.auth != null;
+      // 書き込みは本人のみ
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // ── 企業情報（コミュニティ） ──────────────────────────────
+    // 実際のパス: countries/{country}/companies/{companyId}
+    match /countries/{country}/companies/{companyId} {
+      // 認証済みユーザーは誰でも読める
+      allow read: if request.auth != null;
+
+      // 新規作成：自分が sharedByUid になる場合のみ
+      allow create: if request.auth != null
+        && request.resource.data.sharedByUid == request.auth.uid;
+
+      // 更新：sharedByUid 本人、またはフィールドが workerUids/workerCount/reviewCount のみの変更
+      allow update: if request.auth != null && (
+        resource.data.sharedByUid == request.auth.uid
+        || request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['workerUids', 'workerCount', 'reviewCount', 'updatedAt'])
+      );
+
+      // 削除：sharedByUid 本人のみ
+      allow delete: if request.auth != null
+        && resource.data.sharedByUid == request.auth.uid;
+    }
+
+    // ── コメント ──────────────────────────────────────────────
+    match /comments/{commentId} {
+      // 認証済みユーザーは誰でも読める
+      allow read: if request.auth != null;
+
+      // 作成：自分の uid が userId になる場合のみ
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid;
+
+      // 削除：投稿者本人のみ
+      allow delete: if request.auth != null
+        && resource.data.userId == request.auth.uid;
+
+      // 更新不可（コメントは編集できない）
+      allow update: if false;
+    }
+
+    // ── 友達申請 ──────────────────────────────────────────────
+    match /friendRequests/{requestId} {
+      // 送信者または受信者のみ読める
+      allow read: if request.auth != null && (
+        resource.data.fromUid == request.auth.uid
+        || resource.data.toUid == request.auth.uid
+      );
+
+      // 作成：自分が fromUid になる場合のみ
+      allow create: if request.auth != null
+        && request.resource.data.fromUid == request.auth.uid;
+
+      // 削除：送信者または受信者（承認・拒否時）
+      allow delete: if request.auth != null && (
+        resource.data.fromUid == request.auth.uid
+        || resource.data.toUid == request.auth.uid
+      );
+
+      allow update: if false;
+    }
+
+    // ── フレンドシップ ────────────────────────────────────────
+    match /friendships/{friendshipId} {
+      // 当事者（uids 配列に自分の uid が含まれる）のみ読める
+      allow read: if request.auth != null
+        && request.auth.uid in resource.data.uids;
+
+      // 作成：uids 配列に自分の uid が含まれる場合のみ
+      allow create: if request.auth != null
+        && request.auth.uid in request.resource.data.uids;
+
+      // 削除：当事者のみ
+      allow delete: if request.auth != null
+        && request.auth.uid in resource.data.uids;
+
+      allow update: if false;
+    }
+
+    // ── 公開シフト（友達閲覧用） ──────────────────────────────
+    match /shifts/{shiftId} {
+      // 本人のシフトは読み書き可能
+      allow read, write: if request.auth != null
+        && resource.data.userId == request.auth.uid;
+
+      // 友達の公開シフトは読み取り可能（isShared == true のもの）
+      allow read: if request.auth != null
+        && resource.data.isShared == true;
+
+      // 作成：自分の userId のみ
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid;
+    }
+
+    // ── その他すべて拒否 ─────────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
