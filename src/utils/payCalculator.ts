@@ -1,6 +1,6 @@
 import type { PayCalculation, TaxCode } from '../types';
 
-const ACC_LEVY_RATE = 0.0139;
+const ACC_LEVY_RATE = 0.0167;
 
 /**
  * 年収から PAYE 税率を計算（NZ 2024/25）
@@ -91,7 +91,7 @@ export function calculatePayAU(
   isPublicHoliday: boolean,
   extraAllowances: number = 0,
 ): PayCalculation {
-  const effectiveRate = isPublicHoliday ? hourlyRate * 1.5 : hourlyRate;
+  const effectiveRate = isPublicHoliday ? hourlyRate * 2.25 : hourlyRate;
   const grossPay = hoursWorked * effectiveRate + extraAllowances;
   const taxAmount = grossPay * 0.15; // WHV flat rate
   const netPay = grossPay - taxAmount;

@@ -17,7 +17,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     name: 'New Zealand',
     flag: '🇳🇿',
     currency: 'NZD',
-    minWage: 23.15,
+    minWage: 23.95,
     taxAgency: 'IRD',
     taxNumberLabel: 'IRD番号',
     regions: [
@@ -31,7 +31,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     name: 'Australia',
     flag: '🇦🇺',
     currency: 'AUD',
-    minWage: 24.10,
+    minWage: 24.95,
     taxAgency: 'ATO',
     taxNumberLabel: 'TFN番号',
     regions: [

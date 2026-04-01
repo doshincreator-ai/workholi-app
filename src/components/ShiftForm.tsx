@@ -195,7 +195,7 @@ export function ShiftForm({ existing, initialDate }: Props) {
       <Text style={[styles.sectionLabel, { marginTop: 20 }]}>シフトタイプ</Text>
       <View style={styles.segmentRow}>
         {(isAU
-          ? [['normal', '通常'], ['holiday', '公休日出勤 ×1.5']] as ['normal' | 'holiday' | 'rest', string][]
+          ? [['normal', '通常'], ['holiday', '公休日出勤 ×2.25']] as ['normal' | 'holiday' | 'rest', string][]
           : [['normal', '通常'], ['holiday', '公休日出勤 ×1.5'], ['rest', '公休日休業手当']] as ['normal' | 'holiday' | 'rest', string][]
         ).map(([val, label]) => (
           <Pressable
@@ -259,9 +259,9 @@ export function ShiftForm({ existing, initialDate }: Props) {
             <Text style={styles.calcValue}>{calc.hours.toFixed(1)}h</Text>
           </View>
           <View style={styles.calcRow}>
-            <Text style={styles.calcLabel}>時給{isHoliday ? ' ×1.5' : ''}</Text>
+            <Text style={styles.calcLabel}>時給{isHoliday ? (isAU ? ' ×2.25' : ' ×1.5') : ''}</Text>
             <Text style={styles.calcValue}>
-              {currency} {(isHoliday ? employer!.hourlyRate * 1.5 : employer!.hourlyRate).toFixed(2)}
+              {currency} {(isHoliday ? employer!.hourlyRate * (isAU ? 2.25 : 1.5) : employer!.hourlyRate).toFixed(2)}
             </Text>
           </View>
           {allowances.nightShift > 0 && (
