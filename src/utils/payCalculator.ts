@@ -3,7 +3,7 @@ import type { PayCalculation, TaxCode } from '../types';
 const ACC_LEVY_RATE = 0.0167;
 
 /**
- * 年収から PAYE 税率を計算（NZ 2024/25）
+ * 年収から PAYE 税率を計算（NZ 2025/26）
  * カジュアル雇用は週次・日次収入を年収換算して税率を適用
  */
 export function calculateAnnualPAYE(annualGross: number): number {

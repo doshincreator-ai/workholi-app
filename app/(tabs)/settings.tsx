@@ -206,7 +206,7 @@ export default function SettingsScreen() {
               <View style={styles.rowSep} />
               <View style={styles.taxTableRow}>
                 <Text style={[styles.taxRange, { color: '#6b7280' }]}>ACC Levy</Text>
-                <Text style={[styles.taxRate, { color: '#6b7280' }]}>1.39%</Text>
+                <Text style={[styles.taxRate, { color: '#6b7280' }]}>1.67%</Text>
               </View>
             </View>
           </>
@@ -254,7 +254,7 @@ export default function SettingsScreen() {
           <View style={styles.rowSep} />
           <View style={styles.infoRow}>
             <Text style={styles.infoLabel}>最低賃金</Text>
-            <Text style={styles.infoValue}>NZD 23.15/h</Text>
+            <Text style={styles.infoValue}>NZD 23.95/h</Text>
           </View>
           <View style={styles.rowSep} />
           <Pressable style={styles.infoRow} onPress={() => router.push('/privacy')}>

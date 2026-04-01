@@ -97,7 +97,7 @@ export function TaxCodeGuideModal({ visible, onClose, onSelect }: Props) {
             NZの学生ローン（Student Loan）はありますか？
           </Text>
           <Text style={styles.questionSub}>
-            NZ国内で借りた学生ローンがある場合はいいえを選択
+            日本の奨学金はNZの税に関係ありません。NZで借りたStudent Loanがある場合のみ「はい」を選択
           </Text>
           <View style={styles.btnCol}>
             <Pressable style={styles.choiceBtn} onPress={() => setStep({ result: 'M SL' })}>
