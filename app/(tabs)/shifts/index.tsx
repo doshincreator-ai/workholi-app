@@ -249,7 +249,7 @@ export default function ShiftsScreen() {
           <View style={styles.detailHeader}>
             <View>
               <Text style={styles.detailDate}>
-                {selectedDate.replace(/-/g, '/')}（{WEEKDAYS[(new Date(selectedDate + 'T00:00:00').getDay() + 6) % 7]}）
+                {selectedDate.replace(/-/g, '/')}（{WEEKDAYS[((() => { const [y,m,d] = selectedDate.split('-').map(Number); return new Date(y, m - 1, d).getDay(); })() + 6) % 7]}）
               </Text>
               {(isNZ ? getNZHolidayName(selectedDate) : getAUHolidayName(selectedDate, auRegion)) && (
                 <Text style={styles.holidayName}>
