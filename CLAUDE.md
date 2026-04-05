@@ -215,3 +215,16 @@ UIの変更をした場合：
 # Webプレビュー起動コマンド
 cd /c/Users/user-laptop/projects/kiwilog && npx expo start --web --port 19006
 ```
+
+## 作業フロー
+1. GitHub Issue を確認して着手
+2. 実装 → tsc --noEmit → commit
+3. 完了後に Issue にコメントで作業ログ投稿
+4. エラーは3回自己解決を試みてから報告
+
+## Commit 規則
+feat / fix / chore / refactor のいずれかをプレフィックスに使う
+
+## 並列実行ルール
+- 独立ファイルの修正は必ず並列実行
+- Firestore と SQLite の修正は並列可
