@@ -141,7 +141,9 @@ export async function restoreFromFirestore(userId: string): Promise<boolean> {
         reviewSharedAt: d.reviewSharedAt ?? undefined,
       });
       nameToId.set(`${employer.country}_${employer.name}`, employer.id);
-    } catch {}
+    } catch (e) {
+      console.error('[Restore] employer insert failed:', e);
+    }
   }
 
   // シフトを復元
@@ -149,7 +151,10 @@ export async function restoreFromFirestore(userId: string): Promise<boolean> {
     const d = docSnap.data();
     const key = `${d.country ?? 'NZ'}_${d.employerName}`;
     const employerId = nameToId.get(key);
-    if (!employerId) continue;
+    if (!employerId) {
+      console.warn('[Restore] employer not found for shift:', docSnap.id, key);
+      continue;
+    }
     try {
       const shiftData: InsertShiftData = {
         employerId,
@@ -175,7 +180,9 @@ export async function restoreFromFirestore(userId: string): Promise<boolean> {
         firestoreId: docSnap.id,
       };
       insertShift(shiftData);
-    } catch {}
+    } catch (e) {
+      console.error('[Restore] shift insert failed:', docSnap.id, e);
+    }
   }
 
   return true;
