@@ -45,4 +45,5 @@ google-services.json
 GoogleService-Info.plist
 scripts/serviceAccountKey.json
 credentials.json
+credentials.json.bak
 credentials/

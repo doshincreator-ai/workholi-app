@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /c/Users/user-laptop/projects/kiwilog && npx tsc --noEmit 2>&1 | grep -E 'error TS|^$' | head -20 || true",
+            "statusMessage": "型チェック中...",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
