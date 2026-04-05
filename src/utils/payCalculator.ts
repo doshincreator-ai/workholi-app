@@ -51,19 +51,21 @@ export function calculatePay(
   useStudentLoan: boolean,
   studentLoanRate: number = 0.12,
   extraAllowances: number = 0,
+  weeksPerYear: number = 52,
 ): PayCalculation {
   const effectiveRate = isPublicHoliday ? hourlyRate * 1.5 : hourlyRate;
   const grossPay = hoursWorked * effectiveRate + extraAllowances;
 
   // 二次収入コードは定率、M / M SL は週次年換算で累進計算
+  // weeksPerYear: 通常52。カジュアル雇用で実働週数が少ない場合は低い値を指定可
   let taxAmount: number;
   const secondaryRate = SECONDARY_RATES[taxCode];
   if (secondaryRate !== undefined) {
     taxAmount = grossPay * secondaryRate;
   } else {
-    const annualGross = grossPay * 52;
+    const annualGross = grossPay * weeksPerYear;
     const annualTax = calculateAnnualPAYE(annualGross);
-    taxAmount = annualTax / 52;
+    taxAmount = annualTax / weeksPerYear;
   }
 
   const accLevy = grossPay * ACC_LEVY_RATE;
