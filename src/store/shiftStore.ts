@@ -119,7 +119,7 @@ export const useShiftStore = create<ShiftStore>((set, get) => ({
             shifts: s.shifts.map((sh) => sh.id === shift.id ? { ...sh, notificationId: notifId } : sh),
           }));
         }
-      }).catch(() => {});
+      }).catch((e) => console.error('[Notification] schedule failed on add:', e));
     }
     return shift;
   },
@@ -156,7 +156,7 @@ export const useShiftStore = create<ShiftStore>((set, get) => ({
               shifts: s.shifts.map((sh) => sh.id === id ? { ...sh, notificationId: notifId } : sh),
             }));
           }
-        }).catch(() => {});
+        }).catch((e) => console.error('[Notification] schedule failed on update:', e));
       }
     }
   },
