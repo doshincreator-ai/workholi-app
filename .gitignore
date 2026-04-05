@@ -47,3 +47,5 @@ scripts/serviceAccountKey.json
 credentials.json
 credentials.json.bak
 credentials/
+.env
+.env.*
