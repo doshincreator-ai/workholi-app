@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(node *)",
+      "Bash(npx *)",
+      "Bash(eas *)"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -6,9 +15,23 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /c/Users/user-laptop/projects/kiwilog && npx tsc --noEmit 2>&1 | grep -E 'error TS|^$' | head -20 || true",
+            "command": "cd /c/Users/user-laptop/projects/kiwilog && npx tsc --noEmit 2>&1 | grep 'error TS' | head -20 || true",
             "statusMessage": "型チェック中...",
-            "timeout": 60
+            "timeout": 60,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "export PATH=\"$PATH:/c/Program Files/GitHub CLI\"; CHANGED=$(cd /c/Users/user-laptop/projects/kiwilog && git diff --name-only HEAD 2>/dev/null | head -10); if [ -n \"$CHANGED\" ]; then FILES=$(echo \"$CHANGED\" | tr '\\n' ' '); gh issue create --repo doshincreator-ai/workholi-app --title \"[Claude] 作業完了: $(date '+%m/%d %H:%M')\" --body \"## 変更ファイル\\n\\`\\`\\`\\n${FILES}\\n\\`\\`\\`\" --label \"claude-work\" 2>/dev/null || true; fi",
+            "statusMessage": "GitHub Issues に記録中...",
+            "timeout": 30,
+            "async": true
           }
         ]
       }
