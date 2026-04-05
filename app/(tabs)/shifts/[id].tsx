@@ -18,7 +18,7 @@ export default function EditShiftScreen() {
 
   function handleDelete() {
     const numericId = Number(id);
-    if (!id || isNaN(numericId) || numericId !== shift.id) return;
+    if (!id || isNaN(numericId) || !shift || numericId !== shift.id) return;
     Alert.alert('シフトを削除', 'このシフトを削除しますか？', [
       { text: 'キャンセル', style: 'cancel' },
       {
