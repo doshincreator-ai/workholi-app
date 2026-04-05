@@ -87,7 +87,7 @@ export default function CompanyDetailScreen() {
       setCompany(companyData);
 
       const [profile, friends, fetchedComments] = await Promise.all([
-        getOrCreateUserProfile(user!.uid, user!.displayName ?? '', user!.email ?? ''),
+        getOrCreateUserProfile(user!.uid, user!.displayName ?? ''),
         getFriends(user!.uid).catch(() => [] as import('../../src/lib/friendService').Friend[]),
         getComments(id).catch(() => [] as import('../../src/lib/commentService').Comment[]),
       ]);

@@ -111,7 +111,7 @@ export default function CommunityScreen() {
 
   useEffect(() => {
     if (user) {
-      getOrCreateUserProfile(user.uid, user.displayName ?? '', user.email ?? '').catch(() => {});
+      getOrCreateUserProfile(user.uid, user.displayName ?? '').catch(() => {});
     }
   }, [user]);
 

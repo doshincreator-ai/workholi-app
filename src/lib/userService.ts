@@ -11,7 +11,6 @@ import { db } from './firebase';
 export interface UserProfile {
   uid: string;
   displayName: string;
-  email: string;
   tickets: number;
   inviteCode: string;
   currentRegion?: string;
@@ -26,7 +25,6 @@ function generateCode(): string {
 export async function getOrCreateUserProfile(
   uid: string,
   displayName: string,
-  email: string,
 ): Promise<UserProfile> {
   const ref = doc(db, 'users', uid);
   const snap = await getDoc(ref);
@@ -36,7 +34,6 @@ export async function getOrCreateUserProfile(
   const profile: UserProfile = {
     uid,
     displayName,
-    email,
     tickets: 3, // 新規ユーザーは3枚
     inviteCode: generateCode(),
     createdAt: serverTimestamp(),

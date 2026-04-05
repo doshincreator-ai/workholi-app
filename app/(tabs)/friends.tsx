@@ -47,7 +47,7 @@ export default function FriendsScreen() {
     if (!user) return;
     setLoading(true);
     try {
-      const profile = await getOrCreateUserProfile(user.uid, user.displayName ?? '', user.email ?? '');
+      const profile = await getOrCreateUserProfile(user.uid, user.displayName ?? '');
       setInviteCode(profile.inviteCode);
       setMyName(profile.displayName);
       const [f, r] = await Promise.all([
