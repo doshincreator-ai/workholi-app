@@ -272,7 +272,7 @@ export default function FriendsScreen() {
                 {i > 0 && <View style={styles.rowSep} />}
                 <Pressable style={styles.friendRow} onPress={() => handleViewShifts(f)}>
                   <View style={styles.friendAvatar}>
-                    <Text style={styles.friendAvatarText}>{f.displayName[0]}</Text>
+                    <Text style={styles.friendAvatarText}>{f.displayName?.[0] ?? '?'}</Text>
                   </View>
                   <View style={styles.friendInfo}>
                     <Text style={styles.friendName}>{f.displayName}</Text>
