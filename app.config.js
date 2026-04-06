@@ -37,7 +37,7 @@ module.exports = {
       },
     },
     android: {
-      package: "com.kiwilog.app",
+      package: "com.workholiday.app",
       googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? "./google-services.json",
       permissions: ["com.google.android.gms.permission.AD_ID"],
       adaptiveIcon: {
