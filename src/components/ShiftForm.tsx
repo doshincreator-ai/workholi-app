@@ -16,6 +16,7 @@ import { useShiftStore } from '../store/shiftStore';
 import { useSettingsStore } from '../store/settingsStore';
 import { calculatePay, calculatePayAU, calcHours, calcNightShiftHours, calcOvertimeExtra } from '../utils/payCalculator';
 import { COUNTRIES } from '../config/countries';
+import { Colors } from '../constants/colors';
 import type { Shift } from '../types';
 
 const REMINDER_OPTIONS: { label: string; value: number }[] = [
@@ -236,7 +237,7 @@ export function ShiftForm({ existing, initialDate }: Props) {
               <Text style={styles.switchLabel}>別途支給（雇用主設定）</Text>
               <Text style={[styles.switchSub, { marginTop: 4 }]}>今回の受取額（NZD）</Text>
               <View style={[styles.hpRow, { marginTop: 6 }]}>
-                <Text style={{ fontSize: 18, color: '#6b7280', fontWeight: '600', marginRight: 8 }}>$</Text>
+                <Text style={{ fontSize: 18, color: Colors.textSecondary, fontWeight: '600', marginRight: 8 }}>$</Text>
                 <TextInput
                   style={styles.hpAmountInput}
                   value={holidayPayAmount}
@@ -356,104 +357,104 @@ export function ShiftForm({ existing, initialDate }: Props) {
 }
 
 const styles = StyleSheet.create({
-  scroll: { flex: 1, backgroundColor: '#f9fafb' },
+  scroll: { flex: 1, backgroundColor: Colors.background },
   content: { padding: 16, paddingBottom: 40 },
-  sectionLabel: { fontSize: 13, fontWeight: '600', color: '#6b7280', marginBottom: 8 },
+  sectionLabel: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   textInput: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surfaceElevated,
     borderRadius: 12,
     padding: 14,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
-    color: '#111827',
+    borderColor: Colors.border,
+    color: Colors.textPrimary,
   },
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
-  timeSep: { fontSize: 20, color: '#9ca3af', marginBottom: 14, paddingHorizontal: 4 },
+  timeSep: { fontSize: 20, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
   switchRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 12,
     padding: 14,
     marginTop: 20,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: Colors.border,
   },
-  switchLabel: { fontSize: 15, color: '#111827', fontWeight: '500' },
-  switchSub: { fontSize: 12, color: '#9ca3af', marginTop: 2 },
+  switchLabel: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
+  switchSub: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
   calcCard: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 16,
     padding: 16,
     marginTop: 24,
     borderWidth: 1,
-    borderColor: '#d1fae5',
+    borderColor: Colors.primaryMuted,
   },
   calcTitle: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#16a34a',
+    color: Colors.primary,
     marginBottom: 12,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   calcRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
-  calcDivider: { borderTopWidth: 1, borderTopColor: '#f3f4f6', paddingTop: 8, marginTop: 4 },
-  calcLabel: { fontSize: 15, color: '#374151' },
-  calcValue: { fontSize: 15, color: '#374151', fontWeight: '500' },
-  calcLabelSub: { fontSize: 13, color: '#9ca3af' },
-  calcValueSub: { fontSize: 13, color: '#9ca3af' },
+  calcDivider: { borderTopWidth: 1, borderTopColor: Colors.border, paddingTop: 8, marginTop: 4 },
+  calcLabel: { fontSize: 15, color: Colors.textSecondary },
+  calcValue: { fontSize: 15, color: Colors.textSecondary, fontWeight: '500' },
+  calcLabelSub: { fontSize: 13, color: Colors.textMuted },
+  calcValueSub: { fontSize: 13, color: Colors.textMuted },
   calcTotal: {
     borderTopWidth: 1,
-    borderTopColor: '#e5e7eb',
+    borderTopColor: Colors.border,
     paddingTop: 12,
     marginTop: 4,
     marginBottom: 0,
   },
-  calcTotalLabel: { fontSize: 17, fontWeight: '700', color: '#111827' },
-  calcTotalValue: { fontSize: 20, fontWeight: '700', color: '#16a34a' },
-  calcJpy: { fontSize: 13, color: '#9ca3af', marginTop: 2 },
+  calcTotalLabel: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
+  calcTotalValue: { fontSize: 20, fontWeight: '700', color: Colors.primary },
+  calcJpy: { fontSize: 13, color: Colors.textMuted, marginTop: 2 },
   calcPlaceholder: {
-    backgroundColor: '#f3f4f6',
+    backgroundColor: Colors.surface,
     borderRadius: 12,
     padding: 20,
     marginTop: 24,
     alignItems: 'center',
   },
-  calcPlaceholderText: { color: '#9ca3af', fontSize: 14, textAlign: 'center' },
+  calcPlaceholderText: { color: Colors.textMuted, fontSize: 14, textAlign: 'center' },
   saveBtn: {
-    backgroundColor: '#16a34a',
+    backgroundColor: Colors.primary,
     borderRadius: 14,
     padding: 16,
     alignItems: 'center',
     marginTop: 24,
   },
-  saveBtnDisabled: { backgroundColor: '#d1d5db' },
-  saveBtnText: { color: '#fff', fontSize: 17, fontWeight: '700' },
+  saveBtnDisabled: { backgroundColor: Colors.textMuted },
+  saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
   segmentRow: { flexDirection: 'row', gap: 8 },
   segment: {
     flex: 1, paddingVertical: 10, borderRadius: 10, borderWidth: 1,
-    borderColor: '#e5e7eb', backgroundColor: '#fff', alignItems: 'center',
+    borderColor: Colors.border, backgroundColor: Colors.surface, alignItems: 'center',
   },
-  segmentActive: { backgroundColor: '#16a34a', borderColor: '#16a34a' },
-  segmentText: { fontSize: 14, color: '#6b7280', fontWeight: '500' },
-  segmentTextActive: { color: '#fff' },
+  segmentActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
+  segmentText: { fontSize: 14, color: Colors.textSecondary, fontWeight: '500' },
+  segmentTextActive: { color: Colors.textInverse },
   memoInput: { height: 80, textAlignVertical: 'top', paddingTop: 12 },
-  restHint: { fontSize: 12, color: '#2563eb', marginTop: 6, lineHeight: 17 },
+  restHint: { fontSize: 12, color: Colors.primary, marginTop: 6, lineHeight: 17 },
   hpCard: {
-    backgroundColor: '#fff', borderRadius: 12, padding: 14,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 12, padding: 14,
+    borderWidth: 1, borderColor: Colors.border,
   },
-  hpTitle: { fontSize: 13, fontWeight: '700', color: '#6b7280', marginBottom: 12 },
+  hpTitle: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
   hpRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   hpBreakdown: {
-    marginTop: 10, backgroundColor: '#f0fdf4', borderRadius: 8, padding: 10,
+    marginTop: 10, backgroundColor: Colors.primarySubtle, borderRadius: 8, padding: 10,
   },
-  hpBreakdownText: { fontSize: 13, color: '#15803d', fontWeight: '500' },
+  hpBreakdownText: { fontSize: 13, color: Colors.primary, fontWeight: '500' },
   hpAmountInput: {
-    flex: 1, backgroundColor: '#f9fafb', borderRadius: 10, padding: 12,
-    fontSize: 16, borderWidth: 1, borderColor: '#e5e7eb', color: '#111827',
+    flex: 1, backgroundColor: Colors.surfaceElevated, borderRadius: 10, padding: 12,
+    fontSize: 16, borderWidth: 1, borderColor: Colors.border, color: Colors.textPrimary,
   },
 });

@@ -17,6 +17,7 @@ import { useSettingsStore } from '../store/settingsStore';
 import { calculatePay, calculatePayAU, calcHours } from '../utils/payCalculator';
 import { COUNTRIES } from '../config/countries';
 import type { Employer } from '../types';
+import { Colors } from '../constants/colors';
 
 interface Props {
   visible: boolean;
@@ -127,14 +128,14 @@ export function QuickClockIn({ visible, onClose }: Props) {
         <View style={styles.header}>
           <Text style={styles.title}>ワンタップ出勤</Text>
           <Pressable onPress={handleClose} style={styles.closeBtn}>
-            <Ionicons name="close" size={24} color="#374151" />
+            <Ionicons name="close" size={24} color={Colors.textPrimary} />
           </Pressable>
         </View>
 
         <ScrollView contentContainerStyle={styles.scroll}>
           {quickEmployers.length === 0 ? (
             <View style={styles.empty}>
-              <Ionicons name="briefcase-outline" size={48} color="#d1d5db" />
+              <Ionicons name="briefcase-outline" size={48} color={Colors.border} />
               <Text style={styles.emptyText}>デフォルト時間が設定されていません</Text>
               <Text style={styles.emptyHint}>
                 雇用主の編集画面でデフォルト勤務時間を設定してください
@@ -167,7 +168,7 @@ export function QuickClockIn({ visible, onClose }: Props) {
                       </Text>
                     </View>
                     {selected?.id === e.id && (
-                      <Ionicons name="checkmark-circle" size={22} color="#16a34a" />
+                      <Ionicons name="checkmark-circle" size={22} color={Colors.positive} />
                     )}
                   </Pressable>
                 ))}
@@ -239,82 +240,82 @@ export function QuickClockIn({ visible, onClose }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: Colors.border,
   },
-  title: { fontSize: 18, fontWeight: '700', color: '#111827' },
+  title: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary },
   closeBtn: { padding: 4 },
   scroll: { padding: 16, paddingBottom: 40 },
 
   sectionLabel: {
-    fontSize: 12, fontWeight: '700', color: '#6b7280',
+    fontSize: 12, fontWeight: '700', color: Colors.textSecondary,
     textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 10,
   },
 
   employerList: {},
   employerBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 12,
-    backgroundColor: '#fff', borderRadius: 14, padding: 14,
-    borderWidth: 2, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 14,
+    borderWidth: 2, borderColor: Colors.border,
   },
-  employerBtnSelected: { borderColor: '#16a34a', backgroundColor: '#f0fdf4' },
+  employerBtnSelected: { borderColor: Colors.primary, backgroundColor: Colors.primarySubtle },
   employerIcon: {
     width: 40, height: 40, borderRadius: 20,
-    backgroundColor: '#dcfce7', alignItems: 'center', justifyContent: 'center',
+    backgroundColor: Colors.primarySubtle, alignItems: 'center', justifyContent: 'center',
   },
-  employerIconText: { fontSize: 16, fontWeight: '700', color: '#16a34a' },
+  employerIconText: { fontSize: 16, fontWeight: '700', color: Colors.primary },
   employerInfo: { flex: 1 },
-  employerName: { fontSize: 15, fontWeight: '600', color: '#111827', marginBottom: 2 },
-  employerNameSelected: { color: '#15803d' },
-  employerDefault: { fontSize: 12, color: '#9ca3af' },
+  employerName: { fontSize: 15, fontWeight: '600', color: Colors.textPrimary, marginBottom: 2 },
+  employerNameSelected: { color: Colors.primary },
+  employerDefault: { fontSize: 12, color: Colors.textMuted },
 
   timeCard: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 16,
-    borderWidth: 1, borderColor: '#e5e7eb', gap: 16,
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    borderWidth: 1, borderColor: Colors.border, gap: 16,
   },
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
-  timeSep: { fontSize: 20, color: '#9ca3af', marginBottom: 14, paddingHorizontal: 4 },
+  timeSep: { fontSize: 20, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
   breakRow: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
-  breakLabel: { fontSize: 13, color: '#6b7280', marginRight: 4 },
+  breakLabel: { fontSize: 13, color: Colors.textSecondary, marginRight: 4 },
   breakBtn: {
     paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8,
-    borderWidth: 1, borderColor: '#e5e7eb', backgroundColor: '#f9fafb',
+    borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surfaceElevated,
   },
-  breakBtnActive: { backgroundColor: '#16a34a', borderColor: '#16a34a' },
-  breakBtnText: { fontSize: 13, color: '#6b7280' },
-  breakBtnTextActive: { color: '#fff', fontWeight: '600' },
+  breakBtnActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
+  breakBtnText: { fontSize: 13, color: Colors.textSecondary },
+  breakBtnTextActive: { color: Colors.textInverse, fontWeight: '600' },
 
   calcCard: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 16,
-    borderWidth: 1, borderColor: '#d1fae5', marginTop: 16,
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    borderWidth: 1, borderColor: Colors.primaryMuted, marginTop: 16,
   },
   calcRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
-  calcLabel: { fontSize: 14, color: '#6b7280' },
-  calcValue: { fontSize: 14, color: '#374151', fontWeight: '500' },
+  calcLabel: { fontSize: 14, color: Colors.textSecondary },
+  calcValue: { fontSize: 14, color: Colors.textPrimary, fontWeight: '500' },
   calcTotalRow: {
-    borderTopWidth: 1, borderTopColor: '#e5e7eb',
+    borderTopWidth: 1, borderTopColor: Colors.border,
     paddingTop: 12, marginTop: 4, marginBottom: 0,
   },
-  calcTotalLabel: { fontSize: 16, fontWeight: '700', color: '#111827' },
-  calcTotalValue: { fontSize: 20, fontWeight: '700', color: '#16a34a' },
-  calcJpy: { fontSize: 12, color: '#9ca3af', marginTop: 2 },
+  calcTotalLabel: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary },
+  calcTotalValue: { fontSize: 20, fontWeight: '700', color: Colors.positive },
+  calcJpy: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
 
   saveBtn: {
-    backgroundColor: '#16a34a', borderRadius: 14, padding: 16,
+    backgroundColor: Colors.primary, borderRadius: 14, padding: 16,
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
     gap: 8, marginTop: 20,
   },
-  saveBtnDisabled: { backgroundColor: '#d1d5db' },
-  saveBtnText: { color: '#fff', fontSize: 17, fontWeight: '700' },
+  saveBtnDisabled: { backgroundColor: Colors.border },
+  saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
 
   empty: { alignItems: 'center', marginTop: 60, gap: 12 },
-  emptyText: { fontSize: 16, color: '#6b7280', fontWeight: '600' },
-  emptyHint: { fontSize: 13, color: '#9ca3af', textAlign: 'center' },
+  emptyText: { fontSize: 16, color: Colors.textSecondary, fontWeight: '600' },
+  emptyHint: { fontSize: 13, color: Colors.textMuted, textAlign: 'center' },
 });

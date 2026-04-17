@@ -2,6 +2,7 @@ import { View, Text, Modal, Pressable, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
+import { Colors } from '../constants/colors';
 import type { TaxCode } from '../types';
 
 interface Props {
@@ -51,7 +52,7 @@ export function TaxCodeGuideModal({ visible, onClose, onSelect }: Props) {
       return (
         <View style={styles.resultBox}>
           <View style={styles.resultIconRow}>
-            <Ionicons name="checkmark-circle" size={32} color="#16a34a" />
+            <Ionicons name="checkmark-circle" size={32} color={Colors.primary} />
             <Text style={styles.resultCode}>{code}</Text>
           </View>
           <Text style={styles.resultTitle}>{info.title}</Text>
@@ -78,12 +79,12 @@ export function TaxCodeGuideModal({ visible, onClose, onSelect }: Props) {
           </Text>
           <View style={styles.btnCol}>
             <Pressable style={styles.choiceBtn} onPress={() => setStep('main_loan')}>
-              <Ionicons name="checkmark" size={18} color="#16a34a" />
+              <Ionicons name="checkmark" size={18} color={Colors.primary} />
               <Text style={styles.choiceBtnText}>はい、メインの職場です</Text>
             </Pressable>
             <Pressable style={styles.choiceBtn} onPress={() => setStep('sub_income')}>
-              <Ionicons name="git-branch-outline" size={18} color="#2563eb" />
-              <Text style={[styles.choiceBtnText, { color: '#2563eb' }]}>いいえ、掛け持ちのサブ職場です</Text>
+              <Ionicons name="git-branch-outline" size={18} color={Colors.warning} />
+              <Text style={[styles.choiceBtnText, { color: Colors.warning }]}>いいえ、掛け持ちのサブ職場です</Text>
             </Pressable>
           </View>
         </View>
@@ -101,11 +102,11 @@ export function TaxCodeGuideModal({ visible, onClose, onSelect }: Props) {
           </Text>
           <View style={styles.btnCol}>
             <Pressable style={styles.choiceBtn} onPress={() => setStep({ result: 'M SL' })}>
-              <Ionicons name="school-outline" size={18} color="#d97706" />
-              <Text style={[styles.choiceBtnText, { color: '#d97706' }]}>はい、学生ローンがあります</Text>
+              <Ionicons name="school-outline" size={18} color={Colors.warning} />
+              <Text style={[styles.choiceBtnText, { color: Colors.warning }]}>はい、学生ローンがあります</Text>
             </Pressable>
             <Pressable style={styles.choiceBtn} onPress={() => setStep({ result: 'M' })}>
-              <Ionicons name="close" size={18} color="#16a34a" />
+              <Ionicons name="close" size={18} color={Colors.primary} />
               <Text style={styles.choiceBtnText}>いいえ、ありません</Text>
             </Pressable>
           </View>
@@ -150,7 +151,7 @@ export function TaxCodeGuideModal({ visible, onClose, onSelect }: Props) {
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Pressable onPress={handleClose} style={styles.closeBtn}>
-            <Ionicons name="close" size={24} color="#374151" />
+            <Ionicons name="close" size={24} color={Colors.textSecondary} />
           </Pressable>
           <Text style={styles.title}>税コードを確認する</Text>
           <View style={{ width: 32 }} />
@@ -171,7 +172,7 @@ export function TaxCodeGuideModal({ visible, onClose, onSelect }: Props) {
         <View style={styles.body}>
           {!isResult && (
             <View style={styles.iconHeader}>
-              <Ionicons name="help-circle-outline" size={28} color="#6b7280" />
+              <Ionicons name="help-circle-outline" size={28} color={Colors.textSecondary} />
               <Text style={styles.iconHeaderText}>いくつかの質問に答えてください</Text>
             </View>
           )}
@@ -189,53 +190,53 @@ export function TaxCodeGuideModal({ visible, onClose, onSelect }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    padding: 16, backgroundColor: '#fff',
-    borderBottomWidth: 1, borderBottomColor: '#e5e7eb',
+    padding: 16, backgroundColor: Colors.surface,
+    borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   closeBtn: { padding: 4 },
-  title: { fontSize: 17, fontWeight: '700', color: '#111827' },
+  title: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
 
   stepRow: {
     flexDirection: 'row', gap: 8, justifyContent: 'center',
-    paddingVertical: 14, backgroundColor: '#fff',
-    borderBottomWidth: 1, borderBottomColor: '#f3f4f6',
+    paddingVertical: 14, backgroundColor: Colors.surface,
+    borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
-  stepDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#e5e7eb' },
-  stepDotActive: { backgroundColor: '#16a34a', width: 20 },
+  stepDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: Colors.border },
+  stepDotActive: { backgroundColor: Colors.primary, width: 20 },
 
   body: { flex: 1, padding: 24 },
 
   iconHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 20 },
-  iconHeaderText: { fontSize: 14, color: '#6b7280' },
+  iconHeaderText: { fontSize: 14, color: Colors.textSecondary },
 
-  questionText: { fontSize: 18, fontWeight: '700', color: '#111827', lineHeight: 26, marginBottom: 8 },
-  questionSub: { fontSize: 13, color: '#9ca3af', marginBottom: 24, lineHeight: 18 },
+  questionText: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary, lineHeight: 26, marginBottom: 8 },
+  questionSub: { fontSize: 13, color: Colors.textMuted, marginBottom: 24, lineHeight: 18 },
 
   btnCol: { gap: 12 },
   choiceBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: '#fff', borderRadius: 14,
-    padding: 16, borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14,
+    padding: 16, borderWidth: 1, borderColor: Colors.border,
   },
-  choiceBtnText: { fontSize: 15, color: '#111827', fontWeight: '500', flex: 1 },
+  choiceBtnText: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500', flex: 1 },
 
   resultBox: { alignItems: 'center', paddingTop: 8 },
   resultIconRow: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 },
-  resultCode: { fontSize: 32, fontWeight: '800', color: '#15803d' },
-  resultTitle: { fontSize: 18, fontWeight: '700', color: '#111827', marginBottom: 10, textAlign: 'center' },
-  resultDesc: { fontSize: 14, color: '#6b7280', lineHeight: 20, textAlign: 'center', marginBottom: 28 },
+  resultCode: { fontSize: 32, fontWeight: '800', color: Colors.primary },
+  resultTitle: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary, marginBottom: 10, textAlign: 'center' },
+  resultDesc: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20, textAlign: 'center', marginBottom: 28 },
 
   applyBtn: {
-    backgroundColor: '#16a34a', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 32,
+    backgroundColor: Colors.primary, borderRadius: 14, paddingVertical: 14, paddingHorizontal: 32,
     width: '100%', alignItems: 'center', marginBottom: 12,
   },
-  applyBtnText: { color: '#fff', fontSize: 16, fontWeight: '700' },
+  applyBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },
   retryBtn: { paddingVertical: 10 },
-  retryBtnText: { fontSize: 14, color: '#9ca3af' },
+  retryBtnText: { fontSize: 14, color: Colors.textMuted },
 
-  footer: { padding: 16, borderTopWidth: 1, borderTopColor: '#e5e7eb', backgroundColor: '#fff' },
-  footerNote: { fontSize: 11, color: '#9ca3af', textAlign: 'center', lineHeight: 16 },
+  footer: { padding: 16, borderTopWidth: 1, borderTopColor: Colors.border, backgroundColor: Colors.surface },
+  footerNote: { fontSize: 11, color: Colors.textMuted, textAlign: 'center', lineHeight: 16 },
 });

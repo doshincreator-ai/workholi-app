@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.borderSubtle,
   },
   dayCellSelected: { backgroundColor: Colors.primarySubtle },
-  dayCellHoliday: { backgroundColor: '#fff7ed' },
+  dayCellHoliday: { backgroundColor: 'rgba(245,158,11,0.15)' },
   dayNumWrap: {
     width: 28, height: 28, borderRadius: 14,
     alignItems: 'center', justifyContent: 'center',
@@ -365,8 +365,8 @@ const styles = StyleSheet.create({
   satNum: { color: '#2563eb' },
   sunNum: { color: '#dc2626' },
 
-  holidayNum: { color: '#ea580c' },
-  holidayDot: { fontSize: 7, color: '#ea580c', lineHeight: 9 },
+  holidayNum: { color: Colors.warning },
+  holidayDot: { fontSize: 7, color: Colors.warning, lineHeight: 9 },
 
   dots: { flexDirection: 'row', gap: 2, marginTop: 3, flexWrap: 'wrap', justifyContent: 'center' },
   dot: { width: 6, height: 6, borderRadius: 3 },
@@ -378,7 +378,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', marginBottom: 10,
   },
   detailDate: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
-  holidayName: { fontSize: 11, color: '#ea580c', marginTop: 2 },
+  holidayName: { fontSize: 11, color: Colors.warning, marginTop: 2 },
   detailCount: { fontSize: 13, color: Colors.textMuted },
 
   shiftList: { gap: 8 },

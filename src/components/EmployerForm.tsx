@@ -18,6 +18,7 @@ import { TimeInput } from './TimeInput';
 import { TaxCodeGuideModal } from './TaxCodeGuideModal';
 import { COUNTRIES } from '../config/countries';
 import type { Employer, TaxCode, PaymentMethod } from '../types';
+import { Colors } from '../constants/colors';
 
 const JOB_CATEGORIES = [
   'カフェ/レストラン', 'バー/ナイトクラブ', '小売/ショップ', '農場/果樹園',
@@ -232,7 +233,7 @@ export function EmployerForm({ existing }: Props) {
           <View style={[styles.taxCodeLabelRow, styles.labelSpacing]}>
             <Text style={[styles.label, { marginBottom: 0 }]}>税コード *</Text>
             <Pressable style={styles.guideBtn} onPress={() => setShowTaxGuide(true)}>
-              <Ionicons name="help-circle-outline" size={15} color="#2563eb" />
+              <Ionicons name="help-circle-outline" size={15} color={Colors.primary} />
               <Text style={styles.guideBtnText}>ガイドで確認</Text>
             </Pressable>
           </View>
@@ -260,7 +261,7 @@ export function EmployerForm({ existing }: Props) {
         </>
       ) : (
         <View style={[styles.auTaxInfo, styles.labelSpacing]}>
-          <Ionicons name="information-circle-outline" size={18} color="#2563eb" />
+          <Ionicons name="information-circle-outline" size={18} color={Colors.primary} />
           <View style={{ flex: 1 }}>
             <Text style={styles.auTaxTitle}>AU ワーホリ税率</Text>
             <Text style={styles.auTaxBody}>
@@ -297,7 +298,7 @@ export function EmployerForm({ existing }: Props) {
         <Switch
           value={friendsVisible}
           onValueChange={setFriendsVisible}
-          trackColor={{ true: '#16a34a' }}
+          trackColor={{ true: Colors.primary }}
         />
       </View>
 
@@ -313,10 +314,10 @@ export function EmployerForm({ existing }: Props) {
             <Switch
               value={holidayPayIncluded}
               onValueChange={(v) => { setHolidayPayIncluded(v); if (v) setHolidayPaySeparate(false); }}
-              trackColor={{ true: '#16a34a' }}
+              trackColor={{ true: Colors.primary }}
             />
           </View>
-          <View style={[styles.hpRow, { borderTopWidth: 1, borderTopColor: '#f3f4f6', marginTop: 8, paddingTop: 12 }]}>
+          <View style={[styles.hpRow, { borderTopWidth: 1, borderTopColor: Colors.border, marginTop: 8, paddingTop: 12 }]}>
             <View style={{ flex: 1 }}>
               <Text style={styles.label}>別途支給</Text>
               <Text style={styles.hint}>HP分が別払いで支給される場合</Text>
@@ -324,7 +325,7 @@ export function EmployerForm({ existing }: Props) {
             <Switch
               value={holidayPaySeparate}
               onValueChange={(v) => { setHolidayPaySeparate(v); if (v) setHolidayPayIncluded(false); }}
-              trackColor={{ true: '#16a34a' }}
+              trackColor={{ true: Colors.primary }}
             />
           </View>
         </View>
@@ -343,7 +344,7 @@ export function EmployerForm({ existing }: Props) {
           <Switch
             value={hasNightShift}
             onValueChange={setHasNightShift}
-            trackColor={{ true: '#16a34a' }}
+            trackColor={{ true: Colors.primary }}
           />
         </View>
         {hasNightShift && (
@@ -368,7 +369,7 @@ export function EmployerForm({ existing }: Props) {
         )}
 
         {/* 残業手当 */}
-        <View style={[styles.hpRow, { borderTopWidth: 1, borderTopColor: '#f3f4f6', marginTop: 12, paddingTop: 12 }]}>
+        <View style={[styles.hpRow, { borderTopWidth: 1, borderTopColor: Colors.border, marginTop: 12, paddingTop: 12 }]}>
           <View style={{ flex: 1 }}>
             <Text style={styles.label}>残業手当</Text>
             <Text style={styles.hint}>閾値超過後の割増率（例: 1.25）</Text>
@@ -376,7 +377,7 @@ export function EmployerForm({ existing }: Props) {
           <Switch
             value={hasOvertime}
             onValueChange={setHasOvertime}
-            trackColor={{ true: '#16a34a' }}
+            trackColor={{ true: Colors.primary }}
           />
         </View>
         {hasOvertime && (
@@ -416,7 +417,7 @@ export function EmployerForm({ existing }: Props) {
         <Switch
           value={isShared}
           onValueChange={setIsShared}
-          trackColor={{ true: '#16a34a' }}
+          trackColor={{ true: Colors.primary }}
         />
       </View>
 
@@ -457,7 +458,7 @@ export function EmployerForm({ existing }: Props) {
           {/* レビュー項目（3シフト以上で解放） */}
           {reviewLocked ? (
             <View style={styles.reviewLock}>
-              <Ionicons name="lock-closed-outline" size={16} color="#9ca3af" />
+              <Ionicons name="lock-closed-outline" size={16} color={Colors.textMuted} />
               <View style={{ flex: 1 }}>
                 <Text style={styles.reviewLockTitle}>職場レビュー（{shiftCount}/3シフト）</Text>
                 <Text style={styles.reviewLockSub}>
@@ -468,7 +469,7 @@ export function EmployerForm({ existing }: Props) {
           ) : (
             <>
               <View style={styles.reviewUnlockBadge}>
-                <Ionicons name="checkmark-circle" size={15} color="#16a34a" />
+                <Ionicons name="checkmark-circle" size={15} color={Colors.positive} />
                 <Text style={styles.reviewUnlockText}>職場レビューが解放されました</Text>
               </View>
 
@@ -516,7 +517,7 @@ export function EmployerForm({ existing }: Props) {
                   <Text style={styles.label}>面接あり</Text>
                   <Text style={styles.hint}>応募時に面接がある場合はON</Text>
                 </View>
-                <Switch value={hasInterview} onValueChange={setHasInterview} trackColor={{ true: '#16a34a' }} />
+                <Switch value={hasInterview} onValueChange={setHasInterview} trackColor={{ true: Colors.primary }} />
               </View>
 
               {/* 仕事の難易度 */}
@@ -539,7 +540,7 @@ export function EmployerForm({ existing }: Props) {
                   <Text style={styles.label}>現在募集中</Text>
                   <Text style={styles.hint}>求人が出ていると思われる場合はON</Text>
                 </View>
-                <Switch value={isHiring} onValueChange={setIsHiring} trackColor={{ true: '#16a34a' }} />
+                <Switch value={isHiring} onValueChange={setIsHiring} trackColor={{ true: Colors.primary }} />
               </View>
             </>
           )}
@@ -547,7 +548,7 @@ export function EmployerForm({ existing }: Props) {
           {/* 住所・連絡先（詳細情報・チケット+2） */}
           <View style={[styles.detailCard, { marginTop: 16 }]}>
             <View style={styles.detailHeader}>
-              <Ionicons name="ticket-outline" size={15} color="#16a34a" />
+              <Ionicons name="ticket-outline" size={15} color={Colors.positive} />
               <Text style={styles.detailHeaderText}>詳細情報（初回登録でチケット+2）</Text>
             </View>
             <Text style={[styles.label, { marginTop: 12 }]}>住所（任意）</Text>
@@ -629,7 +630,7 @@ export function EmployerForm({ existing }: Props) {
 
       {existing && (
         <Pressable style={styles.deleteBtn} onPress={handleDelete}>
-          <Ionicons name="trash-outline" size={16} color="#ef4444" />
+          <Ionicons name="trash-outline" size={16} color={Colors.negative} />
           <Text style={styles.deleteBtnText}>この雇用主を削除</Text>
         </Pressable>
       )}
@@ -638,37 +639,37 @@ export function EmployerForm({ existing }: Props) {
 }
 
 const styles = StyleSheet.create({
-  scroll: { flex: 1, backgroundColor: '#f9fafb' },
+  scroll: { flex: 1, backgroundColor: Colors.background },
   content: { padding: 16, paddingBottom: 40 },
-  label: { fontSize: 13, fontWeight: '600', color: '#6b7280', marginBottom: 8 },
+  label: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   labelSpacing: { marginTop: 20 },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surfaceElevated,
     borderRadius: 12,
     padding: 14,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
-    color: '#111827',
+    borderColor: Colors.border,
+    color: Colors.textPrimary,
   },
   rateRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  ratePrefix: { fontSize: 24, color: '#6b7280', fontWeight: '600' },
+  ratePrefix: { fontSize: 24, color: Colors.textSecondary, fontWeight: '600' },
   rateInput: { flex: 1, fontSize: 24, fontWeight: '700' },
-  hint: { fontSize: 12, color: '#9ca3af', marginTop: 6 },
+  hint: { fontSize: 12, color: Colors.textMuted, marginTop: 6 },
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
-  timeSep: { fontSize: 20, color: '#9ca3af', marginBottom: 14, paddingHorizontal: 4 },
+  timeSep: { fontSize: 20, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
 
   // 税コードラベル行
   taxCodeLabelRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 },
   guideBtn: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingVertical: 4, paddingHorizontal: 8 },
-  guideBtnText: { fontSize: 13, color: '#2563eb', fontWeight: '500' },
+  guideBtnText: { fontSize: 13, color: Colors.primary, fontWeight: '500' },
 
   // 税コード選択
   taxCodeList: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: Colors.border,
     overflow: 'hidden',
   },
   taxCodeItem: {
@@ -676,42 +677,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 14,
     borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
+    borderBottomColor: Colors.borderSubtle,
     gap: 12,
   },
-  taxCodeItemSelected: { backgroundColor: '#f0fdf4' },
+  taxCodeItemSelected: { backgroundColor: Colors.primarySubtle },
   radio: {
     width: 20,
     height: 20,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: '#d1d5db',
+    borderColor: Colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  radioSelected: { borderColor: '#16a34a' },
-  radioDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: '#16a34a' },
+  radioSelected: { borderColor: Colors.primary },
+  radioDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: Colors.primary },
   taxCodeTextWrap: { flex: 1 },
-  taxCodeText: { fontSize: 14, color: '#374151' },
-  taxCodeTextSelected: { color: '#15803d', fontWeight: '600' },
+  taxCodeText: { fontSize: 14, color: Colors.textPrimary },
+  taxCodeTextSelected: { color: Colors.primary, fontWeight: '600' },
 
   // 地域
   regionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   regionChip: {
     paddingHorizontal: 12, paddingVertical: 7,
-    borderRadius: 20, borderWidth: 1, borderColor: '#d1d5db',
-    backgroundColor: '#fff',
+    borderRadius: 20, borderWidth: 1, borderColor: Colors.border,
+    backgroundColor: Colors.surface,
   },
-  regionChipSelected: { backgroundColor: '#16a34a', borderColor: '#16a34a' },
-  regionChipText: { fontSize: 13, color: '#374151' },
-  regionChipTextSelected: { color: '#fff', fontWeight: '600' },
+  regionChipSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
+  regionChipText: { fontSize: 13, color: Colors.textPrimary },
+  regionChipTextSelected: { color: Colors.textInverse, fontWeight: '600' },
 
   // Holiday Pay
   hpCard: {
-    backgroundColor: '#fff', borderRadius: 12, padding: 14,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 12, padding: 14,
+    borderWidth: 1, borderColor: Colors.border,
   },
-  hpTitle: { fontSize: 13, fontWeight: '700', color: '#6b7280', marginBottom: 12 },
+  hpTitle: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
   hpRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
 
   // 公開設定
@@ -719,57 +720,57 @@ const styles = StyleSheet.create({
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 6 },
   chip: {
     paddingHorizontal: 12, paddingVertical: 7,
-    borderRadius: 20, borderWidth: 1, borderColor: '#d1d5db',
-    backgroundColor: '#fff',
+    borderRadius: 20, borderWidth: 1, borderColor: Colors.border,
+    backgroundColor: Colors.surface,
   },
-  chipSelected: { backgroundColor: '#16a34a', borderColor: '#16a34a' },
-  chipText: { fontSize: 13, color: '#374151' },
-  chipTextSelected: { color: '#fff', fontWeight: '600' },
+  chipSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
+  chipText: { fontSize: 13, color: Colors.textPrimary },
+  chipTextSelected: { color: Colors.textInverse, fontWeight: '600' },
 
   // レビューロック
   reviewLock: {
     flexDirection: 'row', alignItems: 'flex-start', gap: 10,
-    backgroundColor: '#f9fafb', borderRadius: 12, padding: 14, marginTop: 16,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 12, padding: 14, marginTop: 16,
+    borderWidth: 1, borderColor: Colors.border,
   },
-  reviewLockTitle: { fontSize: 14, fontWeight: '600', color: '#6b7280', marginBottom: 4 },
-  reviewLockSub: { fontSize: 12, color: '#9ca3af', lineHeight: 17 },
+  reviewLockTitle: { fontSize: 14, fontWeight: '600', color: Colors.textSecondary, marginBottom: 4 },
+  reviewLockSub: { fontSize: 12, color: Colors.textMuted, lineHeight: 17 },
   reviewUnlockBadge: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    backgroundColor: '#f0fdf4', borderRadius: 10, padding: 10, marginTop: 16,
+    backgroundColor: Colors.primarySubtle, borderRadius: 10, padding: 10, marginTop: 16,
   },
-  reviewUnlockText: { fontSize: 13, color: '#16a34a', fontWeight: '600' },
+  reviewUnlockText: { fontSize: 13, color: Colors.positive, fontWeight: '600' },
 
   // AU税情報
   auTaxInfo: {
     flexDirection: 'row', gap: 10, alignItems: 'flex-start',
-    backgroundColor: '#eff6ff', borderRadius: 12, padding: 14,
-    borderWidth: 1, borderColor: '#bfdbfe',
+    backgroundColor: Colors.surfaceElevated, borderRadius: 12, padding: 14,
+    borderWidth: 1, borderColor: Colors.border,
   },
-  auTaxTitle: { fontSize: 14, fontWeight: '700', color: '#1d4ed8', marginBottom: 4 },
-  auTaxBody: { fontSize: 13, color: '#1e40af', lineHeight: 19 },
+  auTaxTitle: { fontSize: 14, fontWeight: '700', color: Colors.primary, marginBottom: 4 },
+  auTaxBody: { fontSize: 13, color: Colors.textSecondary, lineHeight: 19 },
 
   // 詳細情報カード
   detailCard: {
-    backgroundColor: '#f0fdf4', borderRadius: 12, padding: 14,
-    borderWidth: 1, borderColor: '#bbf7d0',
+    backgroundColor: Colors.primarySubtle, borderRadius: 12, padding: 14,
+    borderWidth: 1, borderColor: Colors.primaryMuted,
   },
   detailHeader: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  detailHeaderText: { fontSize: 13, fontWeight: '700', color: '#16a34a' },
+  detailHeaderText: { fontSize: 13, fontWeight: '700', color: Colors.positive },
 
   // 保存
   saveBtn: {
-    backgroundColor: '#16a34a',
+    backgroundColor: Colors.primary,
     borderRadius: 14,
     padding: 16,
     alignItems: 'center',
     marginTop: 28,
   },
-  saveBtnText: { color: '#fff', fontSize: 17, fontWeight: '700' },
+  saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
   deleteBtn: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
-    borderWidth: 1, borderColor: '#fecaca', borderRadius: 14,
+    borderWidth: 1, borderColor: Colors.negative, borderRadius: 14,
     padding: 14, marginTop: 12, marginBottom: 8,
   },
-  deleteBtnText: { color: '#ef4444', fontSize: 15, fontWeight: '600' },
+  deleteBtnText: { color: Colors.negative, fontSize: 15, fontWeight: '600' },
 });

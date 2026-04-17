@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useToastStore } from '../store/toastStore';
+import { Colors } from '../constants/colors';
 
 const DURATION = 3500;
 
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 16,
     right: 16,
-    backgroundColor: '#1a1a2e',
+    backgroundColor: Colors.surface,
     borderRadius: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
@@ -66,11 +67,11 @@ const styles = StyleSheet.create({
     elevation: 8,
     zIndex: 9999,
     borderLeftWidth: 4,
-    borderLeftColor: '#16a34a',
+    borderLeftColor: Colors.positive,
   },
   containerMilestone: {
-    borderLeftColor: '#f59e0b',
-    backgroundColor: '#1c1a10',
+    borderLeftColor: Colors.warning,
+    backgroundColor: Colors.surfaceElevated,
   },
   inner: {
     paddingHorizontal: 16,
@@ -80,17 +81,17 @@ const styles = StyleSheet.create({
   milestoneTitle: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#f59e0b',
+    color: Colors.warning,
     marginBottom: 2,
   },
   earning: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#ffffff',
+    color: Colors.textPrimary,
   },
   message: {
     fontSize: 13,
-    color: '#9ca3af',
+    color: Colors.textSecondary,
     lineHeight: 18,
   },
 });

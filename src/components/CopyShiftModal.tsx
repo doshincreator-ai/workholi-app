@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useState, useMemo } from 'react';
 import { useShiftStore } from '../store/shiftStore';
+import { Colors } from '../constants/colors';
 import type { Shift } from '../types';
 
 const WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日'];
@@ -95,7 +96,7 @@ export function CopyShiftModal({ shift, onClose }: Props) {
         {/* ヘッダー */}
         <View style={styles.header}>
           <Pressable onPress={onClose} style={styles.closeBtn}>
-            <Ionicons name="close" size={24} color="#374151" />
+            <Ionicons name="close" size={24} color={Colors.textSecondary} />
           </Pressable>
           <Text style={styles.title}>コピー先を選択</Text>
           <View style={{ width: 32 }} />
@@ -103,7 +104,7 @@ export function CopyShiftModal({ shift, onClose }: Props) {
 
         {/* コピー元の情報 */}
         <View style={styles.sourceCard}>
-          <Ionicons name="copy-outline" size={16} color="#6b7280" />
+          <Ionicons name="copy-outline" size={16} color={Colors.textSecondary} />
           <Text style={styles.sourceText}>
             {shift.employerName}　{shift.startTime}–{shift.endTime}
           </Text>
@@ -113,11 +114,11 @@ export function CopyShiftModal({ shift, onClose }: Props) {
           {/* 月ナビ */}
           <View style={styles.monthNav}>
             <Pressable style={styles.navBtn} onPress={prevMonth}>
-              <Ionicons name="chevron-back" size={20} color="#16a34a" />
+              <Ionicons name="chevron-back" size={20} color={Colors.primary} />
             </Pressable>
             <Text style={styles.monthLabel}>{year}年 {month}月</Text>
             <Pressable style={styles.navBtn} onPress={nextMonth}>
-              <Ionicons name="chevron-forward" size={20} color="#16a34a" />
+              <Ionicons name="chevron-forward" size={20} color={Colors.primary} />
             </Pressable>
           </View>
 
@@ -156,7 +157,7 @@ export function CopyShiftModal({ shift, onClose }: Props) {
                     </Text>
                   </View>
                   {isSelected && (
-                    <Ionicons name="checkmark-circle" size={14} color="#16a34a" style={styles.checkIcon} />
+                    <Ionicons name="checkmark-circle" size={14} color={Colors.primary} style={styles.checkIcon} />
                   )}
                 </Pressable>
               );
@@ -173,7 +174,7 @@ export function CopyShiftModal({ shift, onClose }: Props) {
             onPress={handleConfirm}
             disabled={selected.size === 0}
           >
-            <Ionicons name="copy-outline" size={18} color="#fff" />
+            <Ionicons name="copy-outline" size={18} color={Colors.textInverse} />
             <Text style={styles.confirmBtnText}>
               {selected.size > 0 ? `${selected.size}日にコピーする` : '日付を選んでください'}
             </Text>
@@ -185,73 +186,73 @@ export function CopyShiftModal({ shift, onClose }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    padding: 16, backgroundColor: '#fff',
-    borderBottomWidth: 1, borderBottomColor: '#e5e7eb',
+    padding: 16, backgroundColor: Colors.surface,
+    borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   closeBtn: { padding: 4 },
-  title: { fontSize: 17, fontWeight: '700', color: '#111827' },
+  title: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
 
   sourceCard: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
-    backgroundColor: '#f3f4f6', paddingHorizontal: 16, paddingVertical: 10,
+    backgroundColor: Colors.surfaceElevated, paddingHorizontal: 16, paddingVertical: 10,
   },
-  sourceText: { fontSize: 13, color: '#6b7280' },
+  sourceText: { fontSize: 13, color: Colors.textSecondary },
 
   monthNav: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: 16, paddingVertical: 12, backgroundColor: '#fff',
-    borderBottomWidth: 1, borderBottomColor: '#f3f4f6',
+    paddingHorizontal: 16, paddingVertical: 12, backgroundColor: Colors.surface,
+    borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   navBtn: { padding: 6 },
-  monthLabel: { fontSize: 16, fontWeight: '700', color: '#111827' },
+  monthLabel: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary },
 
   weekdayRow: {
-    flexDirection: 'row', backgroundColor: '#fff',
-    borderBottomWidth: 1, borderBottomColor: '#f3f4f6',
+    flexDirection: 'row', backgroundColor: Colors.surface,
+    borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   weekdayLabel: {
     flex: 1, textAlign: 'center', fontSize: 12,
-    fontWeight: '600', color: '#6b7280', paddingVertical: 8,
+    fontWeight: '600', color: Colors.textSecondary, paddingVertical: 8,
   },
-  sat: { color: '#2563eb' },
-  sun: { color: '#dc2626' },
+  sat: { color: '#60a5fa' },
+  sun: { color: '#f87171' },
 
   grid: {
     flexDirection: 'row', flexWrap: 'wrap',
-    backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   cell: {
     width: `${100 / 7}%`, minHeight: 56,
     alignItems: 'center', justifyContent: 'center',
     paddingVertical: 8,
-    borderRightWidth: 0.5, borderBottomWidth: 0.5, borderColor: '#f3f4f6',
+    borderRightWidth: 0.5, borderBottomWidth: 0.5, borderColor: Colors.border,
   },
-  cellSelected: { backgroundColor: '#f0fdf4' },
+  cellSelected: { backgroundColor: Colors.primarySubtle },
   dayNumWrap: {
     width: 32, height: 32, borderRadius: 16,
     alignItems: 'center', justifyContent: 'center',
   },
-  todayCircle: { backgroundColor: '#16a34a' },
-  dayNum: { fontSize: 14, color: '#374151', fontWeight: '500' },
-  todayNum: { color: '#fff', fontWeight: '700' },
-  satNum: { color: '#2563eb' },
-  sunNum: { color: '#dc2626' },
+  todayCircle: { backgroundColor: Colors.primary },
+  dayNum: { fontSize: 14, color: Colors.textSecondary, fontWeight: '500' },
+  todayNum: { color: Colors.textInverse, fontWeight: '700' },
+  satNum: { color: '#60a5fa' },
+  sunNum: { color: '#f87171' },
   selectedNum: { fontWeight: '700' },
   checkIcon: { marginTop: 2 },
 
-  hint: { textAlign: 'center', fontSize: 12, color: '#9ca3af', padding: 16 },
+  hint: { textAlign: 'center', fontSize: 12, color: Colors.textMuted, padding: 16 },
 
   footer: {
-    padding: 16, backgroundColor: '#fff',
-    borderTopWidth: 1, borderTopColor: '#e5e7eb',
+    padding: 16, backgroundColor: Colors.surface,
+    borderTopWidth: 1, borderTopColor: Colors.border,
   },
   confirmBtn: {
-    backgroundColor: '#16a34a', borderRadius: 14, padding: 16,
+    backgroundColor: Colors.primary, borderRadius: 14, padding: 16,
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
   },
-  confirmBtnDisabled: { backgroundColor: '#d1d5db' },
-  confirmBtnText: { color: '#fff', fontSize: 16, fontWeight: '700' },
+  confirmBtnDisabled: { backgroundColor: Colors.textMuted },
+  confirmBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },
 });

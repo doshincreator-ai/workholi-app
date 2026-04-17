@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useState, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Colors } from '../constants/colors';
 
 // 15分刻みで 00:00〜23:45 を生成
 const TIMES: string[] = [];
@@ -89,34 +90,34 @@ export function TimeInput({ label, value, onChange }: Props) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  label: { fontSize: 13, color: '#6b7280', marginBottom: 6 },
+  label: { fontSize: 13, color: Colors.textSecondary, marginBottom: 6 },
   btn: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surfaceElevated,
     borderRadius: 12,
     paddingVertical: 14,
     paddingHorizontal: 14,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: Colors.border,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  btnText: { fontSize: 20, fontWeight: '600', color: '#111827' },
-  chevron: { fontSize: 14, color: '#9ca3af' },
+  btnText: { fontSize: 20, fontWeight: '600', color: Colors.textPrimary },
+  chevron: { fontSize: 14, color: Colors.textMuted },
 
-  modal: { flex: 1, backgroundColor: '#f9fafb' },
+  modal: { flex: 1, backgroundColor: Colors.background },
   modalHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: Colors.border,
   },
-  modalTitle: { fontSize: 17, fontWeight: '700', color: '#111827' },
+  modalTitle: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
   cancelBtn: { padding: 4 },
-  cancelText: { fontSize: 15, color: '#6b7280' },
+  cancelText: { fontSize: 15, color: Colors.textSecondary },
 
   item: {
     height: 56,
@@ -125,11 +126,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
-    backgroundColor: '#fff',
+    borderBottomColor: Colors.border,
+    backgroundColor: Colors.surface,
   },
-  itemSelected: { backgroundColor: '#f0fdf4' },
-  itemText: { fontSize: 20, color: '#374151' },
-  itemTextSelected: { color: '#16a34a', fontWeight: '700' },
-  check: { fontSize: 18, color: '#16a34a' },
+  itemSelected: { backgroundColor: Colors.primarySubtle },
+  itemText: { fontSize: 20, color: Colors.textSecondary },
+  itemTextSelected: { color: Colors.primary, fontWeight: '700' },
+  check: { fontSize: 18, color: Colors.primary },
 });

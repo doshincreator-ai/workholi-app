@@ -23,6 +23,7 @@ import { useShiftStore } from '../../src/store/shiftStore';
 import type { CompanyDoc } from '../../src/lib/firestoreService';
 import { addTicket } from '../../src/lib/userService';
 import { RewardedAdButton } from '../../src/components/RewardedAdButton';
+import { Colors } from '../../src/constants/colors';
 
 const PAY_METHOD_LABEL: Record<string, string> = {
   bank: '銀行振込', cash: '現金', other: 'その他',
@@ -198,7 +199,7 @@ export default function CompanyDetailScreen() {
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.center}><ActivityIndicator size="large" color="#16a34a" /></View>
+        <View style={styles.center}><ActivityIndicator size="large" color={Colors.primary} /></View>
       </SafeAreaView>
     );
   }
@@ -217,7 +218,7 @@ export default function CompanyDetailScreen() {
 
         {/* 戻るボタン */}
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Ionicons name="chevron-back" size={20} color="#16a34a" />
+          <Ionicons name="chevron-back" size={20} color={Colors.primary} />
           <Text style={styles.backText}>戻る</Text>
         </Pressable>
 
@@ -227,13 +228,13 @@ export default function CompanyDetailScreen() {
           <View style={styles.badgeRow}>
             {company.region && (
               <View style={styles.badge}>
-                <Ionicons name="location-outline" size={13} color="#2563eb" />
-                <Text style={[styles.badgeText, { color: '#2563eb' }]}> {company.region}</Text>
+                <Ionicons name="location-outline" size={13} color={Colors.audAccent} />
+                <Text style={[styles.badgeText, { color: Colors.audAccent }]}> {company.region}</Text>
               </View>
             )}
             {(company.workerCount ?? 0) > 0 && (
               <View style={styles.badge}>
-                <Ionicons name="people-outline" size={13} color="#16a34a" />
+                <Ionicons name="people-outline" size={13} color={Colors.primary} />
                 <Text style={styles.badgeText}> {company.workerCount}人が勤務済み</Text>
               </View>
             )}
@@ -338,7 +339,7 @@ export default function CompanyDetailScreen() {
           <>
           {unlockedByFriend && (
             <View style={styles.friendBadge}>
-              <Ionicons name="people" size={14} color="#2563eb" />
+              <Ionicons name="people" size={14} color={Colors.audAccent} />
               <Text style={styles.friendBadgeText}> 友達が公開した企業のため無料で閲覧中</Text>
             </View>
           )}
@@ -386,7 +387,7 @@ export default function CompanyDetailScreen() {
                   <Text style={styles.infoLabel}>住所</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, justifyContent: 'flex-end', gap: 4 }}>
                     <Text style={[styles.descText, { flex: 1, textAlign: 'right' }]}>{company.address}</Text>
-                    <Ionicons name="map-outline" size={14} color="#2563eb" />
+                    <Ionicons name="map-outline" size={14} color={Colors.audAccent} />
                   </View>
                 </Pressable>
               </>
@@ -430,7 +431,7 @@ export default function CompanyDetailScreen() {
                       )}
                       {c.userId === user?.uid && (
                         <Pressable onPress={() => handleDeleteComment(c.id)} style={styles.deleteCommentBtn}>
-                          <Ionicons name="trash-outline" size={14} color="#ef4444" />
+                          <Ionicons name="trash-outline" size={14} color={Colors.negative} />
                         </Pressable>
                       )}
                     </View>
@@ -471,7 +472,7 @@ export default function CompanyDetailScreen() {
             </View>
           ) : (
             <View style={styles.commentLocked}>
-              <Ionicons name="lock-closed-outline" size={16} color="#9ca3af" />
+              <Ionicons name="lock-closed-outline" size={16} color={Colors.textMuted} />
               <Text style={styles.commentLockedText}>
                 チケットで解除するとコメントできます
               </Text>
@@ -504,14 +505,14 @@ export default function CompanyDetailScreen() {
             {/* オーバーレイ */}
             <View style={styles.lockOverlay}>
               <View style={styles.lockIconWrap}>
-                <Ionicons name="lock-closed" size={28} color="#fff" />
+                <Ionicons name="lock-closed" size={28} color={Colors.textPrimary} />
               </View>
               <Text style={styles.lockTitle}>詳細情報はロック中</Text>
               <Text style={styles.lockDesc}>
                 給与・勤務時間・評価の詳細を{'\n'}チケット1枚で解除できます
               </Text>
               <View style={styles.ticketBadge}>
-                <Ionicons name="ticket-outline" size={15} color="#16a34a" />
+                <Ionicons name="ticket-outline" size={15} color={Colors.primary} />
                 <Text style={styles.ticketBadgeText}> 残り {tickets}枚</Text>
               </View>
               <Pressable
@@ -519,7 +520,7 @@ export default function CompanyDetailScreen() {
                 onPress={handleUnlock}
                 disabled={tickets <= 0 || unlocking}
               >
-                <Ionicons name="lock-open-outline" size={18} color="#fff" />
+                <Ionicons name="lock-open-outline" size={18} color={Colors.textPrimary} />
                 <Text style={styles.unlockBtnText}>
                   {unlocking ? '処理中...' : 'チケットを使って解除'}
                 </Text>
@@ -550,148 +551,148 @@ function InfoRow({ label, value }: { label: string; value: string }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   scroll: { padding: 16, paddingBottom: 40 },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 
   backBtn: { flexDirection: 'row', alignItems: 'center', marginBottom: 16 },
-  backText: { color: '#16a34a', fontSize: 15 },
+  backText: { color: Colors.primary, fontSize: 15 },
 
   companyHeader: { marginBottom: 20 },
-  companyName: { fontSize: 26, fontWeight: '800', color: '#111827', marginBottom: 10 },
+  companyName: { fontSize: 26, fontWeight: '800', color: Colors.textPrimary, marginBottom: 10 },
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   badge: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: '#f0fdf4', borderRadius: 8,
+    backgroundColor: Colors.primarySubtle, borderRadius: 8,
     paddingHorizontal: 10, paddingVertical: 4,
   },
-  badgeText: { fontSize: 13, color: '#16a34a', fontWeight: '600' },
-  starIcon: { color: '#fbbf24', fontSize: 13 },
+  badgeText: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
+  starIcon: { color: Colors.warning, fontSize: 13 },
 
   sectionTitle: {
-    fontSize: 12, fontWeight: '700', color: '#9ca3af',
+    fontSize: 12, fontWeight: '700', color: Colors.textMuted,
     marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.5,
   },
   card: {
-    backgroundColor: '#fff', borderRadius: 14, overflow: 'hidden',
-    borderWidth: 1, borderColor: '#e5e7eb', marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: 14, overflow: 'hidden',
+    borderWidth: 1, borderColor: Colors.border, marginBottom: 20,
   },
   infoRow: { flexDirection: 'row', justifyContent: 'space-between', padding: 14 },
-  infoLabel: { fontSize: 14, color: '#6b7280' },
-  infoValue: { fontSize: 14, fontWeight: '600', color: '#111827', flex: 1, textAlign: 'right' },
+  infoLabel: { fontSize: 14, color: Colors.textSecondary },
+  infoValue: { fontSize: 14, fontWeight: '600', color: Colors.textPrimary, flex: 1, textAlign: 'right' },
   descRow: { padding: 14, gap: 6 },
-  descText: { fontSize: 14, color: '#374151', lineHeight: 20 },
-  rowSep: { height: 1, backgroundColor: '#f3f4f6' },
+  descText: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20 },
+  rowSep: { height: 1, backgroundColor: Colors.borderSubtle },
 
   // 評価分布
   ratingDistRow: { padding: 14, gap: 6 },
   ratingBarRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  ratingBarLabel: { fontSize: 12, color: '#6b7280', width: 24 },
-  ratingBarTrack: { flex: 1, height: 8, backgroundColor: '#f3f4f6', borderRadius: 4, overflow: 'hidden' },
-  ratingBarFill: { height: '100%', backgroundColor: '#fbbf24', borderRadius: 4 },
-  ratingBarCount: { fontSize: 12, color: '#9ca3af', width: 20, textAlign: 'right' },
+  ratingBarLabel: { fontSize: 12, color: Colors.textSecondary, width: 24 },
+  ratingBarTrack: { flex: 1, height: 8, backgroundColor: Colors.borderSubtle, borderRadius: 4, overflow: 'hidden' },
+  ratingBarFill: { height: '100%', backgroundColor: Colors.warning, borderRadius: 4 },
+  ratingBarCount: { fontSize: 12, color: Colors.textMuted, width: 20, textAlign: 'right' },
 
   // シフト行
   shiftRow: { flexDirection: 'row', justifyContent: 'space-between', padding: 14 },
   shiftLeft: { flex: 1 },
-  shiftDate: { fontSize: 12, color: '#9ca3af', marginBottom: 2 },
-  shiftTime: { fontSize: 14, color: '#374151', marginBottom: 4 },
+  shiftDate: { fontSize: 12, color: Colors.textMuted, marginBottom: 2 },
+  shiftTime: { fontSize: 14, color: Colors.textSecondary, marginBottom: 4 },
   shiftTagRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  holidayBadge: { backgroundColor: '#dcfce7', borderRadius: 4, paddingHorizontal: 6, paddingVertical: 2 },
-  holidayBadgeText: { fontSize: 11, color: '#16a34a', fontWeight: '600' },
-  payMethod: { fontSize: 12, color: '#9ca3af' },
+  holidayBadge: { backgroundColor: Colors.primarySubtle, borderRadius: 4, paddingHorizontal: 6, paddingVertical: 2 },
+  holidayBadgeText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
+  payMethod: { fontSize: 12, color: Colors.textMuted },
   shiftRight: { alignItems: 'flex-end', gap: 4 },
-  rating: { fontSize: 12, color: '#fbbf24' },
-  shiftRate: { fontSize: 12, color: '#6b7280' },
-  shiftNet: { fontSize: 16, fontWeight: '700', color: '#16a34a' },
+  rating: { fontSize: 12, color: Colors.warning },
+  shiftRate: { fontSize: 12, color: Colors.textSecondary },
+  shiftNet: { fontSize: 16, fontWeight: '700', color: Colors.primary },
 
   // ロック
   lockWrapper: { marginBottom: 20, borderRadius: 14, overflow: 'hidden' },
   previewCard: {
-    backgroundColor: '#fff', borderRadius: 14,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14,
+    borderWidth: 1, borderColor: Colors.border,
     opacity: 0.35,
   },
-  blurLine: { height: 12, backgroundColor: '#d1d5db', borderRadius: 6 },
+  blurLine: { height: 12, backgroundColor: Colors.border, borderRadius: 6 },
   lockOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-    backgroundColor: 'rgba(255,255,255,0.85)',
+    backgroundColor: Colors.overlay,
     alignItems: 'center', justifyContent: 'center',
     padding: 24, gap: 10,
-    borderRadius: 14, borderWidth: 1, borderColor: '#e5e7eb',
+    borderRadius: 14, borderWidth: 1, borderColor: Colors.border,
   },
   lockIconWrap: {
     width: 56, height: 56, borderRadius: 28,
-    backgroundColor: '#374151',
+    backgroundColor: Colors.surfaceElevated,
     alignItems: 'center', justifyContent: 'center',
   },
-  lockTitle: { fontSize: 17, fontWeight: '700', color: '#111827' },
-  lockDesc: { fontSize: 14, color: '#6b7280', textAlign: 'center', lineHeight: 20 },
+  lockTitle: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
+  lockDesc: { fontSize: 14, color: Colors.textSecondary, textAlign: 'center', lineHeight: 20 },
   ticketBadge: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: '#f0fdf4', borderRadius: 10,
+    backgroundColor: Colors.primarySubtle, borderRadius: 10,
     paddingHorizontal: 14, paddingVertical: 6,
   },
-  ticketBadgeText: { fontSize: 14, color: '#16a34a', fontWeight: '700' },
+  ticketBadgeText: { fontSize: 14, color: Colors.primary, fontWeight: '700' },
   unlockBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
-    backgroundColor: '#16a34a', borderRadius: 12,
+    backgroundColor: Colors.primary, borderRadius: 12,
     paddingHorizontal: 24, paddingVertical: 14,
   },
-  unlockBtnDisabled: { backgroundColor: '#d1d5db' },
-  unlockBtnText: { color: '#fff', fontSize: 15, fontWeight: '700' },
-  noTicketHint: { fontSize: 12, color: '#9ca3af', textAlign: 'center' },
+  unlockBtnDisabled: { backgroundColor: Colors.textMuted },
+  unlockBtnText: { color: Colors.textInverse, fontSize: 15, fontWeight: '700' },
+  noTicketHint: { fontSize: 12, color: Colors.textMuted, textAlign: 'center' },
 
-  emptyText: { color: '#9ca3af', textAlign: 'center', padding: 16 },
+  emptyText: { color: Colors.textMuted, textAlign: 'center', padding: 16 },
   // コメント
   emptyComments: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 20,
-    alignItems: 'center', borderWidth: 1, borderColor: '#e5e7eb', marginBottom: 12,
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 20,
+    alignItems: 'center', borderWidth: 1, borderColor: Colors.border, marginBottom: 12,
   },
-  emptyCommentsText: { color: '#9ca3af', fontSize: 14 },
+  emptyCommentsText: { color: Colors.textMuted, fontSize: 14 },
   commentRow: { padding: 14 },
   commentHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' },
-  commentName: { fontSize: 13, fontWeight: '700', color: '#374151' },
+  commentName: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary },
   workedBadge: {
-    backgroundColor: '#f0fdf4', borderRadius: 6,
+    backgroundColor: Colors.primarySubtle, borderRadius: 6,
     paddingHorizontal: 6, paddingVertical: 2,
   },
-  workedBadgeText: { fontSize: 11, color: '#16a34a', fontWeight: '600' },
-  commentRating: { fontSize: 12, color: '#fbbf24' },
+  workedBadgeText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
+  commentRating: { fontSize: 12, color: Colors.warning },
   deleteCommentBtn: { marginLeft: 'auto' as any },
-  commentText: { fontSize: 14, color: '#374151', lineHeight: 20 },
+  commentText: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20 },
   commentInputCard: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 16,
-    borderWidth: 1, borderColor: '#e5e7eb', marginBottom: 12, gap: 12,
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    borderWidth: 1, borderColor: Colors.border, marginBottom: 12, gap: 12,
   },
-  commentInputTitle: { fontSize: 14, fontWeight: '700', color: '#374151' },
+  commentInputTitle: { fontSize: 14, fontWeight: '700', color: Colors.textSecondary },
   starRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  star: { fontSize: 28, color: '#e5e7eb' },
-  starActive: { color: '#fbbf24' },
-  ratingHint: { fontSize: 13, color: '#6b7280', marginLeft: 4 },
+  star: { fontSize: 28, color: Colors.border },
+  starActive: { color: Colors.warning },
+  ratingHint: { fontSize: 13, color: Colors.textSecondary, marginLeft: 4 },
   commentInput: {
-    backgroundColor: '#f9fafb', borderRadius: 10, padding: 12,
-    fontSize: 14, borderWidth: 1, borderColor: '#e5e7eb',
-    color: '#111827', minHeight: 80, textAlignVertical: 'top',
+    backgroundColor: Colors.surfaceElevated, borderRadius: 10, padding: 12,
+    fontSize: 14, borderWidth: 1, borderColor: Colors.border,
+    color: Colors.textPrimary, minHeight: 80, textAlignVertical: 'top',
   },
   commentSubmitBtn: {
-    backgroundColor: '#16a34a', borderRadius: 10,
+    backgroundColor: Colors.primary, borderRadius: 10,
     padding: 12, alignItems: 'center',
   },
-  commentSubmitBtnDisabled: { backgroundColor: '#d1d5db' },
-  commentSubmitText: { color: '#fff', fontWeight: '700', fontSize: 15 },
+  commentSubmitBtnDisabled: { backgroundColor: Colors.textMuted },
+  commentSubmitText: { color: Colors.textInverse, fontWeight: '700', fontSize: 15 },
   commentLocked: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    backgroundColor: '#f9fafb', borderRadius: 12, padding: 14,
-    borderWidth: 1, borderColor: '#e5e7eb', marginBottom: 12,
+    backgroundColor: Colors.surface, borderRadius: 12, padding: 14,
+    borderWidth: 1, borderColor: Colors.border, marginBottom: 12,
   },
-  commentLockedText: { fontSize: 13, color: '#9ca3af' },
+  commentLockedText: { fontSize: 13, color: Colors.textMuted },
 
   friendBadge: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: '#eff6ff', borderRadius: 10,
+    backgroundColor: Colors.surfaceElevated, borderRadius: 10,
     paddingHorizontal: 12, paddingVertical: 8,
     marginBottom: 10,
   },
-  friendBadgeText: { fontSize: 13, color: '#2563eb', fontWeight: '600' },
+  friendBadgeText: { fontSize: 13, color: Colors.audAccent, fontWeight: '600' },
 });
