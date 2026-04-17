@@ -15,7 +15,7 @@ import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useSettingsStore } from '../../src/store/settingsStore';
 import { useAuthStore } from '../../src/store/authStore';
-import { getUserProfile } from '../../src/lib/userService';
+import { getUserProfile, updateRankingOptOut } from '../../src/lib/userService';
 import { COUNTRIES } from '../../src/config/countries';
 import { Colors } from '../../src/constants/colors';
 
@@ -48,12 +48,23 @@ export default function SettingsScreen() {
   const currency = countryConfig.currency;
   const { user, logout } = useAuthStore();
   const [tickets, setTickets] = useState<number | null>(null);
+  const [rankingOptOut, setRankingOptOut] = useState(false);
 
   useEffect(() => {
     if (user) {
-      getUserProfile(user.uid).then((p) => setTickets(p?.tickets ?? 0)).catch(() => {});
+      getUserProfile(user.uid).then((p) => {
+        setTickets(p?.tickets ?? 0);
+        setRankingOptOut(p?.incomeRankingOptOut ?? false);
+      }).catch(() => {});
     }
   }, [user]);
+
+  async function handleRankingOptOutChange(value: boolean) {
+    setRankingOptOut(value);
+    if (user) {
+      await updateRankingOptOut(user.uid, value).catch(() => {});
+    }
+  }
 
   async function handleLogout() {
     Alert.alert('ログアウト', 'ログアウトしますか？', [
@@ -267,6 +278,21 @@ export default function SettingsScreen() {
             <Text style={styles.infoLabel}>利用規約</Text>
             <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
           </Pressable>
+        </View>
+
+        {/* ソーシャル */}
+        <SectionHeader title="ソーシャル" />
+        <View style={styles.card}>
+          <SettingRow
+            label="収入ランキングに参加しない"
+            hint="ONにすると友達のランキングに自分が表示されません"
+          >
+            <Switch
+              value={rankingOptOut}
+              onValueChange={handleRankingOptOutChange}
+              trackColor={{ true: Colors.primary }}
+            />
+          </SettingRow>
         </View>
 
         {/* アカウント */}

@@ -15,6 +15,9 @@ export interface UserProfile {
   inviteCode: string;
   currentRegion?: string;
   friendsEmployers?: string[];
+  incomeRankingOptOut?: boolean;
+  currentWeekNetPay?: number;
+  currentWeekStart?: string;
   createdAt: any;
 }
 
@@ -70,6 +73,10 @@ export async function updateUserRegion(uid: string, region: string): Promise<voi
 
 export async function setFriendsEmployers(uid: string, employerNames: string[]): Promise<void> {
   await updateDoc(doc(db, 'users', uid), { friendsEmployers: employerNames });
+}
+
+export async function updateRankingOptOut(uid: string, optOut: boolean): Promise<void> {
+  await updateDoc(doc(db, 'users', uid), { incomeRankingOptOut: optOut });
 }
 
 export async function unlockCompany(uid: string, companyId: string): Promise<boolean> {

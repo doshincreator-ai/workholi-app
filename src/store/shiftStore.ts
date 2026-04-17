@@ -17,6 +17,7 @@ import {
 import { useAuthStore } from './authStore';
 import { recordWorker, toCompanyId } from '../lib/firestoreService';
 import { backupShiftToFirestore, deleteShiftBackup } from '../lib/shiftSyncService';
+import { postActivity } from '../lib/socialService';
 import { getRandomEncouragement, getCrossedMilestone, MILESTONE_MESSAGES } from '../constants/messages';
 import { useBadgeStore } from './badgeStore';
 import type { Shift } from '../types';
@@ -107,9 +108,11 @@ export const useShiftStore = create<ShiftStore>((set, get) => ({
     const allShifts = get().shifts;
     useBadgeStore.getState().checkAndEarn(allShifts);
 
-    // Firestoreバックアップ
+    // Firestoreバックアップ & アクティビティ投稿
     if (userId) {
+      const displayName = useAuthStore.getState().user?.displayName ?? '';
       backupShiftToFirestore(userId, shift).catch((e) => console.error('[Shift] backup failed:', e));
+      postActivity(userId, displayName, 'shift').catch((e) => console.error('[Social] postActivity failed:', e));
     }
 
     // 通知スケジュール

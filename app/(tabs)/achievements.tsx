@@ -4,6 +4,7 @@ import {
   ScrollView,
   Pressable,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect, useMemo } from 'react';
@@ -11,7 +12,9 @@ import { useSettingsStore } from '../../src/store/settingsStore';
 import { useEmployerStore } from '../../src/store/employerStore';
 import { useBadgeStore } from '../../src/store/badgeStore';
 import { useShiftStore } from '../../src/store/shiftStore';
+import { useAuthStore } from '../../src/store/authStore';
 import { BADGE_DEFS } from '../../src/db/badges';
+import { postActivity } from '../../src/lib/socialService';
 import type { Settings } from '../../src/types';
 import { Colors } from '../../src/constants/colors';
 import { Typography } from '../../src/constants/typography';
@@ -262,7 +265,22 @@ const paydayStyles = StyleSheet.create({
 function BadgeGrid() {
   const { earned, streak } = useBadgeStore();
   const { shifts } = useShiftStore();
+  const { user } = useAuthStore();
   const earnedIds = new Set(earned.map((e) => e.id));
+
+  async function handleShareBadge(def: typeof BADGE_DEFS[number]) {
+    if (!user) return;
+    try {
+      await postActivity(user.uid, user.displayName ?? '', 'badge_shared', {
+        id: def.id,
+        emoji: def.emoji,
+        name: def.name,
+      });
+      Alert.alert('シェアしました', `${def.emoji} ${def.name} をフレンドにシェアしました`);
+    } catch {
+      Alert.alert('エラー', 'シェアに失敗しました');
+    }
+  }
 
   return (
     <View style={badgeStyles.section}>
@@ -294,6 +312,11 @@ function BadgeGrid() {
               <Text style={badgeStyles.badgeDesc} numberOfLines={2}>
                 {def.description}
               </Text>
+              {isEarned && (
+                <Pressable style={badgeStyles.shareBtn} onPress={() => handleShareBadge(def)}>
+                  <Text style={badgeStyles.shareBtnText}>シェア</Text>
+                </Pressable>
+              )}
             </View>
           );
         })}
@@ -346,6 +369,11 @@ const badgeStyles = StyleSheet.create({
   badgeNameLocked: { color: Colors.textMuted },
   badgeDesc: { fontSize: 10, color: Colors.textMuted, textAlign: 'center', lineHeight: 13 },
   hint: { fontSize: 11, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
+  shareBtn: {
+    marginTop: 6, paddingHorizontal: 8, paddingVertical: 3,
+    borderRadius: 6, borderWidth: 1, borderColor: Colors.primary,
+  },
+  shareBtnText: { fontSize: 10, color: Colors.primary, fontWeight: '600' },
 });
 
 // ── AchievementsScreen ────────────────────────────────────────

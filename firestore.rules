@@ -108,6 +108,26 @@ service cloud.firestore {
         && request.resource.data.userId == request.auth.uid;
     }
 
+    // ── アクティビティフィード ────────────────────────────────
+    match /activities/{activityId} {
+      // 本人、またはフレンドのアクティビティのみ読める
+      allow read: if request.auth != null && (
+        resource.data.uid == request.auth.uid
+        || exists(/databases/$(database)/documents/friendships/$(resource.data.uid + '_' + request.auth.uid))
+        || exists(/databases/$(database)/documents/friendships/$(request.auth.uid + '_' + resource.data.uid))
+      );
+
+      // 作成：自分の uid のみ
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid;
+
+      // 削除：投稿者本人のみ
+      allow delete: if request.auth != null
+        && resource.data.uid == request.auth.uid;
+
+      allow update: if false;
+    }
+
     // ── その他すべて拒否 ─────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;
