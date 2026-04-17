@@ -18,6 +18,7 @@ import { useSettingsStore } from '../../src/store/settingsStore';
 import { getOrCreateUserProfile } from '../../src/lib/userService';
 import { AdBanner } from '../../src/components/AdBanner';
 import { HintBanner } from '../../src/components/HintBanner';
+import { Colors } from '../../src/constants/colors';
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   easy: '#16a34a', normal: '#f59e0b', hard: '#ef4444',
@@ -53,14 +54,14 @@ function CompanyCard({ company, onPress }: { company: CompanyDoc; onPress: () =>
         <View style={styles.cardMeta}>
           {company.region && (
             <>
-              <Ionicons name="location-outline" size={13} color="#9ca3af" />
+              <Ionicons name="location-outline" size={13} color={Colors.textSecondary} />
               <Text style={styles.cardRegion}> {company.region}　</Text>
             </>
           )}
           {company.jobCategory && (
             <Text style={styles.cardRegion}>{company.jobCategory}　</Text>
           )}
-          <Ionicons name="people-outline" size={13} color="#9ca3af" />
+          <Ionicons name="people-outline" size={13} color={Colors.textSecondary} />
           <Text style={styles.cardCount}> {company.workerCount ?? 0}人</Text>
           {company.difficulty && (
             <Text style={[styles.difficultyText, { color: DIFFICULTY_COLOR[company.difficulty] }]}>
@@ -75,7 +76,7 @@ function CompanyCard({ company, onPress }: { company: CompanyDoc; onPress: () =>
         )}
       </View>
       <View style={styles.lockBadge}>
-        <Ionicons name="lock-closed-outline" size={12} color="#6b7280" />
+        <Ionicons name="lock-closed-outline" size={12} color={Colors.textMuted} />
         <Text style={styles.lockText}> 詳細</Text>
       </View>
     </Pressable>
@@ -206,14 +207,14 @@ export default function CommunityScreen() {
 
       {loading ? (
         <View style={styles.center}>
-          <ActivityIndicator size="large" color="#16a34a" />
+          <ActivityIndicator size="large" color={Colors.primary} />
         </View>
       ) : (
         <FlatList
           data={filtered}
           keyExtractor={(c) => c.companyId}
           contentContainerStyle={styles.list}
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#16a34a" />}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={Colors.primary} />}
           renderItem={({ item }) => (
             <CompanyCard company={item} onPress={() => router.push({ pathname: `/company/${item.companyId}`, params: { country: item.country } })} />
           )}
@@ -221,7 +222,7 @@ export default function CommunityScreen() {
           ListHeaderComponent={<AdBanner />}
           ListEmptyComponent={
             <View style={styles.empty}>
-              <Ionicons name="business-outline" size={48} color="#d1d5db" />
+              <Ionicons name="business-outline" size={48} color={Colors.textMuted} />
               <Text style={styles.emptyText}>まだ情報がありません</Text>
               <Text style={styles.emptyHint}>雇用主を「コミュニティに公開する」にすると掲載されます</Text>
             </View>
@@ -233,37 +234,37 @@ export default function CommunityScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   header: {
     paddingHorizontal: 16,
     paddingVertical: 14,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: Colors.border,
   },
-  headerTitle: { fontSize: 20, fontWeight: '700', color: '#111827' },
-  headerSub: { fontSize: 12, color: '#9ca3af', marginTop: 2 },
+  headerTitle: { fontSize: 20, fontWeight: '700', color: Colors.textPrimary },
+  headerSub: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  filterBar: { backgroundColor: '#fff', borderBottomWidth: 0 },
-  filterBarCategory: { backgroundColor: '#fafafa', borderBottomWidth: 1, borderBottomColor: '#e5e7eb' },
+  filterBar: { backgroundColor: Colors.surface, borderBottomWidth: 0 },
+  filterBarCategory: { backgroundColor: Colors.surfaceElevated, borderBottomWidth: 1, borderBottomColor: Colors.border },
   filterBarContent: { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
   filterChip: {
     paddingHorizontal: 14, paddingVertical: 6,
-    borderRadius: 20, borderWidth: 1, borderColor: '#d1d5db', backgroundColor: '#fff',
+    borderRadius: 20, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
   },
-  filterChipActive: { backgroundColor: '#16a34a', borderColor: '#16a34a' },
-  filterChipText: { fontSize: 13, color: '#374151' },
-  filterChipTextActive: { color: '#fff', fontWeight: '600' },
+  filterChipActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
+  filterChipText: { fontSize: 13, color: Colors.textSecondary },
+  filterChipTextActive: { color: Colors.textInverse, fontWeight: '600' },
   filterChipSm: {
     paddingHorizontal: 10, paddingVertical: 4,
-    borderRadius: 16, borderWidth: 1, borderColor: '#e5e7eb', backgroundColor: '#fff',
+    borderRadius: 16, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
   },
   filterChipSmActive: { backgroundColor: '#0f766e', borderColor: '#0f766e' },
-  filterChipSmText: { fontSize: 12, color: '#6b7280' },
-  filterChipSmTextActive: { color: '#fff', fontWeight: '600' },
+  filterChipSmText: { fontSize: 12, color: Colors.textMuted },
+  filterChipSmTextActive: { color: Colors.textInverse, fontWeight: '600' },
   list: { padding: 12, paddingBottom: 24 },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 14,
     padding: 16,
     flexDirection: 'row',
@@ -276,25 +277,25 @@ const styles = StyleSheet.create({
   },
   cardLeft: { flex: 1 },
   cardNameRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 },
-  cardName: { fontSize: 16, fontWeight: '600', color: '#111827' },
-  hiringBadge: { backgroundColor: '#dcfce7', borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2 },
-  hiringText: { fontSize: 11, color: '#16a34a', fontWeight: '700' },
+  cardName: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
+  hiringBadge: { backgroundColor: Colors.primaryMuted, borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2 },
+  hiringText: { fontSize: 11, color: Colors.primary, fontWeight: '700' },
   cardMeta: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
-  cardCount: { fontSize: 12, color: '#9ca3af' },
-  cardRegion: { fontSize: 12, color: '#9ca3af' },
+  cardCount: { fontSize: 12, color: Colors.textSecondary },
+  cardRegion: { fontSize: 12, color: Colors.textSecondary },
   difficultyText: { fontSize: 12, fontWeight: '600' },
   lockBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f3f4f6',
+    backgroundColor: Colors.surfaceElevated,
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 4,
     marginLeft: 12,
   },
-  lockText: { fontSize: 11, color: '#6b7280' },
-  cardUpdated: { fontSize: 10, color: '#d1d5db', marginTop: 4 },
+  lockText: { fontSize: 11, color: Colors.textMuted },
+  cardUpdated: { fontSize: 10, color: Colors.textMuted, marginTop: 4 },
   empty: { alignItems: 'center', marginTop: 80, gap: 8 },
-  emptyText: { fontSize: 16, color: '#9ca3af' },
-  emptyHint: { fontSize: 13, color: '#d1d5db', textAlign: 'center' },
+  emptyText: { fontSize: 16, color: Colors.textSecondary },
+  emptyHint: { fontSize: 13, color: Colors.textMuted, textAlign: 'center' },
 });

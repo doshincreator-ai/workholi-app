@@ -15,6 +15,7 @@ import { useSettingsStore } from '../../../src/store/settingsStore';
 import { getShiftsByEmployer } from '../../../src/db/shifts';
 import { COUNTRIES } from '../../../src/config/countries';
 import type { Employer } from '../../../src/types';
+import { Colors } from '../../../src/constants/colors';
 
 function EmployerCard({ employer, onPress, onDelete }: {
   employer: Employer;
@@ -53,7 +54,7 @@ function EmployerCard({ employer, onPress, onDelete }: {
       </View>
       {canReview && (
         <View style={styles.reviewBanner}>
-          <Ionicons name="pencil-outline" size={12} color="#16a34a" />
+          <Ionicons name="pencil-outline" size={12} color={Colors.primary} />
           <Text style={styles.reviewBannerText}>レビューを更新できます</Text>
         </View>
       )}
@@ -117,30 +118,30 @@ export default function EmployersScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: Colors.border,
   },
-  headerTitle: { fontSize: 20, fontWeight: '700', color: '#111827' },
+  headerTitle: { fontSize: 20, fontWeight: '700', color: Colors.textPrimary },
   addBtn: {
-    backgroundColor: '#16a34a',
+    backgroundColor: Colors.primary,
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
-  addBtnText: { color: '#fff', fontWeight: '600', fontSize: 15 },
+  addBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 15 },
   list: { padding: 12, paddingBottom: 24 },
 
   // カード
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 14,
     paddingTop: 14,
     paddingHorizontal: 14,
@@ -158,47 +159,47 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: '#dcfce7',
+    backgroundColor: Colors.primaryMuted,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cardIconText: { fontSize: 18, fontWeight: '700', color: '#16a34a' },
+  cardIconText: { fontSize: 18, fontWeight: '700', color: Colors.primary },
   cardBody: { flex: 1 },
-  cardName: { fontSize: 16, fontWeight: '600', color: '#111827', marginBottom: 6 },
+  cardName: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary, marginBottom: 6 },
   cardMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   badge: {
-    backgroundColor: '#f0fdf4',
+    backgroundColor: Colors.primarySubtle,
     borderRadius: 6,
     paddingHorizontal: 7,
     paddingVertical: 2,
     borderWidth: 1,
-    borderColor: '#bbf7d0',
+    borderColor: Colors.primaryMuted,
   },
-  badgeText: { fontSize: 12, fontWeight: '700', color: '#16a34a' },
-  cardRate: { fontSize: 13, color: '#374151', fontWeight: '500' },
-  cardIrd: { fontSize: 12, color: '#9ca3af' },
+  badgeText: { fontSize: 12, fontWeight: '700', color: Colors.primary },
+  cardRate: { fontSize: 13, color: Colors.textSecondary, fontWeight: '500' },
+  cardIrd: { fontSize: 12, color: Colors.textSecondary },
   cardRight: { alignItems: 'center', minWidth: 40 },
-  cardShiftCount: { fontSize: 20, fontWeight: '700', color: '#111827' },
-  cardShiftLabel: { fontSize: 11, color: '#9ca3af' },
+  cardShiftCount: { fontSize: 20, fontWeight: '700', color: Colors.textPrimary },
+  cardShiftLabel: { fontSize: 11, color: Colors.textSecondary },
   reviewBanner: {
     position: 'absolute', bottom: 0, left: 0, right: 0,
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 4,
-    backgroundColor: '#f0fdf4', paddingVertical: 5,
-    borderTopWidth: 1, borderTopColor: '#bbf7d0',
+    backgroundColor: Colors.primarySubtle, paddingVertical: 5,
+    borderTopWidth: 1, borderTopColor: Colors.primaryMuted,
   },
-  reviewBannerText: { fontSize: 11, color: '#16a34a', fontWeight: '600' },
+  reviewBannerText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
 
   // 空状態
   empty: { alignItems: 'center', marginTop: 80, gap: 8 },
   emptyIcon: { fontSize: 48, marginBottom: 4 },
-  emptyText: { fontSize: 17, color: '#6b7280', fontWeight: '600' },
-  emptyHint: { fontSize: 14, color: '#d1d5db', marginBottom: 8 },
+  emptyText: { fontSize: 17, color: Colors.textMuted, fontWeight: '600' },
+  emptyHint: { fontSize: 14, color: Colors.textMuted, marginBottom: 8 },
   emptyBtn: {
-    backgroundColor: '#16a34a',
+    backgroundColor: Colors.primary,
     borderRadius: 12,
     paddingHorizontal: 20,
     paddingVertical: 12,
     marginTop: 4,
   },
-  emptyBtnText: { color: '#fff', fontWeight: '600', fontSize: 15 },
+  emptyBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 15 },
 });

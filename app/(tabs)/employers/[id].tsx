@@ -2,6 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 import { useEmployerStore } from '../../../src/store/employerStore';
 import { EmployerForm } from '../../../src/components/EmployerForm';
+import { Colors } from '../../../src/constants/colors';
 
 export default function EditEmployerScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -20,5 +21,5 @@ export default function EditEmployerScreen() {
 
 const styles = StyleSheet.create({
   notFound: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  notFoundText: { color: '#9ca3af', fontSize: 16 },
+  notFoundText: { color: Colors.textSecondary, fontSize: 16 },
 });

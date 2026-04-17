@@ -2,6 +2,7 @@ import { useLocalSearchParams, router } from 'expo-router';
 import { View, Text, Pressable, StyleSheet, Alert } from 'react-native';
 import { useShiftStore } from '../../../src/store/shiftStore';
 import { ShiftForm } from '../../../src/components/ShiftForm';
+import { Colors } from '../../../src/constants/colors';
 
 export default function EditShiftScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -43,7 +44,7 @@ export default function EditShiftScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   notFound: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  notFoundText: { color: '#9ca3af', fontSize: 16 },
+  notFoundText: { color: Colors.textSecondary, fontSize: 16 },
   deleteBtn: {
     marginHorizontal: 16,
     marginBottom: 32,
@@ -51,8 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#fca5a5',
-    backgroundColor: '#fff5f5',
+    borderColor: Colors.primaryMuted,
+    backgroundColor: Colors.primarySubtle,
   },
-  deleteBtnText: { color: '#ef4444', fontWeight: '600', fontSize: 15 },
+  deleteBtnText: { color: Colors.negative, fontWeight: '600', fontSize: 15 },
 });

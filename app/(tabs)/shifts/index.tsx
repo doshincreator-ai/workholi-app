@@ -20,6 +20,7 @@ import { useEmployerStore } from '../../../src/store/employerStore';
 import { COUNTRIES } from '../../../src/config/countries';
 import type { Shift } from '../../../src/types';
 import { HintBanner } from '../../../src/components/HintBanner';
+import { Colors } from '../../../src/constants/colors';
 
 const WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日'];
 const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
@@ -79,11 +80,11 @@ function ShiftDetail({ shift, rate, currency, onEdit, onDelete, onCopy }: {
         </View>
       </View>
       <Pressable style={styles.copyIconBtn} onPress={onCopy} hitSlop={8}>
-        <Ionicons name="copy-outline" size={15} color="#6b7280" />
+        <Ionicons name="copy-outline" size={15} color={Colors.textMuted} />
         <Text style={styles.copyIconLabel}>コピー</Text>
       </Pressable>
       <Pressable style={styles.deleteIconBtn} onPress={onDelete} hitSlop={8}>
-        <Ionicons name="trash-outline" size={18} color="#ef4444" />
+        <Ionicons name="trash-outline" size={18} color={Colors.negative} />
       </Pressable>
     </Pressable>
   );
@@ -164,7 +165,7 @@ export default function ShiftsScreen() {
       <View style={styles.header}>
         <View style={styles.monthNav}>
           <Pressable style={styles.navBtn} onPress={prevMonth}>
-            <Ionicons name="chevron-back" size={20} color="#16a34a" />
+            <Ionicons name="chevron-back" size={20} color={Colors.primary} />
           </Pressable>
           <View style={styles.monthCenter}>
             <Text style={styles.monthLabel}>{year}年 {MONTHS[month - 1]}</Text>
@@ -173,14 +174,14 @@ export default function ShiftsScreen() {
             )}
           </View>
           <Pressable style={styles.navBtn} onPress={nextMonth}>
-            <Ionicons name="chevron-forward" size={20} color="#16a34a" />
+            <Ionicons name="chevron-forward" size={20} color={Colors.primary} />
           </Pressable>
         </View>
         <Pressable
           style={styles.addBtn}
           onPress={() => router.push({ pathname: '/shifts/add', params: { date: selectedDate } })}
         >
-          <Ionicons name="add" size={20} color="#fff" />
+          <Ionicons name="add" size={20} color={Colors.textInverse} />
           <Text style={styles.addBtnText}>追加</Text>
         </Pressable>
       </View>
@@ -298,7 +299,7 @@ export default function ShiftsScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
 
   header: {
     flexDirection: 'row',
@@ -306,31 +307,31 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 12,
     paddingVertical: 10,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: Colors.border,
   },
   monthNav: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   monthCenter: { alignItems: 'center', minWidth: 110 },
   navBtn: { padding: 6 },
-  monthLabel: { fontSize: 17, fontWeight: '700', color: '#111827', textAlign: 'center' },
-  monthNetLabel: { fontSize: 11, color: '#16a34a', fontWeight: '600', marginTop: 1 },
+  monthLabel: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary, textAlign: 'center' },
+  monthNetLabel: { fontSize: 11, color: Colors.primary, fontWeight: '600', marginTop: 1 },
   addBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: '#16a34a', borderRadius: 20,
+    backgroundColor: Colors.primary, borderRadius: 20,
     paddingHorizontal: 14, paddingVertical: 8,
   },
-  addBtnText: { color: '#fff', fontWeight: '600', fontSize: 14 },
+  addBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 14 },
 
   weekdayRow: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
+    borderBottomColor: Colors.borderSubtle,
   },
   weekdayLabel: {
     flex: 1, textAlign: 'center',
-    fontSize: 12, fontWeight: '600', color: '#6b7280',
+    fontSize: 12, fontWeight: '600', color: Colors.textMuted,
     paddingVertical: 8,
   },
   sat: { color: '#2563eb' },
@@ -339,9 +340,9 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: Colors.border,
   },
   dayCell: {
     width: `${100 / 7}%`,
@@ -350,17 +351,17 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRightWidth: 0.5,
     borderBottomWidth: 0.5,
-    borderColor: '#f3f4f6',
+    borderColor: Colors.borderSubtle,
   },
-  dayCellSelected: { backgroundColor: '#f0fdf4' },
+  dayCellSelected: { backgroundColor: Colors.primarySubtle },
   dayCellHoliday: { backgroundColor: '#fff7ed' },
   dayNumWrap: {
     width: 28, height: 28, borderRadius: 14,
     alignItems: 'center', justifyContent: 'center',
   },
-  todayCircle: { backgroundColor: '#16a34a' },
-  dayNum: { fontSize: 13, color: '#374151', fontWeight: '500' },
-  todayNum: { color: '#fff', fontWeight: '700' },
+  todayCircle: { backgroundColor: Colors.primary },
+  dayNum: { fontSize: 13, color: Colors.textSecondary, fontWeight: '500' },
+  todayNum: { color: Colors.textInverse, fontWeight: '700' },
   satNum: { color: '#2563eb' },
   sunNum: { color: '#dc2626' },
 
@@ -369,45 +370,45 @@ const styles = StyleSheet.create({
 
   dots: { flexDirection: 'row', gap: 2, marginTop: 3, flexWrap: 'wrap', justifyContent: 'center' },
   dot: { width: 6, height: 6, borderRadius: 3 },
-  dotMore: { fontSize: 8, color: '#9ca3af', lineHeight: 8 },
+  dotMore: { fontSize: 8, color: Colors.textSecondary, lineHeight: 8 },
 
   detailSection: { padding: 12 },
   detailHeader: {
     flexDirection: 'row', alignItems: 'center',
     justifyContent: 'space-between', marginBottom: 10,
   },
-  detailDate: { fontSize: 15, fontWeight: '700', color: '#111827' },
+  detailDate: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
   holidayName: { fontSize: 11, color: '#ea580c', marginTop: 2 },
-  detailCount: { fontSize: 13, color: '#6b7280' },
+  detailCount: { fontSize: 13, color: Colors.textMuted },
 
   shiftList: { gap: 8 },
   shiftCard: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 12,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: Colors.border,
     alignItems: 'center',
   },
   shiftAccent: { width: 5, alignSelf: 'stretch' },
   shiftCardBody: { flex: 1, padding: 12 },
   shiftCardTop: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
-  shiftCardEmployer: { fontSize: 15, fontWeight: '600', color: '#111827' },
-  shiftCardNet: { fontSize: 15, fontWeight: '700', color: '#16a34a' },
+  shiftCardEmployer: { fontSize: 15, fontWeight: '600', color: Colors.textPrimary },
+  shiftCardNet: { fontSize: 15, fontWeight: '700', color: Colors.primary },
   shiftCardBottom: { flexDirection: 'row', justifyContent: 'space-between' },
-  shiftCardTime: { fontSize: 12, color: '#6b7280' },
-  shiftCardJpy: { fontSize: 12, color: '#9ca3af' },
+  shiftCardTime: { fontSize: 12, color: Colors.textMuted },
+  shiftCardJpy: { fontSize: 12, color: Colors.textSecondary },
   copyIconBtn: { alignItems: 'center', paddingHorizontal: 10, paddingVertical: 12 },
-  copyIconLabel: { fontSize: 10, color: '#6b7280', marginTop: 2 },
-  copyHint: { fontSize: 11, color: '#9ca3af', marginBottom: 8, textAlign: 'center' },
+  copyIconLabel: { fontSize: 10, color: Colors.textMuted, marginTop: 2 },
+  copyHint: { fontSize: 11, color: Colors.textSecondary, marginBottom: 8, textAlign: 'center' },
   deleteIconBtn: { padding: 12 },
 
   emptyDay: { alignItems: 'center', paddingVertical: 20, gap: 10 },
-  emptyDayText: { fontSize: 14, color: '#9ca3af' },
+  emptyDayText: { fontSize: 14, color: Colors.textSecondary },
   addDayBtn: {
-    borderWidth: 1, borderColor: '#16a34a', borderRadius: 10,
+    borderWidth: 1, borderColor: Colors.primary, borderRadius: 10,
     paddingHorizontal: 16, paddingVertical: 8,
   },
-  addDayBtnText: { color: '#16a34a', fontWeight: '600', fontSize: 14 },
+  addDayBtnText: { color: Colors.primary, fontWeight: '600', fontSize: 14 },
 });
