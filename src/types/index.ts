@@ -78,6 +78,8 @@ export interface Settings {
   audJpyRate: number;
   useStudentLoan: boolean;
   studentLoanRate: number; // default 0.12
+  paydayType: string;  // 'none' | 'weekly' | 'biweekly' | 'monthly'
+  paydayDay: number;   // weekday 0-6 for weekly/biweekly, day 1-28 for monthly
 }
 
 export interface PayCalculation {

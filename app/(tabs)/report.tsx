@@ -143,6 +143,56 @@ export default function ReportScreen() {
       <HintBanner hintKey="report" message="NZのシフトがあると、年末還付金シミュレーターで推定還付額を確認できます。" />
       <ScrollView contentContainerStyle={styles.scroll}>
 
+        {/* ── タックスリターン目安（NZのみ・最上部に強調） ── */}
+        {isNZ && taxYearRefund.shiftCount > 0 && (
+          <>
+            <View style={[styles.refundHero, taxYearRefund.refund > 0 ? styles.refundHeroPos : styles.refundHeroNeg]}>
+              <Text style={styles.refundHeroLabel}>
+                {taxYearRefund.label} の払いすぎた税金の目安
+              </Text>
+              <Text style={styles.refundHeroAmount}>
+                {taxYearRefund.refund > 0 ? '+ ' : ''}{currency} {taxYearRefund.refund.toFixed(2)}
+              </Text>
+              <Text style={styles.refundHeroSub}>
+                {taxYearRefund.refund > 0
+                  ? '確定申告（IR3）でこの金額が戻ってくる可能性があります'
+                  : 'おおよそ適切な税額が徴収されています'}
+              </Text>
+            </View>
+
+            <Text style={styles.sectionTitle}>税金の内訳説明</Text>
+            <View style={styles.explainCard}>
+              {[
+                {
+                  label: 'PAYE 税',
+                  amount: taxYearRefund.totalPaidTax,
+                  note: '給料から自動天引きされる所得税。税率は年収に応じて変わります',
+                },
+                {
+                  label: '正しい税額（試算）',
+                  amount: taxYearRefund.correctTax,
+                  note: '年収を通算した場合に本来支払うべき税額',
+                },
+                {
+                  label: 'タックスリターン目安',
+                  amount: taxYearRefund.refund,
+                  note: '払いすぎた税金。IR3 申告で還付される可能性のある金額',
+                },
+              ].map((row) => (
+                <View key={row.label} style={styles.explainRow}>
+                  <View style={styles.explainLeft}>
+                    <Text style={styles.explainLabel}>{row.label}</Text>
+                    <Text style={styles.explainNote}>{row.note}</Text>
+                  </View>
+                  <Text style={[styles.explainAmount, row.amount > 0 && row.label.includes('リターン') && styles.explainAmountPos]}>
+                    {currency} {row.amount.toFixed(0)}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </>
+        )}
+
         {/* 累計サマリー */}
         <View style={styles.totalCard}>
           <Text style={styles.totalLabel}>累計手取り合計（勤務終了分）</Text>
@@ -391,4 +441,25 @@ const styles = StyleSheet.create({
     alignItems: 'center', borderWidth: 1, borderColor: Colors.border,
   },
   exportBtnText: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
+
+  refundHero: {
+    borderRadius: 16, padding: 20, marginBottom: 16,
+    borderWidth: 1.5,
+  },
+  refundHeroPos: { backgroundColor: Colors.primarySubtle, borderColor: Colors.primary },
+  refundHeroNeg: { backgroundColor: Colors.surface, borderColor: Colors.border },
+  refundHeroLabel: { fontSize: 12, color: Colors.textSecondary, marginBottom: 4 },
+  refundHeroAmount: { ...Typography.monoXL, color: Colors.primary, marginBottom: 6 },
+  refundHeroSub: { fontSize: 12, color: Colors.textSecondary, lineHeight: 18 },
+
+  explainCard: {
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    borderWidth: 1, borderColor: Colors.border, gap: 12,
+  },
+  explainRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
+  explainLeft: { flex: 1, marginRight: 12 },
+  explainLabel: { fontSize: 14, fontWeight: '600', color: Colors.textPrimary, marginBottom: 2 },
+  explainNote: { fontSize: 11, color: Colors.textMuted, lineHeight: 16 },
+  explainAmount: { ...Typography.monoSmall, color: Colors.textPrimary },
+  explainAmountPos: { color: Colors.positive },
 });

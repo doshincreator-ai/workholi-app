@@ -14,6 +14,8 @@ export const useSettingsStore = create<SettingsStore>((set, get) => ({
   audJpyRate: 95,
   useStudentLoan: false,
   studentLoanRate: 0.12,
+  paydayType: 'none',
+  paydayDay: 5,
 
   jpyRate() {
     const s = get();
@@ -34,6 +36,8 @@ export const useSettingsStore = create<SettingsStore>((set, get) => ({
       audJpyRate: parseFloat(map['aud_jpy_rate'] ?? '95'),
       useStudentLoan: map['use_student_loan'] === 'true',
       studentLoanRate: parseFloat(map['student_loan_rate'] ?? '0.12'),
+      paydayType: map['payday_type'] ?? 'none',
+      paydayDay: parseInt(map['payday_day'] ?? '5', 10),
     });
   },
 
@@ -65,6 +69,16 @@ export const useSettingsStore = create<SettingsStore>((set, get) => ({
     if (patch.studentLoanRate !== undefined) {
       db.runSync('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', [
         'student_loan_rate', String(patch.studentLoanRate),
+      ]);
+    }
+    if (patch.paydayType !== undefined) {
+      db.runSync('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', [
+        'payday_type', patch.paydayType,
+      ]);
+    }
+    if (patch.paydayDay !== undefined) {
+      db.runSync('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', [
+        'payday_day', String(patch.paydayDay),
       ]);
     }
 
