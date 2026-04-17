@@ -19,6 +19,7 @@ import { getUserProfile } from '../../src/lib/userService';
 import { getMyWeeklyStats, updateRankingOptOut } from '../../src/lib/socialService';
 import { COUNTRIES } from '../../src/config/countries';
 import { Colors } from '../../src/constants/colors';
+import { Spacing } from '../../src/constants/spacing';
 
 function SectionHeader({ title }: { title: string }) {
   return <Text style={styles.sectionHeader}>{title}</Text>;
@@ -329,7 +330,7 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
-  scroll: { padding: 16, paddingBottom: 40 },
+  scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
   pageTitle: { fontSize: 28, fontWeight: '800', color: Colors.textPrimary, marginBottom: 20 },
 
   sectionHeader: {
@@ -345,7 +346,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
+    borderRadius: Spacing.radius.md,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: Colors.border,
@@ -355,7 +356,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 14,
+    padding: Spacing.padding.sm,
     gap: 12,
   },
   rowLeft: { flex: 1 },
@@ -368,7 +369,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: Colors.border,
-    borderRadius: 10,
+    borderRadius: Spacing.radius.sm,
     paddingHorizontal: 10,
     backgroundColor: Colors.surfaceElevated,
   },
@@ -386,8 +387,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingHorizontal: Spacing.padding.sm,
+    paddingVertical: Spacing.padding.sm,
     backgroundColor: Colors.primarySubtle,
   },
   ratePreviewText: { fontSize: 14, color: Colors.primary, fontWeight: '600' },
@@ -396,7 +397,7 @@ const styles = StyleSheet.create({
   taxTableRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 14,
+    paddingHorizontal: Spacing.padding.sm,
     paddingVertical: 11,
   },
   taxRange: { fontSize: 14, color: Colors.textSecondary },
@@ -405,7 +406,7 @@ const styles = StyleSheet.create({
   infoRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 14,
+    paddingHorizontal: Spacing.padding.sm,
     paddingVertical: 12,
   },
   infoLabel: { fontSize: 14, color: Colors.textSecondary },
@@ -419,7 +420,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   logoutBtn: {
-    padding: 14,
+    padding: Spacing.padding.sm,
     alignItems: 'center',
   },
   logoutText: {
@@ -428,8 +429,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   ticketBadge: {
-    backgroundColor: Colors.primarySubtle, borderRadius: 10,
-    paddingHorizontal: 14, paddingVertical: 6,
+    backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
+    paddingHorizontal: Spacing.padding.sm, paddingVertical: 6,
   },
   ticketBadgeText: { fontSize: 16, fontWeight: '700', color: Colors.primary },
 });

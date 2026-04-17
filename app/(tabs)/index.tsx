@@ -19,6 +19,7 @@ import { CountrySwitcher } from '../../src/components/CountrySwitcher';
 import { COUNTRIES } from '../../src/config/countries';
 import { Colors } from '../../src/constants/colors';
 import { Typography } from '../../src/constants/typography';
+import { Spacing } from '../../src/constants/spacing';
 import { useGoalStore } from '../../src/store/goalStore';
 import type { Shift } from '../../src/types';
 
@@ -70,8 +71,8 @@ const statStyles = StyleSheet.create({
   card: {
     flex: 1,
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    paddingVertical: 14,
+    borderRadius: Spacing.radius.md,
+    paddingVertical: Spacing.padding.sm,
     paddingHorizontal: 8,
     alignItems: 'center',
     borderWidth: 1,
@@ -120,8 +121,8 @@ function OffCard({ dayLabel, message }: { dayLabel: string; message: string }) {
 const shiftCardStyles = StyleSheet.create({
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     marginBottom: 10,
     borderWidth: 1,
     borderColor: Colors.primaryMuted,
@@ -150,7 +151,7 @@ const shiftCardStyles = StyleSheet.create({
     fontWeight: '700',
     color: Colors.primary,
     backgroundColor: Colors.primarySubtle,
-    borderRadius: 6,
+    borderRadius: Spacing.radius.sm,
     paddingHorizontal: 6,
     paddingVertical: 2,
   },
@@ -165,8 +166,8 @@ const shiftCardStyles = StyleSheet.create({
   jpy: { fontSize: 11, color: Colors.textMuted, marginTop: 4, textAlign: 'right' },
   offCard: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     marginBottom: 10,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -225,8 +226,8 @@ function WeeklyBarChart({ data, currency }: { data: DayBar[]; currency: string }
 const chartStyles = StyleSheet.create({
   container: {
     backgroundColor: Colors.surface,
-    borderRadius: 16,
-    padding: 16,
+    borderRadius: Spacing.radius.lg,
+    padding: Spacing.padding.md,
     marginBottom: 20,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -242,7 +243,7 @@ const chartStyles = StyleSheet.create({
   bar: {
     width: '100%',
     backgroundColor: Colors.primaryMuted,
-    borderRadius: 4,
+    borderRadius: Spacing.radius.sm,
   },
   barToday: { backgroundColor: Colors.primary },
   barEmpty: { backgroundColor: Colors.border, height: 2 },
@@ -478,19 +479,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingHorizontal: Spacing.padding.md,
+    paddingVertical: Spacing.padding.sm,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
   appName: { fontSize: 18, fontWeight: '800', color: Colors.primary },
-  scroll: { padding: 16, paddingBottom: 40 },
+  scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
 
   heroCard: {
     backgroundColor: Colors.surface,
-    borderRadius: 20,
-    padding: 20,
+    borderRadius: Spacing.radius.lg,
+    padding: Spacing.padding.lg,
     marginBottom: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -504,7 +505,7 @@ const styles = StyleSheet.create({
   navBtn: {
     width: 36,
     height: 36,
-    borderRadius: 18,
+    borderRadius: Spacing.radius.lg,
     backgroundColor: Colors.background,
     alignItems: 'center',
     justifyContent: 'center',
@@ -543,8 +544,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 8,
     backgroundColor: Colors.primary,
-    borderRadius: 14,
-    paddingVertical: 14,
+    borderRadius: Spacing.radius.md,
+    paddingVertical: Spacing.padding.sm,
     marginTop: 8,
   },
   quickBtnDisabled: { backgroundColor: Colors.primaryMuted },
@@ -554,8 +555,8 @@ const styles = StyleSheet.create({
 const goalCardStyles = StyleSheet.create({
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     marginBottom: 16,
     borderWidth: 1,
     borderColor: Colors.primaryMuted,
@@ -569,8 +570,8 @@ const goalCardStyles = StyleSheet.create({
   barBg: {
     height: 6,
     backgroundColor: Colors.background,
-    borderRadius: 3,
+    borderRadius: Spacing.radius.sm,
     overflow: 'hidden',
   },
-  barFill: { height: '100%', backgroundColor: Colors.primary, borderRadius: 3 },
+  barFill: { height: '100%', backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm },
 });

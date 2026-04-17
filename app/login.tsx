@@ -16,6 +16,7 @@ import { FirebaseError } from 'firebase/app';
 import { auth } from '../src/lib/firebase';
 import { useAuthStore } from '../src/store/authStore';
 import { Colors } from '../src/constants/colors';
+import { Spacing } from '../src/constants/spacing';
 
 export default function LoginScreen() {
   const { login, loading } = useAuthStore();
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   subtitle: { fontSize: 14, color: Colors.textSecondary, marginTop: 8, textAlign: 'center' },
   form: {
     backgroundColor: Colors.surface,
-    borderRadius: 20,
+    borderRadius: Spacing.radius.lg,
     padding: 24,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -129,8 +130,8 @@ const styles = StyleSheet.create({
   label: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   input: {
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     fontSize: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -138,8 +139,8 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: Colors.primary,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     alignItems: 'center',
     marginTop: 24,
   },

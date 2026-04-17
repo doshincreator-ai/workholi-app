@@ -19,6 +19,7 @@ import { TaxCodeGuideModal } from './TaxCodeGuideModal';
 import { COUNTRIES } from '../config/countries';
 import type { Employer, TaxCode, PaymentMethod } from '../types';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
 
 const JOB_CATEGORIES = [
   'カフェ/レストラン', 'バー/ナイトクラブ', '小売/ショップ', '農場/果樹園',
@@ -645,8 +646,8 @@ const styles = StyleSheet.create({
   labelSpacing: { marginTop: 20 },
   input: {
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     fontSize: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -667,7 +668,7 @@ const styles = StyleSheet.create({
   // 税コード選択
   taxCodeList: {
     backgroundColor: Colors.surface,
-    borderRadius: 12,
+    borderRadius: Spacing.radius.md,
     borderWidth: 1,
     borderColor: Colors.border,
     overflow: 'hidden',
@@ -684,14 +685,14 @@ const styles = StyleSheet.create({
   radio: {
     width: 20,
     height: 20,
-    borderRadius: 10,
+    borderRadius: Spacing.radius.md,
     borderWidth: 2,
     borderColor: Colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },
   radioSelected: { borderColor: Colors.primary },
-  radioDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: Colors.primary },
+  radioDot: { width: 10, height: 10, borderRadius: Spacing.radius.sm, backgroundColor: Colors.primary },
   taxCodeTextWrap: { flex: 1 },
   taxCodeText: { fontSize: 14, color: Colors.textPrimary },
   taxCodeTextSelected: { color: Colors.primary, fontWeight: '600' },
@@ -700,7 +701,7 @@ const styles = StyleSheet.create({
   regionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   regionChip: {
     paddingHorizontal: 12, paddingVertical: 7,
-    borderRadius: 20, borderWidth: 1, borderColor: Colors.border,
+    borderRadius: Spacing.radius.lg, borderWidth: 1, borderColor: Colors.border,
     backgroundColor: Colors.surface,
   },
   regionChipSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
@@ -709,7 +710,7 @@ const styles = StyleSheet.create({
 
   // Holiday Pay
   hpCard: {
-    backgroundColor: Colors.surface, borderRadius: 12, padding: 14,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border,
   },
   hpTitle: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
@@ -720,7 +721,7 @@ const styles = StyleSheet.create({
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 6 },
   chip: {
     paddingHorizontal: 12, paddingVertical: 7,
-    borderRadius: 20, borderWidth: 1, borderColor: Colors.border,
+    borderRadius: Spacing.radius.lg, borderWidth: 1, borderColor: Colors.border,
     backgroundColor: Colors.surface,
   },
   chipSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
@@ -730,21 +731,21 @@ const styles = StyleSheet.create({
   // レビューロック
   reviewLock: {
     flexDirection: 'row', alignItems: 'flex-start', gap: 10,
-    backgroundColor: Colors.surface, borderRadius: 12, padding: 14, marginTop: 16,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm, marginTop: 16,
     borderWidth: 1, borderColor: Colors.border,
   },
   reviewLockTitle: { fontSize: 14, fontWeight: '600', color: Colors.textSecondary, marginBottom: 4 },
   reviewLockSub: { fontSize: 12, color: Colors.textMuted, lineHeight: 17 },
   reviewUnlockBadge: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    backgroundColor: Colors.primarySubtle, borderRadius: 10, padding: 10, marginTop: 16,
+    backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm, marginTop: 16,
   },
   reviewUnlockText: { fontSize: 13, color: Colors.positive, fontWeight: '600' },
 
   // AU税情報
   auTaxInfo: {
     flexDirection: 'row', gap: 10, alignItems: 'flex-start',
-    backgroundColor: Colors.surfaceElevated, borderRadius: 12, padding: 14,
+    backgroundColor: Colors.surfaceElevated, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border,
   },
   auTaxTitle: { fontSize: 14, fontWeight: '700', color: Colors.primary, marginBottom: 4 },
@@ -752,7 +753,7 @@ const styles = StyleSheet.create({
 
   // 詳細情報カード
   detailCard: {
-    backgroundColor: Colors.primarySubtle, borderRadius: 12, padding: 14,
+    backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.primaryMuted,
   },
   detailHeader: { flexDirection: 'row', alignItems: 'center', gap: 6 },
@@ -761,15 +762,15 @@ const styles = StyleSheet.create({
   // 保存
   saveBtn: {
     backgroundColor: Colors.primary,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     alignItems: 'center',
     marginTop: 28,
   },
   saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
   deleteBtn: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
-    borderWidth: 1, borderColor: Colors.negative, borderRadius: 14,
+    borderWidth: 1, borderColor: Colors.negative, borderRadius: Spacing.radius.md,
     padding: 14, marginTop: 12, marginBottom: 8,
   },
   deleteBtnText: { color: Colors.negative, fontSize: 15, fontWeight: '600' },

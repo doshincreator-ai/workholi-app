@@ -18,6 +18,7 @@ import { calculatePay, calculatePayAU, calcHours } from '../utils/payCalculator'
 import { COUNTRIES } from '../config/countries';
 import type { Employer } from '../types';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
 
 interface Props {
   visible: boolean;
@@ -245,7 +246,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 16,
+    padding: Spacing.padding.md,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
@@ -262,12 +263,12 @@ const styles = StyleSheet.create({
   employerList: {},
   employerBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 12,
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 14,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 2, borderColor: Colors.border,
   },
   employerBtnSelected: { borderColor: Colors.primary, backgroundColor: Colors.primarySubtle },
   employerIcon: {
-    width: 40, height: 40, borderRadius: 20,
+    width: 40, height: 40, borderRadius: Spacing.radius.lg,
     backgroundColor: Colors.primarySubtle, alignItems: 'center', justifyContent: 'center',
   },
   employerIconText: { fontSize: 16, fontWeight: '700', color: Colors.primary },
@@ -277,7 +278,7 @@ const styles = StyleSheet.create({
   employerDefault: { fontSize: 12, color: Colors.textMuted },
 
   timeCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     borderWidth: 1, borderColor: Colors.border, gap: 16,
   },
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
@@ -285,7 +286,7 @@ const styles = StyleSheet.create({
   breakRow: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   breakLabel: { fontSize: 13, color: Colors.textSecondary, marginRight: 4 },
   breakBtn: {
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8,
+    paddingHorizontal: Spacing.padding.sm, paddingVertical: 6, borderRadius: Spacing.radius.sm,
     borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surfaceElevated,
   },
   breakBtnActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
@@ -293,7 +294,7 @@ const styles = StyleSheet.create({
   breakBtnTextActive: { color: Colors.textInverse, fontWeight: '600' },
 
   calcCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     borderWidth: 1, borderColor: Colors.primaryMuted, marginTop: 16,
   },
   calcRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
@@ -308,7 +309,7 @@ const styles = StyleSheet.create({
   calcJpy: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
 
   saveBtn: {
-    backgroundColor: Colors.primary, borderRadius: 14, padding: 16,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
     gap: 8, marginTop: 20,
   },

@@ -18,6 +18,7 @@ import { postActivity } from '../../src/lib/socialService';
 import type { Settings } from '../../src/types';
 import { Colors } from '../../src/constants/colors';
 import { Typography } from '../../src/constants/typography';
+import { Spacing } from '../../src/constants/spacing';
 
 const DOW_LABELS = ['日', '月', '火', '水', '木', '金', '土'];
 const DOW_OPTIONS = [1, 2, 3, 4, 5] as const; // Mon–Fri
@@ -194,7 +195,7 @@ function PaydayCard() {
 const paydayStyles = StyleSheet.create({
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 16,
+    borderRadius: Spacing.radius.lg,
     padding: 18,
     marginBottom: 16,
     borderWidth: 1,
@@ -207,7 +208,7 @@ const paydayStyles = StyleSheet.create({
   typeBtn: {
     flex: 1,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: Spacing.radius.sm,
     alignItems: 'center',
     backgroundColor: Colors.background,
     borderWidth: 1,
@@ -220,7 +221,7 @@ const paydayStyles = StyleSheet.create({
   dowBtn: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: Spacing.radius.lg,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.background,
@@ -234,7 +235,7 @@ const paydayStyles = StyleSheet.create({
   dayBtn: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: Spacing.radius.sm,
     backgroundColor: Colors.background,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -244,8 +245,8 @@ const paydayStyles = StyleSheet.create({
   dayTextActive: { color: Colors.primary },
   countdownBox: {
     backgroundColor: Colors.background,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     marginTop: 8,
     alignItems: 'center',
   },
@@ -333,8 +334,8 @@ const badgeStyles = StyleSheet.create({
   section: { marginBottom: 8 },
   streakCard: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     marginBottom: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -356,7 +357,7 @@ const badgeStyles = StyleSheet.create({
   badge: {
     width: '30%',
     backgroundColor: Colors.surface,
-    borderRadius: 14,
+    borderRadius: Spacing.radius.md,
     padding: 10,
     alignItems: 'center',
     borderWidth: 1,
@@ -371,7 +372,7 @@ const badgeStyles = StyleSheet.create({
   hint: { fontSize: 11, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
   shareBtn: {
     marginTop: 6, paddingHorizontal: 8, paddingVertical: 3,
-    borderRadius: 6, borderWidth: 1, borderColor: Colors.primary,
+    borderRadius: Spacing.radius.sm, borderWidth: 1, borderColor: Colors.primary,
   },
   shareBtnText: { fontSize: 10, color: Colors.primary, fontWeight: '600' },
 });
@@ -395,13 +396,13 @@ export default function AchievementsScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   header: {
-    paddingHorizontal: 16,
-    paddingVertical: 14,
+    paddingHorizontal: Spacing.padding.md,
+    paddingVertical: Spacing.padding.sm,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
   title: { fontSize: 20, fontWeight: '800', color: Colors.textPrimary },
-  scroll: { padding: 16, paddingBottom: 32 },
+  scroll: { padding: Spacing.padding.md, paddingBottom: 32 },
   sectionLabel: { fontSize: 14, fontWeight: '700', color: Colors.textPrimary, marginBottom: 10 },
 });

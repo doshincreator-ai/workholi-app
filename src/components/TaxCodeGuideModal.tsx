@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
 import type { TaxCode } from '../types';
 
 interface Props {
@@ -193,7 +194,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    padding: 16, backgroundColor: Colors.surface,
+    padding: Spacing.padding.md, backgroundColor: Colors.surface,
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   closeBtn: { padding: 4 },
@@ -201,10 +202,10 @@ const styles = StyleSheet.create({
 
   stepRow: {
     flexDirection: 'row', gap: 8, justifyContent: 'center',
-    paddingVertical: 14, backgroundColor: Colors.surface,
+    paddingVertical: Spacing.padding.sm, backgroundColor: Colors.surface,
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
-  stepDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: Colors.border },
+  stepDot: { width: 8, height: 8, borderRadius: Spacing.radius.pill, backgroundColor: Colors.border },
   stepDotActive: { backgroundColor: Colors.primary, width: 20 },
 
   body: { flex: 1, padding: 24 },
@@ -218,8 +219,8 @@ const styles = StyleSheet.create({
   btnCol: { gap: 12 },
   choiceBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: Colors.surface, borderRadius: 14,
-    padding: 16, borderWidth: 1, borderColor: Colors.border,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md, borderWidth: 1, borderColor: Colors.border,
   },
   choiceBtnText: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500', flex: 1 },
 
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
   resultDesc: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20, textAlign: 'center', marginBottom: 28 },
 
   applyBtn: {
-    backgroundColor: Colors.primary, borderRadius: 14, paddingVertical: 14, paddingHorizontal: 32,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.md, paddingVertical: Spacing.padding.sm, paddingHorizontal: 32,
     width: '100%', alignItems: 'center', marginBottom: 12,
   },
   applyBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },

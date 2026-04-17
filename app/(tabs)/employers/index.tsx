@@ -16,6 +16,7 @@ import { getShiftsByEmployer } from '../../../src/db/shifts';
 import { COUNTRIES } from '../../../src/config/countries';
 import type { Employer } from '../../../src/types';
 import { Colors } from '../../../src/constants/colors';
+import { Spacing } from '../../../src/constants/spacing';
 
 function EmployerCard({ employer, onPress, onDelete }: {
   employer: Employer;
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: Spacing.padding.md,
     paddingVertical: 12,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   headerTitle: { fontSize: 20, fontWeight: '700', color: Colors.textPrimary },
   addBtn: {
     backgroundColor: Colors.primary,
-    borderRadius: 20,
+    borderRadius: Spacing.radius.lg,
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
@@ -142,10 +143,10 @@ const styles = StyleSheet.create({
   // カード
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    paddingTop: 14,
-    paddingHorizontal: 14,
-    paddingBottom: 14,
+    borderRadius: Spacing.radius.md,
+    paddingTop: Spacing.padding.sm,
+    paddingHorizontal: Spacing.padding.sm,
+    paddingBottom: Spacing.padding.sm,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
   cardIcon: {
     width: 44,
     height: 44,
-    borderRadius: 22,
+    borderRadius: Spacing.radius.pill,
     backgroundColor: Colors.primaryMuted,
     alignItems: 'center',
     justifyContent: 'center',
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
   cardMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   badge: {
     backgroundColor: Colors.primarySubtle,
-    borderRadius: 6,
+    borderRadius: Spacing.radius.sm,
     paddingHorizontal: 7,
     paddingVertical: 2,
     borderWidth: 1,
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
   emptyHint: { fontSize: 14, color: Colors.textMuted, marginBottom: 8 },
   emptyBtn: {
     backgroundColor: Colors.primary,
-    borderRadius: 12,
+    borderRadius: Spacing.radius.md,
     paddingHorizontal: 20,
     paddingVertical: 12,
     marginTop: 4,

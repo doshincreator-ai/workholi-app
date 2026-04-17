@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { router } from 'expo-router';
 import { useAuthStore } from '../src/store/authStore';
 import { Colors } from '../src/constants/colors';
+import { Spacing } from '../src/constants/spacing';
 
 export default function RegisterScreen() {
   const { register, loading } = useAuthStore();
@@ -124,16 +125,16 @@ const styles = StyleSheet.create({
   subtitle: { fontSize: 16, color: Colors.textSecondary, marginTop: 8 },
   form: {
     backgroundColor: Colors.surface,
-    borderRadius: 20,
-    padding: 24,
+    borderRadius: Spacing.radius.lg,
+    padding: Spacing.padding.lg,
     borderWidth: 1,
     borderColor: Colors.border,
   },
   label: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   input: {
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     fontSize: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -141,8 +142,8 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: Colors.primary,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     alignItems: 'center',
     marginTop: 24,
   },

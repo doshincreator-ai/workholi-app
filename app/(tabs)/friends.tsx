@@ -35,6 +35,7 @@ import {
   type SendRequestResult,
 } from '../../src/lib/friendService';
 import { Colors } from '../../src/constants/colors';
+import { Spacing } from '../../src/constants/spacing';
 
 type Tab = 'friends' | 'ranking' | 'feed';
 
@@ -463,7 +464,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
-    paddingHorizontal: 16,
+    paddingHorizontal: Spacing.padding.md,
     paddingTop: 12,
     paddingBottom: 0,
   },
@@ -477,19 +478,19 @@ const styles = StyleSheet.create({
   tabBtnText: { fontSize: 13, fontWeight: '600', color: Colors.textMuted },
   tabBtnTextActive: { color: Colors.primary },
 
-  scroll: { padding: 16, paddingBottom: 40 },
+  scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
   sectionLabel: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 8, textTransform: 'uppercase' },
   hint: { fontSize: 12, color: Colors.textMuted, marginTop: 4, marginBottom: 12 },
 
   codeCard: {
-    backgroundColor: Colors.primarySubtle, borderRadius: 14, padding: 16,
+    backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     gap: 12, borderWidth: 1, borderColor: Colors.primaryMuted,
   },
   codeText: { fontSize: 28, fontWeight: '800', color: Colors.primary, letterSpacing: 4, textAlign: 'center' },
   codeActions: { flexDirection: 'row', gap: 8 },
   codeActionBtn: {
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
-    borderWidth: 1, borderColor: Colors.primary, borderRadius: 10, paddingVertical: 8,
+    borderWidth: 1, borderColor: Colors.primary, borderRadius: Spacing.radius.md, paddingVertical: 8,
   },
   shareActionBtn: { backgroundColor: Colors.primary, borderColor: Colors.primary },
   copyText: { fontSize: 14, color: Colors.primary, fontWeight: '600' },
@@ -497,19 +498,19 @@ const styles = StyleSheet.create({
 
   inputRow: { flexDirection: 'row', gap: 8 },
   input: {
-    flex: 1, backgroundColor: Colors.surface, borderRadius: 12, padding: 14,
+    flex: 1, backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     fontSize: 16, borderWidth: 1, borderColor: Colors.border, color: Colors.textPrimary,
     letterSpacing: 2,
   },
   sendBtn: {
-    backgroundColor: Colors.primary, borderRadius: 12,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.md,
     paddingHorizontal: 20, justifyContent: 'center',
   },
   sendBtnDisabled: { backgroundColor: Colors.border },
   sendBtnText: { color: Colors.textInverse, fontWeight: '700', fontSize: 15 },
 
   listCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, overflow: 'hidden',
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, overflow: 'hidden',
     borderWidth: 1, borderColor: Colors.border,
   },
   emptyCard: { padding: 32, alignItems: 'center', gap: 12 },
@@ -517,18 +518,18 @@ const styles = StyleSheet.create({
 
   requestRow: {
     flexDirection: 'row', alignItems: 'center',
-    justifyContent: 'space-between', padding: 14,
+    justifyContent: 'space-between', padding: Spacing.padding.sm,
   },
   requestName: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
   acceptBtn: {
-    backgroundColor: Colors.primary, borderRadius: 8,
-    paddingHorizontal: 14, paddingVertical: 6,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm,
+    paddingHorizontal: Spacing.padding.sm, paddingVertical: 6,
   },
   acceptBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 13 },
 
-  friendRow: { flexDirection: 'row', alignItems: 'center', padding: 14, gap: 12 },
+  friendRow: { flexDirection: 'row', alignItems: 'center', padding: Spacing.padding.sm, gap: 12 },
   friendAvatar: {
-    width: 40, height: 40, borderRadius: 20,
+    width: 40, height: 40, borderRadius: Spacing.radius.lg,
     backgroundColor: Colors.primarySubtle, alignItems: 'center', justifyContent: 'center',
   },
   friendAvatarText: { fontSize: 18, fontWeight: '700', color: Colors.primary },
@@ -538,7 +539,7 @@ const styles = StyleSheet.create({
   regionBadgeText: { fontSize: 11, color: Colors.primary },
   removeBtn: { padding: 6 },
 
-  rankRow: { flexDirection: 'row', alignItems: 'center', padding: 14, gap: 12 },
+  rankRow: { flexDirection: 'row', alignItems: 'center', padding: Spacing.padding.sm, gap: 12 },
   rankRowMe: { backgroundColor: Colors.primarySubtle },
   rankNum: { fontSize: 18, width: 30, textAlign: 'center', color: Colors.textSecondary, fontWeight: '700' },
   rankNumGold: { color: Colors.warning },
@@ -548,9 +549,9 @@ const styles = StyleSheet.create({
   rankPay: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary },
   rankPayMe: { color: Colors.primary },
 
-  feedRow: { flexDirection: 'row', alignItems: 'flex-start', padding: 14, gap: 12 },
+  feedRow: { flexDirection: 'row', alignItems: 'flex-start', padding: Spacing.padding.sm, gap: 12 },
   feedAvatar: {
-    width: 36, height: 36, borderRadius: 18,
+    width: 36, height: 36, borderRadius: Spacing.radius.lg,
     backgroundColor: Colors.surfaceElevated, alignItems: 'center', justifyContent: 'center',
   },
   feedAvatarText: { fontSize: 16, fontWeight: '700', color: Colors.textSecondary },
@@ -559,8 +560,8 @@ const styles = StyleSheet.create({
   feedTime: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
 
   inviteHintBtn: {
-    paddingHorizontal: 16, paddingVertical: 8,
-    borderRadius: 8, borderWidth: 1, borderColor: Colors.primary,
+    paddingHorizontal: Spacing.padding.md, paddingVertical: 8,
+    borderRadius: Spacing.radius.sm, borderWidth: 1, borderColor: Colors.primary,
   },
   inviteHintText: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
 
@@ -571,14 +572,14 @@ const styles = StyleSheet.create({
   modalContainer: { flex: 1, backgroundColor: Colors.background },
   modalHeader: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    padding: 16, backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border,
+    padding: Spacing.padding.md, backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   modalTitle: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary },
   modalClose: { padding: 4 },
-  modalScroll: { padding: 16, paddingBottom: 40 },
+  modalScroll: { padding: Spacing.padding.md, paddingBottom: 40 },
   employerItem: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
-    padding: 14, borderBottomWidth: 1, borderBottomColor: Colors.border,
+    padding: Spacing.padding.sm, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   employerItemText: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
 });

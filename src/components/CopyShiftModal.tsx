@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState, useMemo } from 'react';
 import { useShiftStore } from '../store/shiftStore';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
 import type { Shift } from '../types';
 
 const WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日'];
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    padding: 16, backgroundColor: Colors.surface,
+    padding: Spacing.padding.md, backgroundColor: Colors.surface,
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   closeBtn: { padding: 4 },
@@ -197,13 +198,13 @@ const styles = StyleSheet.create({
 
   sourceCard: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
-    backgroundColor: Colors.surfaceElevated, paddingHorizontal: 16, paddingVertical: 10,
+    backgroundColor: Colors.surfaceElevated, paddingHorizontal: Spacing.padding.md, paddingVertical: 10,
   },
   sourceText: { fontSize: 13, color: Colors.textSecondary },
 
   monthNav: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: 16, paddingVertical: 12, backgroundColor: Colors.surface,
+    paddingHorizontal: Spacing.padding.md, paddingVertical: Spacing.padding.sm, backgroundColor: Colors.surface,
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   navBtn: { padding: 6 },
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
   },
   cellSelected: { backgroundColor: Colors.primarySubtle },
   dayNumWrap: {
-    width: 32, height: 32, borderRadius: 16,
+    width: 32, height: 32, borderRadius: Spacing.radius.pill,
     alignItems: 'center', justifyContent: 'center',
   },
   todayCircle: { backgroundColor: Colors.primary },
@@ -246,11 +247,11 @@ const styles = StyleSheet.create({
   hint: { textAlign: 'center', fontSize: 12, color: Colors.textMuted, padding: 16 },
 
   footer: {
-    padding: 16, backgroundColor: Colors.surface,
+    padding: Spacing.padding.md, backgroundColor: Colors.surface,
     borderTopWidth: 1, borderTopColor: Colors.border,
   },
   confirmBtn: {
-    backgroundColor: Colors.primary, borderRadius: 14, padding: 16,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
   },
   confirmBtnDisabled: { backgroundColor: Colors.textMuted },

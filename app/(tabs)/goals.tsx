@@ -19,6 +19,7 @@ import { useShiftStore } from '../../src/store/shiftStore';
 import { useSettingsStore } from '../../src/store/settingsStore';
 import { Colors } from '../../src/constants/colors';
 import { Typography } from '../../src/constants/typography';
+import { Spacing } from '../../src/constants/spacing';
 import type { Shift } from '../../src/types';
 import type { Goal } from '../../src/db/goals';
 
@@ -132,8 +133,8 @@ function GoalCard({
 const cardStyles = StyleSheet.create({
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 16,
-    padding: 16,
+    borderRadius: Spacing.radius.lg,
+    padding: Spacing.padding.md,
     marginBottom: 14,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -149,11 +150,11 @@ const cardStyles = StyleSheet.create({
   barBg: {
     height: 8,
     backgroundColor: Colors.background,
-    borderRadius: 4,
+    borderRadius: Spacing.radius.sm,
     overflow: 'hidden',
     marginBottom: 6,
   },
-  barFill: { height: '100%', backgroundColor: Colors.primary, borderRadius: 4 },
+  barFill: { height: '100%', backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm },
   progressRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 },
   progressPct: { ...Typography.monoSmall, color: Colors.primary },
   remaining: { fontSize: 12, color: Colors.textMuted },
@@ -263,8 +264,8 @@ const modalStyles = StyleSheet.create({
   backdrop: { flex: 1 },
   sheet: {
     backgroundColor: Colors.surface,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: Spacing.radius.lg,
+    borderTopRightRadius: Spacing.radius.lg,
     padding: 24,
     borderTopWidth: 1,
     borderColor: Colors.border,
@@ -275,7 +276,7 @@ const modalStyles = StyleSheet.create({
   emojiBtn: {
     width: 44,
     height: 44,
-    borderRadius: 22,
+    borderRadius: Spacing.radius.pill,
     backgroundColor: Colors.background,
     alignItems: 'center',
     justifyContent: 'center',
@@ -287,8 +288,8 @@ const modalStyles = StyleSheet.create({
   emojiText: { fontSize: 22 },
   input: {
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     fontSize: 16,
     color: Colors.textPrimary,
     borderWidth: 1,
@@ -298,8 +299,8 @@ const modalStyles = StyleSheet.create({
   btnRow: { flexDirection: 'row', gap: 10, marginTop: 4 },
   cancelBtn: {
     flex: 1,
-    padding: 14,
-    borderRadius: 12,
+    padding: Spacing.padding.sm,
+    borderRadius: Spacing.radius.md,
     borderWidth: 1,
     borderColor: Colors.border,
     alignItems: 'center',
@@ -307,8 +308,8 @@ const modalStyles = StyleSheet.create({
   cancelText: { color: Colors.textSecondary, fontWeight: '600' },
   addBtn: {
     flex: 2,
-    padding: 14,
-    borderRadius: 12,
+    padding: Spacing.padding.sm,
+    borderRadius: Spacing.radius.md,
     backgroundColor: Colors.primary,
     alignItems: 'center',
   },
@@ -396,7 +397,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    paddingHorizontal: Spacing.padding.md,
     paddingVertical: 12,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
@@ -408,17 +409,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 6,
     backgroundColor: Colors.primary,
-    borderRadius: 20,
-    paddingHorizontal: 14,
+    borderRadius: Spacing.radius.lg,
+    paddingHorizontal: Spacing.padding.sm,
     paddingVertical: 8,
   },
   addBtnText: { color: Colors.textInverse, fontWeight: '700', fontSize: 14 },
-  scroll: { padding: 16, paddingBottom: 32 },
+  scroll: { padding: Spacing.padding.md, paddingBottom: 32 },
 
   savingsCard: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     marginBottom: 16,
     borderWidth: 1,
     borderColor: Colors.border,

@@ -19,6 +19,7 @@ import { getOrCreateUserProfile } from '../../src/lib/userService';
 import { AdBanner } from '../../src/components/AdBanner';
 import { HintBanner } from '../../src/components/HintBanner';
 import { Colors } from '../../src/constants/colors';
+import { Spacing } from '../../src/constants/spacing';
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   easy: '#16a34a', normal: '#f59e0b', hard: '#ef4444',
@@ -236,8 +237,8 @@ export default function CommunityScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   header: {
-    paddingHorizontal: 16,
-    paddingVertical: 14,
+    paddingHorizontal: Spacing.padding.md,
+    paddingVertical: Spacing.padding.sm,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
@@ -250,14 +251,14 @@ const styles = StyleSheet.create({
   filterBarContent: { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
   filterChip: {
     paddingHorizontal: 14, paddingVertical: 6,
-    borderRadius: 20, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
+    borderRadius: Spacing.radius.lg, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
   },
   filterChipActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
   filterChipText: { fontSize: 13, color: Colors.textSecondary },
   filterChipTextActive: { color: Colors.textInverse, fontWeight: '600' },
   filterChipSm: {
     paddingHorizontal: 10, paddingVertical: 4,
-    borderRadius: 16, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
+    borderRadius: Spacing.radius.md, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
   },
   filterChipSmActive: { backgroundColor: '#0f766e', borderColor: '#0f766e' },
   filterChipSmText: { fontSize: 12, color: Colors.textMuted },
@@ -265,8 +266,8 @@ const styles = StyleSheet.create({
   list: { padding: 12, paddingBottom: 24 },
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -278,7 +279,7 @@ const styles = StyleSheet.create({
   cardLeft: { flex: 1 },
   cardNameRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 },
   cardName: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
-  hiringBadge: { backgroundColor: Colors.primaryMuted, borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2 },
+  hiringBadge: { backgroundColor: Colors.primaryMuted, borderRadius: Spacing.radius.sm, paddingHorizontal: 6, paddingVertical: 2 },
   hiringText: { fontSize: 11, color: Colors.primary, fontWeight: '700' },
   cardMeta: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
   cardCount: { fontSize: 12, color: Colors.textSecondary },
@@ -288,7 +289,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 8,
+    borderRadius: Spacing.radius.sm,
     paddingHorizontal: 8,
     paddingVertical: 4,
     marginLeft: 12,

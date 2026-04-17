@@ -13,6 +13,7 @@ import { useSettingsStore } from '../store/settingsStore';
 import { COUNTRIES } from '../config/countries';
 import type { Employer } from '../types';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
 
 interface Props {
   selectedId: number | null;
@@ -102,8 +103,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     borderWidth: 1,
     borderColor: Colors.border,
   },
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
+    padding: Spacing.padding.md,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
@@ -124,9 +125,9 @@ const styles = StyleSheet.create({
   cancel: { fontSize: 16, color: Colors.primary },
   search: {
     margin: 12,
-    padding: 12,
+    padding: Spacing.padding.sm,
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 10,
+    borderRadius: Spacing.radius.md,
     borderWidth: 1,
     borderColor: Colors.border,
     fontSize: 16,
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 16,
+    padding: Spacing.padding.md,
     backgroundColor: Colors.surface,
   },
   itemSelected: { backgroundColor: Colors.primarySubtle },

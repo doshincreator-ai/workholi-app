@@ -17,6 +17,7 @@ import { useSettingsStore } from '../store/settingsStore';
 import { calculatePay, calculatePayAU, calcHours, calcNightShiftHours, calcOvertimeExtra } from '../utils/payCalculator';
 import { COUNTRIES } from '../config/countries';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
 import type { Shift } from '../types';
 
 const REMINDER_OPTIONS: { label: string; value: number }[] = [
@@ -362,8 +363,8 @@ const styles = StyleSheet.create({
   sectionLabel: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   textInput: {
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     fontSize: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -376,8 +377,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.surface,
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.sm,
     marginTop: 20,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -386,8 +387,8 @@ const styles = StyleSheet.create({
   switchSub: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
   calcCard: {
     backgroundColor: Colors.surface,
-    borderRadius: 16,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     marginTop: 24,
     borderWidth: 1,
     borderColor: Colors.primaryMuted,
@@ -418,16 +419,16 @@ const styles = StyleSheet.create({
   calcJpy: { fontSize: 13, color: Colors.textMuted, marginTop: 2 },
   calcPlaceholder: {
     backgroundColor: Colors.surface,
-    borderRadius: 12,
-    padding: 20,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.lg,
     marginTop: 24,
     alignItems: 'center',
   },
   calcPlaceholderText: { color: Colors.textMuted, fontSize: 14, textAlign: 'center' },
   saveBtn: {
     backgroundColor: Colors.primary,
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: Spacing.radius.md,
+    padding: Spacing.padding.md,
     alignItems: 'center',
     marginTop: 24,
   },
@@ -435,7 +436,7 @@ const styles = StyleSheet.create({
   saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
   segmentRow: { flexDirection: 'row', gap: 8 },
   segment: {
-    flex: 1, paddingVertical: 10, borderRadius: 10, borderWidth: 1,
+    flex: 1, paddingVertical: Spacing.padding.sm, borderRadius: Spacing.radius.md, borderWidth: 1,
     borderColor: Colors.border, backgroundColor: Colors.surface, alignItems: 'center',
   },
   segmentActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
@@ -444,17 +445,17 @@ const styles = StyleSheet.create({
   memoInput: { height: 80, textAlignVertical: 'top', paddingTop: 12 },
   restHint: { fontSize: 12, color: Colors.primary, marginTop: 6, lineHeight: 17 },
   hpCard: {
-    backgroundColor: Colors.surface, borderRadius: 12, padding: 14,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border,
   },
   hpTitle: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
   hpRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   hpBreakdown: {
-    marginTop: 10, backgroundColor: Colors.primarySubtle, borderRadius: 8, padding: 10,
+    marginTop: 10, backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm, padding: Spacing.padding.sm,
   },
   hpBreakdownText: { fontSize: 13, color: Colors.primary, fontWeight: '500' },
   hpAmountInput: {
-    flex: 1, backgroundColor: Colors.surfaceElevated, borderRadius: 10, padding: 12,
+    flex: 1, backgroundColor: Colors.surfaceElevated, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     fontSize: 16, borderWidth: 1, borderColor: Colors.border, color: Colors.textPrimary,
   },
 });

@@ -37,6 +37,13 @@ export const Colors = {
   headerBackground: '#12151f',
   headerTint: '#ffffff',
 
+  // Calendar weekday accents (dark-theme safe)
+  saturdayText: '#60a5fa',
+  sundayText: '#f87171',
+
+  // Shadow
+  shadow: '#000',
+
   // Overlay
   overlay: 'rgba(0,0,0,0.6)',
 } as const;

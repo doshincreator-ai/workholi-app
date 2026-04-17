@@ -21,6 +21,7 @@ import { COUNTRIES } from '../../../src/config/countries';
 import type { Shift } from '../../../src/types';
 import { HintBanner } from '../../../src/components/HintBanner';
 import { Colors } from '../../../src/constants/colors';
+import { Spacing } from '../../../src/constants/spacing';
 
 const WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日'];
 const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
@@ -306,7 +307,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingVertical: Spacing.padding.sm,
     backgroundColor: Colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
@@ -318,7 +319,7 @@ const styles = StyleSheet.create({
   monthNetLabel: { fontSize: 11, color: Colors.primary, fontWeight: '600', marginTop: 1 },
   addBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: Colors.primary, borderRadius: 20,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.lg,
     paddingHorizontal: 14, paddingVertical: 8,
   },
   addBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 14 },
@@ -356,7 +357,7 @@ const styles = StyleSheet.create({
   dayCellSelected: { backgroundColor: Colors.primarySubtle },
   dayCellHoliday: { backgroundColor: 'rgba(245,158,11,0.15)' },
   dayNumWrap: {
-    width: 28, height: 28, borderRadius: 14,
+    width: 28, height: 28, borderRadius: Spacing.radius.md,
     alignItems: 'center', justifyContent: 'center',
   },
   todayCircle: { backgroundColor: Colors.primary },
@@ -369,7 +370,7 @@ const styles = StyleSheet.create({
   holidayDot: { fontSize: 7, color: Colors.warning, lineHeight: 9 },
 
   dots: { flexDirection: 'row', gap: 2, marginTop: 3, flexWrap: 'wrap', justifyContent: 'center' },
-  dot: { width: 6, height: 6, borderRadius: 3 },
+  dot: { width: 6, height: 6, borderRadius: Spacing.radius.sm },
   dotMore: { fontSize: 8, color: Colors.textSecondary, lineHeight: 8 },
 
   detailSection: { padding: 12 },
@@ -385,7 +386,7 @@ const styles = StyleSheet.create({
   shiftCard: {
     flexDirection: 'row',
     backgroundColor: Colors.surface,
-    borderRadius: 12,
+    borderRadius: Spacing.radius.md,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: Colors.border,
@@ -407,8 +408,8 @@ const styles = StyleSheet.create({
   emptyDay: { alignItems: 'center', paddingVertical: 20, gap: 10 },
   emptyDayText: { fontSize: 14, color: Colors.textSecondary },
   addDayBtn: {
-    borderWidth: 1, borderColor: Colors.primary, borderRadius: 10,
-    paddingHorizontal: 16, paddingVertical: 8,
+    borderWidth: 1, borderColor: Colors.primary, borderRadius: Spacing.radius.sm,
+    paddingHorizontal: Spacing.padding.md, paddingVertical: 8,
   },
   addDayBtnText: { color: Colors.primary, fontWeight: '600', fontSize: 14 },
 });

@@ -18,6 +18,7 @@ import { AdBanner } from '../../src/components/AdBanner';
 import { HintBanner } from '../../src/components/HintBanner';
 import { Colors } from '../../src/constants/colors';
 import { Typography } from '../../src/constants/typography';
+import { Spacing } from '../../src/constants/spacing';
 
 const MONTHS_JP = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 
@@ -364,10 +365,10 @@ export default function ReportScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
-  scroll: { padding: 16, paddingBottom: 40 },
+  scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
 
   totalCard: {
-    backgroundColor: Colors.surface, borderRadius: 20, padding: 20, marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.lg, padding: Spacing.padding.lg, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
   totalLabel: { fontSize: 13, color: Colors.textSecondary, marginBottom: 4 },
@@ -380,7 +381,7 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
 
   taxCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
   taxRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },
@@ -391,23 +392,23 @@ const styles = StyleSheet.create({
   taxTotalValue: { ...Typography.monoSmall, color: Colors.negative },
 
   chartCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
   chartBars: { flexDirection: 'row', alignItems: 'flex-end', height: 140, gap: 6 },
   barCol: { flex: 1, alignItems: 'center', height: '100%', justifyContent: 'flex-end' },
   barValue: { fontSize: 9, color: Colors.textMuted, marginBottom: 2, textAlign: 'center' },
   barTrack: { flex: 1, width: '70%', justifyContent: 'flex-end', maxHeight: 100 },
-  barFill: { backgroundColor: Colors.primary, borderRadius: 4, width: '100%' },
+  barFill: { backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm, width: '100%' },
   barLabel: { fontSize: 11, color: Colors.textSecondary, marginTop: 4 },
 
   tableCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, overflow: 'hidden', marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, overflow: 'hidden', marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
   tableRow: {
     flexDirection: 'row', justifyContent: 'space-between',
-    alignItems: 'center', padding: 14,
+    alignItems: 'center', padding: Spacing.padding.sm,
   },
   tableMonth: { fontSize: 15, color: Colors.textSecondary, fontWeight: '500' },
   tableRight: { alignItems: 'flex-end' },
@@ -417,7 +418,7 @@ const styles = StyleSheet.create({
   emptyText: { color: Colors.textMuted, textAlign: 'center', padding: 24 },
 
   refundCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
   refundYear: { fontSize: 13, color: Colors.textMuted, marginBottom: 12 },
@@ -437,13 +438,13 @@ const styles = StyleSheet.create({
   refundDisclaimer: { fontSize: 11, color: Colors.textMuted, lineHeight: 15 },
 
   exportBtn: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     alignItems: 'center', borderWidth: 1, borderColor: Colors.border,
   },
   exportBtnText: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
 
   refundHero: {
-    borderRadius: 16, padding: 20, marginBottom: 16,
+    borderRadius: Spacing.radius.lg, padding: Spacing.padding.lg, marginBottom: 16,
     borderWidth: 1.5,
   },
   refundHeroPos: { backgroundColor: Colors.primarySubtle, borderColor: Colors.primary },
@@ -453,7 +454,7 @@ const styles = StyleSheet.create({
   refundHeroSub: { fontSize: 12, color: Colors.textSecondary, lineHeight: 18 },
 
   explainCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border, gap: 12,
   },
   explainRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },

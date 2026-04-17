@@ -24,6 +24,7 @@ import type { CompanyDoc } from '../../src/lib/firestoreService';
 import { addTicket } from '../../src/lib/userService';
 import { RewardedAdButton } from '../../src/components/RewardedAdButton';
 import { Colors } from '../../src/constants/colors';
+import { Spacing } from '../../src/constants/spacing';
 
 const PAY_METHOD_LABEL: Record<string, string> = {
   bank: '銀行振込', cash: '現金', other: 'その他',
@@ -552,7 +553,7 @@ function InfoRow({ label, value }: { label: string; value: string }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
-  scroll: { padding: 16, paddingBottom: 40 },
+  scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 
   backBtn: { flexDirection: 'row', alignItems: 'center', marginBottom: 16 },
@@ -563,7 +564,7 @@ const styles = StyleSheet.create({
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   badge: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: Colors.primarySubtle, borderRadius: 8,
+    backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
     paddingHorizontal: 10, paddingVertical: 4,
   },
   badgeText: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
@@ -574,31 +575,31 @@ const styles = StyleSheet.create({
     marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.5,
   },
   card: {
-    backgroundColor: Colors.surface, borderRadius: 14, overflow: 'hidden',
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, overflow: 'hidden',
     borderWidth: 1, borderColor: Colors.border, marginBottom: 20,
   },
-  infoRow: { flexDirection: 'row', justifyContent: 'space-between', padding: 14 },
+  infoRow: { flexDirection: 'row', justifyContent: 'space-between', padding: Spacing.padding.sm },
   infoLabel: { fontSize: 14, color: Colors.textSecondary },
   infoValue: { fontSize: 14, fontWeight: '600', color: Colors.textPrimary, flex: 1, textAlign: 'right' },
-  descRow: { padding: 14, gap: 6 },
+  descRow: { padding: Spacing.padding.sm, gap: 6 },
   descText: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20 },
   rowSep: { height: 1, backgroundColor: Colors.borderSubtle },
 
   // 評価分布
-  ratingDistRow: { padding: 14, gap: 6 },
+  ratingDistRow: { padding: Spacing.padding.sm, gap: 6 },
   ratingBarRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   ratingBarLabel: { fontSize: 12, color: Colors.textSecondary, width: 24 },
-  ratingBarTrack: { flex: 1, height: 8, backgroundColor: Colors.borderSubtle, borderRadius: 4, overflow: 'hidden' },
-  ratingBarFill: { height: '100%', backgroundColor: Colors.warning, borderRadius: 4 },
+  ratingBarTrack: { flex: 1, height: 8, backgroundColor: Colors.borderSubtle, borderRadius: Spacing.radius.sm, overflow: 'hidden' },
+  ratingBarFill: { height: '100%', backgroundColor: Colors.warning, borderRadius: Spacing.radius.sm },
   ratingBarCount: { fontSize: 12, color: Colors.textMuted, width: 20, textAlign: 'right' },
 
   // シフト行
-  shiftRow: { flexDirection: 'row', justifyContent: 'space-between', padding: 14 },
+  shiftRow: { flexDirection: 'row', justifyContent: 'space-between', padding: Spacing.padding.sm },
   shiftLeft: { flex: 1 },
   shiftDate: { fontSize: 12, color: Colors.textMuted, marginBottom: 2 },
   shiftTime: { fontSize: 14, color: Colors.textSecondary, marginBottom: 4 },
   shiftTagRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  holidayBadge: { backgroundColor: Colors.primarySubtle, borderRadius: 4, paddingHorizontal: 6, paddingVertical: 2 },
+  holidayBadge: { backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm, paddingHorizontal: 6, paddingVertical: 2 },
   holidayBadgeText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
   payMethod: { fontSize: 12, color: Colors.textMuted },
   shiftRight: { alignItems: 'flex-end', gap: 4 },
@@ -607,22 +608,22 @@ const styles = StyleSheet.create({
   shiftNet: { fontSize: 16, fontWeight: '700', color: Colors.primary },
 
   // ロック
-  lockWrapper: { marginBottom: 20, borderRadius: 14, overflow: 'hidden' },
+  lockWrapper: { marginBottom: 20, borderRadius: Spacing.radius.md, overflow: 'hidden' },
   previewCard: {
-    backgroundColor: Colors.surface, borderRadius: 14,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md,
     borderWidth: 1, borderColor: Colors.border,
     opacity: 0.35,
   },
-  blurLine: { height: 12, backgroundColor: Colors.border, borderRadius: 6 },
+  blurLine: { height: 12, backgroundColor: Colors.border, borderRadius: Spacing.radius.sm },
   lockOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     backgroundColor: Colors.overlay,
     alignItems: 'center', justifyContent: 'center',
-    padding: 24, gap: 10,
-    borderRadius: 14, borderWidth: 1, borderColor: Colors.border,
+    padding: Spacing.padding.lg, gap: 10,
+    borderRadius: Spacing.radius.md, borderWidth: 1, borderColor: Colors.border,
   },
   lockIconWrap: {
-    width: 56, height: 56, borderRadius: 28,
+    width: 56, height: 56, borderRadius: Spacing.radius.pill,
     backgroundColor: Colors.surfaceElevated,
     alignItems: 'center', justifyContent: 'center',
   },
@@ -630,14 +631,14 @@ const styles = StyleSheet.create({
   lockDesc: { fontSize: 14, color: Colors.textSecondary, textAlign: 'center', lineHeight: 20 },
   ticketBadge: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: Colors.primarySubtle, borderRadius: 10,
-    paddingHorizontal: 14, paddingVertical: 6,
+    backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
+    paddingHorizontal: Spacing.padding.sm, paddingVertical: 6,
   },
   ticketBadgeText: { fontSize: 14, color: Colors.primary, fontWeight: '700' },
   unlockBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
-    backgroundColor: Colors.primary, borderRadius: 12,
-    paddingHorizontal: 24, paddingVertical: 14,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.md,
+    paddingHorizontal: 24, paddingVertical: Spacing.padding.sm,
   },
   unlockBtnDisabled: { backgroundColor: Colors.textMuted },
   unlockBtnText: { color: Colors.textInverse, fontSize: 15, fontWeight: '700' },
@@ -646,15 +647,15 @@ const styles = StyleSheet.create({
   emptyText: { color: Colors.textMuted, textAlign: 'center', padding: 16 },
   // コメント
   emptyComments: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 20,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.lg,
     alignItems: 'center', borderWidth: 1, borderColor: Colors.border, marginBottom: 12,
   },
   emptyCommentsText: { color: Colors.textMuted, fontSize: 14 },
-  commentRow: { padding: 14 },
+  commentRow: { padding: Spacing.padding.sm },
   commentHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' },
   commentName: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary },
   workedBadge: {
-    backgroundColor: Colors.primarySubtle, borderRadius: 6,
+    backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
     paddingHorizontal: 6, paddingVertical: 2,
   },
   workedBadgeText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
@@ -662,7 +663,7 @@ const styles = StyleSheet.create({
   deleteCommentBtn: { marginLeft: 'auto' as any },
   commentText: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20 },
   commentInputCard: {
-    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     borderWidth: 1, borderColor: Colors.border, marginBottom: 12, gap: 12,
   },
   commentInputTitle: { fontSize: 14, fontWeight: '700', color: Colors.textSecondary },
@@ -671,26 +672,26 @@ const styles = StyleSheet.create({
   starActive: { color: Colors.warning },
   ratingHint: { fontSize: 13, color: Colors.textSecondary, marginLeft: 4 },
   commentInput: {
-    backgroundColor: Colors.surfaceElevated, borderRadius: 10, padding: 12,
+    backgroundColor: Colors.surfaceElevated, borderRadius: Spacing.radius.sm, padding: 12,
     fontSize: 14, borderWidth: 1, borderColor: Colors.border,
     color: Colors.textPrimary, minHeight: 80, textAlignVertical: 'top',
   },
   commentSubmitBtn: {
-    backgroundColor: Colors.primary, borderRadius: 10,
+    backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm,
     padding: 12, alignItems: 'center',
   },
   commentSubmitBtnDisabled: { backgroundColor: Colors.textMuted },
   commentSubmitText: { color: Colors.textInverse, fontWeight: '700', fontSize: 15 },
   commentLocked: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    backgroundColor: Colors.surface, borderRadius: 12, padding: 14,
+    backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border, marginBottom: 12,
   },
   commentLockedText: { fontSize: 13, color: Colors.textMuted },
 
   friendBadge: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: Colors.surfaceElevated, borderRadius: 10,
+    backgroundColor: Colors.surfaceElevated, borderRadius: Spacing.radius.sm,
     paddingHorizontal: 12, paddingVertical: 8,
     marginBottom: 10,
   },

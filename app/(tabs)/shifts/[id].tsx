@@ -3,6 +3,7 @@ import { View, Text, Pressable, StyleSheet, Alert } from 'react-native';
 import { useShiftStore } from '../../../src/store/shiftStore';
 import { ShiftForm } from '../../../src/components/ShiftForm';
 import { Colors } from '../../../src/constants/colors';
+import { Spacing } from '../../../src/constants/spacing';
 
 export default function EditShiftScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -48,9 +49,9 @@ const styles = StyleSheet.create({
   deleteBtn: {
     marginHorizontal: 16,
     marginBottom: 32,
-    padding: 14,
+    padding: Spacing.padding.sm,
     alignItems: 'center',
-    borderRadius: 12,
+    borderRadius: Spacing.radius.md,
     borderWidth: 1,
     borderColor: Colors.primaryMuted,
     backgroundColor: Colors.primarySubtle,

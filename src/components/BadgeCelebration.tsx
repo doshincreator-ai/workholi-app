@@ -9,6 +9,7 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
 import { Typography } from '../constants/typography';
 import { BADGE_DEFS, type BadgeId } from '../db/badges';
 
@@ -64,8 +65,8 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: Colors.surface,
-    borderRadius: 24,
-    padding: 32,
+    borderRadius: Spacing.radius.lg,
+    padding: Spacing.padding.lg,
     alignItems: 'center',
     borderWidth: 2,
     borderColor: Colors.primary,

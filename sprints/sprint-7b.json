@@ -1,0 +1,38 @@
+{
+  "id": "7b",
+  "title": "デザイン統一 — borderRadius・padding 3段階整理",
+  "overview": "audit で発覚した borderRadius 8種類・padding 6種類のばらつきを、3段階のデザイントークンに集約する。全コンポーネントが同じスケールを参照することで統一感を出す。",
+  "features": [
+    {
+      "id": "F7b-1",
+      "name": "spacing・radius トークンの定義",
+      "description": "src/constants/spacing.ts を新規作成し、以下を定義する。radius: sm=8 / md=14 / lg=20。padding: sm=14 / md=16 / lg=20。既存の Colors.ts には触れない",
+      "priority": "high"
+    },
+    {
+      "id": "F7b-2",
+      "name": "全ファイルの borderRadius 置換",
+      "description": "design-audit.md に記載された9ファイルの borderRadius 直書きを spacing.radius トークンに置換する。8以下→sm、9〜16→md、17以上→lgに丸める",
+      "priority": "high"
+    },
+    {
+      "id": "F7b-3",
+      "name": "全ファイルの padding 置換",
+      "description": "design-audit.md に記載された18ファイルの padding 直書きを spacing.padding トークンに置換する。14以下→sm、15〜17→md、18以上→lgに丸める",
+      "priority": "medium"
+    }
+  ],
+  "acceptance_criteria": [
+    "src/constants/spacing.ts が存在し radius と padding のトークンが定義されている",
+    "design-audit.md 記載の全ファイルで borderRadius の直書きが0件である",
+    "design-audit.md 記載の全ファイルで padding の直書きが0件である",
+    "実機で各画面を開いたとき、カードの角丸・余白が視覚的に統一されている",
+    "tsc --noEmit がクリーンである"
+  ],
+  "out_of_scope": [
+    "直書き色42件・fontSize88件の置換（Sprint 7c）",
+    "新規デザイントークンの追加（radius・padding以外）",
+    "アニメーション・トランジションの変更"
+  ],
+  "estimated_days": 2
+}
