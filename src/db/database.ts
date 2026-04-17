@@ -57,6 +57,20 @@ export function initDatabase(): void {
       value TEXT NOT NULL
     );
 
+    CREATE TABLE IF NOT EXISTS goals (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      emoji TEXT NOT NULL DEFAULT '🎯',
+      target_amount REAL NOT NULL,
+      country TEXT NOT NULL DEFAULT 'NZ',
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS badges (
+      id TEXT PRIMARY KEY,
+      earned_at TEXT NOT NULL
+    );
+
     INSERT OR IGNORE INTO settings (key, value) VALUES ('nzd_jpy_rate', '90');
     INSERT OR IGNORE INTO settings (key, value) VALUES ('aud_jpy_rate', '95');
     INSERT OR IGNORE INTO settings (key, value) VALUES ('use_student_loan', 'false');
@@ -109,6 +123,9 @@ export function initDatabase(): void {
     `ALTER TABLE employers ADD COLUMN address TEXT`,
     `ALTER TABLE employers ADD COLUMN contact_info TEXT`,
     `ALTER TABLE employers ADD COLUMN detail_shared_at TEXT`,
+    `ALTER TABLE employers ADD COLUMN payday_type TEXT NOT NULL DEFAULT 'none'`,
+    `ALTER TABLE employers ADD COLUMN payday_day INTEGER NOT NULL DEFAULT 5`,
+    `ALTER TABLE settings ADD COLUMN value TEXT NOT NULL DEFAULT ''`,
   ];
   for (const sql of migrations) {
     try { db.execSync(sql); } catch { /* 既存カラムは無視 */ }

@@ -19,6 +19,7 @@ import { CountrySwitcher } from '../../src/components/CountrySwitcher';
 import { COUNTRIES } from '../../src/config/countries';
 import { Colors } from '../../src/constants/colors';
 import { Typography } from '../../src/constants/typography';
+import { useGoalStore } from '../../src/store/goalStore';
 import type { Shift } from '../../src/types';
 
 const MONTHS = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
@@ -266,6 +267,17 @@ export default function HomeScreen() {
   const countryEmployers = employers.filter((e) => e.country === currentCountry);
   const hasQuickEmployers = countryEmployers.some((e) => e.defaultStartTime && e.defaultEndTime);
 
+  const { goals } = useGoalStore();
+  const allTimeNet = shifts
+    .filter((s) => s.country === currentCountry)
+    .reduce((sum, s) => sum + s.netPay, 0);
+  const countryGoals = goals.filter((g) => g.country === currentCountry);
+  const topGoal = countryGoals.length > 0
+    ? countryGoals.reduce((best, g) =>
+        allTimeNet / g.targetAmount > allTimeNet / best.targetAmount ? g : best
+      )
+    : null;
+
   const todayStr = localDateStr(new Date());
   const tomorrowStr = addDays(todayStr, 1);
   const monthPrefix = `${currentYear}-${String(currentMonth).padStart(2, '0')}`;
@@ -423,6 +435,29 @@ export default function HomeScreen() {
           ))
         }
 
+        {/* ── Top Goal Card ── */}
+        {topGoal !== null && (() => {
+          const progress = Math.min(allTimeNet / topGoal.targetAmount, 1);
+          const achieved = allTimeNet >= topGoal.targetAmount;
+          return (
+            <Pressable style={goalCardStyles.card} onPress={() => router.push('/goals')}>
+              <View style={goalCardStyles.row}>
+                <Text style={goalCardStyles.emoji}>{topGoal.emoji}</Text>
+                <View style={goalCardStyles.info}>
+                  <Text style={goalCardStyles.name} numberOfLines={1}>{topGoal.name}</Text>
+                  <Text style={goalCardStyles.sub}>
+                    {achieved ? '🎉 達成！' : `${currency} ${Math.max(topGoal.targetAmount - allTimeNet, 0).toFixed(0)} 残り`}
+                  </Text>
+                </View>
+                <Text style={goalCardStyles.pct}>{Math.round(progress * 100)}%</Text>
+              </View>
+              <View style={goalCardStyles.barBg}>
+                <View style={[goalCardStyles.barFill, { width: `${Math.round(progress * 100)}%` as `${number}%` }]} />
+              </View>
+            </Pressable>
+          );
+        })()}
+
         {/* ── Quick Clock-in ── */}
         <Pressable
           style={[styles.quickBtn, !hasQuickEmployers && styles.quickBtnDisabled]}
@@ -514,4 +549,28 @@ const styles = StyleSheet.create({
   },
   quickBtnDisabled: { backgroundColor: Colors.primaryMuted },
   quickBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },
+});
+
+const goalCardStyles = StyleSheet.create({
+  card: {
+    backgroundColor: Colors.surface,
+    borderRadius: 14,
+    padding: 14,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: Colors.primaryMuted,
+  },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 },
+  emoji: { fontSize: 24 },
+  info: { flex: 1 },
+  name: { fontSize: 14, fontWeight: '700', color: Colors.textPrimary },
+  sub: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
+  pct: { ...Typography.monoSmall, color: Colors.primary },
+  barBg: {
+    height: 6,
+    backgroundColor: Colors.background,
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+  barFill: { height: '100%', backgroundColor: Colors.primary, borderRadius: 3 },
 });
