@@ -18,6 +18,7 @@ import { useAuthStore } from './authStore';
 import { recordWorker, toCompanyId } from '../lib/firestoreService';
 import { backupShiftToFirestore, deleteShiftBackup } from '../lib/shiftSyncService';
 import { getRandomEncouragement, getCrossedMilestone, MILESTONE_MESSAGES } from '../constants/messages';
+import { useBadgeStore } from './badgeStore';
 import type { Shift } from '../types';
 
 interface ShiftStore {
@@ -101,6 +102,10 @@ export const useShiftStore = create<ShiftStore>((set, get) => ({
         recordWorker(fId, userId, employer.country).catch((e) => console.error('[Worker] record failed:', e));
       }
     }
+
+    // バッジ判定（非同期で実行し UI を妨げない）
+    const allShifts = get().shifts;
+    useBadgeStore.getState().checkAndEarn(allShifts);
 
     // Firestoreバックアップ
     if (userId) {

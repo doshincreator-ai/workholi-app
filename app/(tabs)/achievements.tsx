@@ -9,6 +9,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect, useMemo } from 'react';
 import { useSettingsStore } from '../../src/store/settingsStore';
 import { useEmployerStore } from '../../src/store/employerStore';
+import { useBadgeStore } from '../../src/store/badgeStore';
+import { useShiftStore } from '../../src/store/shiftStore';
+import { BADGE_DEFS } from '../../src/db/badges';
 import type { Settings } from '../../src/types';
 import { Colors } from '../../src/constants/colors';
 import { Typography } from '../../src/constants/typography';
@@ -254,6 +257,99 @@ const paydayStyles = StyleSheet.create({
 
 // ── AchievementsScreen ────────────────────────────────────────
 
+// ── BadgeGrid ─────────────────────────────────────────────────
+
+function BadgeGrid() {
+  const { earned, streak } = useBadgeStore();
+  const { shifts } = useShiftStore();
+  const earnedIds = new Set(earned.map((e) => e.id));
+
+  return (
+    <View style={badgeStyles.section}>
+      {/* Streak */}
+      <Text style={styles.sectionLabel}>現在のストリーク</Text>
+      <View style={badgeStyles.streakCard}>
+        <Text style={badgeStyles.streakEmoji}>{streak >= 7 ? '🔥' : '📅'}</Text>
+        <View style={badgeStyles.streakInfo}>
+          <Text style={badgeStyles.streakNum}>{streak}日連続</Text>
+          <Text style={badgeStyles.streakSub}>
+            {streak === 0 ? '今日シフトを記録してストリークを開始しよう' : 'シフト登録を続けよう！'}
+          </Text>
+        </View>
+      </View>
+
+      {/* Badges */}
+      <Text style={[styles.sectionLabel, badgeStyles.badgeLabel]}>バッジ一覧</Text>
+      <View style={badgeStyles.grid}>
+        {BADGE_DEFS.map((def) => {
+          const isEarned = earnedIds.has(def.id);
+          return (
+            <View key={def.id} style={[badgeStyles.badge, !isEarned && badgeStyles.badgeLocked]}>
+              <Text style={[badgeStyles.badgeEmoji, !isEarned && badgeStyles.badgeEmojiLocked]}>
+                {isEarned ? def.emoji : '🔒'}
+              </Text>
+              <Text style={[badgeStyles.badgeName, !isEarned && badgeStyles.badgeNameLocked]}>
+                {def.name}
+              </Text>
+              <Text style={badgeStyles.badgeDesc} numberOfLines={2}>
+                {def.description}
+              </Text>
+            </View>
+          );
+        })}
+      </View>
+
+      <Text style={badgeStyles.hint}>
+        {earnedIds.size}/{BADGE_DEFS.length} バッジ解除済み　シフト数: {shifts.length}
+      </Text>
+    </View>
+  );
+}
+
+const badgeStyles = StyleSheet.create({
+  section: { marginBottom: 8 },
+  streakCard: {
+    backgroundColor: Colors.surface,
+    borderRadius: 14,
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  streakEmoji: { fontSize: 32 },
+  streakInfo: { flex: 1 },
+  streakNum: { ...Typography.h3, color: Colors.primary },
+  streakSub: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
+  badgeLabel: { marginTop: 4 },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+    marginBottom: 12,
+  },
+  badge: {
+    width: '30%',
+    backgroundColor: Colors.surface,
+    borderRadius: 14,
+    padding: 10,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.primaryMuted,
+  },
+  badgeLocked: { borderColor: Colors.border, opacity: 0.5 },
+  badgeEmoji: { fontSize: 28, marginBottom: 4 },
+  badgeEmojiLocked: { opacity: 0.4 },
+  badgeName: { fontSize: 11, fontWeight: '700', color: Colors.textPrimary, textAlign: 'center', marginBottom: 2 },
+  badgeNameLocked: { color: Colors.textMuted },
+  badgeDesc: { fontSize: 10, color: Colors.textMuted, textAlign: 'center', lineHeight: 13 },
+  hint: { fontSize: 11, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
+});
+
+// ── AchievementsScreen ────────────────────────────────────────
+
 export default function AchievementsScreen() {
   return (
     <SafeAreaView style={styles.container}>
@@ -262,15 +358,7 @@ export default function AchievementsScreen() {
       </View>
       <ScrollView contentContainerStyle={styles.scroll}>
         <PaydayCard />
-
-        {/* Badge placeholder – populated in Sprint 5 */}
-        <View style={styles.badgePlaceholder}>
-          <Text style={styles.badgePlaceholderText}>🏅</Text>
-          <Text style={styles.badgePlaceholderTitle}>バッジ機能は近日公開</Text>
-          <Text style={styles.badgePlaceholderDesc}>
-            シフトを積み重ねるとバッジが解除されます
-          </Text>
-        </View>
+        <BadgeGrid />
       </ScrollView>
     </SafeAreaView>
   );
@@ -287,15 +375,5 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 20, fontWeight: '800', color: Colors.textPrimary },
   scroll: { padding: 16, paddingBottom: 32 },
-  badgePlaceholder: {
-    backgroundColor: Colors.surface,
-    borderRadius: 16,
-    padding: 32,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: Colors.border,
-  },
-  badgePlaceholderText: { fontSize: 48, marginBottom: 12 },
-  badgePlaceholderTitle: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary, marginBottom: 6 },
-  badgePlaceholderDesc: { fontSize: 13, color: Colors.textSecondary, textAlign: 'center' },
+  sectionLabel: { fontSize: 14, fontWeight: '700', color: Colors.textPrimary, marginBottom: 10 },
 });

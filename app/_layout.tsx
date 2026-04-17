@@ -9,6 +9,8 @@ import { useEmployerStore } from '../src/store/employerStore';
 import { useShiftStore } from '../src/store/shiftStore';
 import { useAuthStore } from '../src/store/authStore';
 import { useGoalStore } from '../src/store/goalStore';
+import { useBadgeStore } from '../src/store/badgeStore';
+import { BadgeCelebration } from '../src/components/BadgeCelebration';
 import { recordWorker, toCompanyId } from '../src/lib/firestoreService';
 
 export default function RootLayout() {
@@ -16,6 +18,7 @@ export default function RootLayout() {
   const loadEmployers = useEmployerStore((s) => s.load);
   const loadShifts = useShiftStore((s) => s.load);
   const loadGoals = useGoalStore((s) => s.load);
+  const { load: loadBadges, newBadge, clearNewBadge } = useBadgeStore();
   const { user, initialized, init } = useAuthStore();
   const segments = useSegments();
 
@@ -26,6 +29,7 @@ export default function RootLayout() {
     loadEmployers();
     loadShifts();
     loadGoals();
+    loadBadges();
     return unsubscribe;
   }, []);
 
@@ -66,6 +70,9 @@ export default function RootLayout() {
   return (
     <>
     <ShiftToast />
+    {newBadge !== null && (
+      <BadgeCelebration badgeId={newBadge} onDone={clearNewBadge} />
+    )}
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="login" options={{ headerShown: false }} />
