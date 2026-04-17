@@ -54,8 +54,8 @@ export default function RootLayout() {
 
   if (!initialized) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#16a34a" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#0e1117' }}>
+        <ActivityIndicator size="large" color="#39d98a" />
       </View>
     );
   }
@@ -72,8 +72,8 @@ export default function RootLayout() {
         options={{
           headerShown: true,
           title: '企業詳細',
-          headerStyle: { backgroundColor: '#16a34a' },
-          headerTintColor: '#fff',
+          headerStyle: { backgroundColor: '#12151f' },
+          headerTintColor: '#ffffff',
           headerTitleStyle: { fontWeight: 'bold' },
         }}
       />

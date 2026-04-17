@@ -17,6 +17,7 @@ import { useSettingsStore } from '../../src/store/settingsStore';
 import { useAuthStore } from '../../src/store/authStore';
 import { getUserProfile } from '../../src/lib/userService';
 import { COUNTRIES } from '../../src/config/countries';
+import { Colors } from '../../src/constants/colors';
 
 function SectionHeader({ title }: { title: string }) {
   return <Text style={styles.sectionHeader}>{title}</Text>;
@@ -153,7 +154,7 @@ export default function SettingsScreen() {
                 <Switch
                   value={useStudentLoan}
                   onValueChange={(v) => update({ useStudentLoan: v })}
-                  trackColor={{ true: '#16a34a' }}
+                  trackColor={{ true: Colors.primary }}
                 />
               </SettingRow>
 
@@ -205,8 +206,8 @@ export default function SettingsScreen() {
               ))}
               <View style={styles.rowSep} />
               <View style={styles.taxTableRow}>
-                <Text style={[styles.taxRange, { color: '#6b7280' }]}>ACC Levy</Text>
-                <Text style={[styles.taxRate, { color: '#6b7280' }]}>1.67%</Text>
+                <Text style={[styles.taxRange, { color: Colors.textMuted }]}>ACC Levy</Text>
+                <Text style={[styles.taxRate, { color: Colors.textMuted }]}>1.67%</Text>
               </View>
             </View>
           </>
@@ -232,8 +233,8 @@ export default function SettingsScreen() {
               ))}
               <View style={styles.rowSep} />
               <View style={styles.taxTableRow}>
-                <Text style={[styles.taxRange, { color: '#6b7280' }]}>Superannuation（雇用主負担）</Text>
-                <Text style={[styles.taxRate, { color: '#6b7280' }]}>11.5%</Text>
+                <Text style={[styles.taxRange, { color: Colors.textMuted }]}>Superannuation（雇用主負担）</Text>
+                <Text style={[styles.taxRate, { color: Colors.textMuted }]}>11.5%</Text>
               </View>
             </View>
           </>
@@ -259,12 +260,12 @@ export default function SettingsScreen() {
           <View style={styles.rowSep} />
           <Pressable style={styles.infoRow} onPress={() => router.push('/privacy')}>
             <Text style={styles.infoLabel}>プライバシーポリシー</Text>
-            <Ionicons name="chevron-forward" size={16} color="#d1d5db" />
+            <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
           </Pressable>
           <View style={styles.rowSep} />
           <Pressable style={styles.infoRow} onPress={() => router.push('/terms')}>
             <Text style={styles.infoLabel}>利用規約</Text>
-            <Ionicons name="chevron-forward" size={16} color="#d1d5db" />
+            <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
           </Pressable>
         </View>
 
@@ -302,14 +303,14 @@ export default function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   scroll: { padding: 16, paddingBottom: 40 },
-  pageTitle: { fontSize: 28, fontWeight: '800', color: '#111827', marginBottom: 20 },
+  pageTitle: { fontSize: 28, fontWeight: '800', color: Colors.textPrimary, marginBottom: 20 },
 
   sectionHeader: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#9ca3af',
+    color: Colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: 0.8,
     marginTop: 24,
@@ -318,11 +319,11 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 14,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: Colors.border,
   },
 
   row: {
@@ -333,28 +334,28 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   rowLeft: { flex: 1 },
-  rowLabel: { fontSize: 15, color: '#111827', fontWeight: '500' },
-  rowHint: { fontSize: 12, color: '#9ca3af', marginTop: 2 },
-  rowSep: { height: 1, backgroundColor: '#f3f4f6' },
+  rowLabel: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
+  rowHint: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
+  rowSep: { height: 1, backgroundColor: Colors.border },
 
   rateInputWrap: {
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: Colors.border,
     borderRadius: 10,
     paddingHorizontal: 10,
-    backgroundColor: '#f9fafb',
+    backgroundColor: Colors.surfaceElevated,
   },
   rateInput: {
     fontSize: 17,
     fontWeight: '600',
-    color: '#111827',
+    color: Colors.textPrimary,
     paddingVertical: 8,
     minWidth: 60,
     textAlign: 'right',
   },
-  rateUnit: { fontSize: 15, color: '#6b7280', marginLeft: 4 },
+  rateUnit: { fontSize: 15, color: Colors.textSecondary, marginLeft: 4 },
 
   ratePreview: {
     flexDirection: 'row',
@@ -362,10 +363,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 14,
     paddingVertical: 10,
-    backgroundColor: '#f0fdf4',
+    backgroundColor: Colors.primarySubtle,
   },
-  ratePreviewText: { fontSize: 14, color: '#15803d', fontWeight: '600' },
-  rateLink: { fontSize: 13, color: '#16a34a' },
+  ratePreviewText: { fontSize: 14, color: Colors.primary, fontWeight: '600' },
+  rateLink: { fontSize: 13, color: Colors.primary },
 
   taxTableRow: {
     flexDirection: 'row',
@@ -373,8 +374,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 11,
   },
-  taxRange: { fontSize: 14, color: '#374151' },
-  taxRate: { fontSize: 14, fontWeight: '700', color: '#111827' },
+  taxRange: { fontSize: 14, color: Colors.textSecondary },
+  taxRate: { fontSize: 14, fontWeight: '700', color: Colors.textPrimary },
 
   infoRow: {
     flexDirection: 'row',
@@ -382,12 +383,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 12,
   },
-  infoLabel: { fontSize: 14, color: '#6b7280' },
-  infoValue: { fontSize: 14, color: '#111827', fontWeight: '500' },
+  infoLabel: { fontSize: 14, color: Colors.textSecondary },
+  infoValue: { fontSize: 14, color: Colors.textPrimary, fontWeight: '500' },
 
   footer: {
     fontSize: 12,
-    color: '#9ca3af',
+    color: Colors.textMuted,
     marginTop: 24,
     lineHeight: 18,
     textAlign: 'center',
@@ -398,12 +399,12 @@ const styles = StyleSheet.create({
   },
   logoutText: {
     fontSize: 15,
-    color: '#ef4444',
+    color: Colors.negative,
     fontWeight: '600',
   },
   ticketBadge: {
-    backgroundColor: '#f0fdf4', borderRadius: 10,
+    backgroundColor: Colors.primarySubtle, borderRadius: 10,
     paddingHorizontal: 14, paddingVertical: 6,
   },
-  ticketBadgeText: { fontSize: 16, fontWeight: '700', color: '#16a34a' },
+  ticketBadgeText: { fontSize: 16, fontWeight: '700', color: Colors.primary },
 });

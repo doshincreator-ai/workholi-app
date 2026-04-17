@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useSettingsStore } from '../store/settingsStore';
 import { COUNTRY_LIST } from '../config/countries';
+import { Colors } from '../constants/colors';
 
 export function CountrySwitcher() {
   const { currentCountry, update } = useSettingsStore();
@@ -15,7 +16,7 @@ export function CountrySwitcher() {
       <Pressable style={styles.trigger} onPress={() => setOpen(true)}>
         <Text style={styles.flag}>{current.flag}</Text>
         <Text style={styles.name}>{current.name}</Text>
-        <Ionicons name="chevron-down" size={14} color="#16a34a" />
+        <Ionicons name="chevron-down" size={14} color={Colors.primary} />
       </Pressable>
 
       <Modal visible={open} transparent animationType="fade">
@@ -42,7 +43,7 @@ export function CountrySwitcher() {
                       </Text>
                       <Text style={styles.itemCurrency}>{item.currency}</Text>
                     </View>
-                    {active && <Ionicons name="checkmark" size={18} color="#16a34a" />}
+                    {active && <Ionicons name="checkmark" size={18} color={Colors.primary} />}
                   </Pressable>
                 );
               }}
@@ -64,33 +65,35 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 20,
     borderWidth: 1.5,
-    borderColor: '#16a34a',
-    backgroundColor: '#f0fdf4',
+    borderColor: Colors.primaryMuted,
+    backgroundColor: Colors.primarySubtle,
   },
   flag: { fontSize: 16 },
-  name: { fontSize: 14, fontWeight: '600', color: '#16a34a' },
+  name: { fontSize: 14, fontWeight: '600', color: Colors.primary },
 
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: Colors.overlay,
     justifyContent: 'center',
     alignItems: 'center',
   },
   sheet: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 20,
     width: 280,
     paddingTop: 20,
     paddingBottom: 8,
     shadowColor: '#000',
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.4,
     shadowRadius: 12,
     elevation: 8,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   sheetTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#111827',
+    color: Colors.textPrimary,
     textAlign: 'center',
     marginBottom: 12,
   },
@@ -101,10 +104,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 14,
   },
-  itemActive: { backgroundColor: '#f0fdf4' },
+  itemActive: { backgroundColor: Colors.primarySubtle },
   itemFlag: { fontSize: 26 },
-  itemName: { fontSize: 15, fontWeight: '600', color: '#374151' },
-  itemNameActive: { color: '#16a34a' },
-  itemCurrency: { fontSize: 12, color: '#9ca3af', marginTop: 1 },
-  sep: { height: 1, backgroundColor: '#f3f4f6', marginHorizontal: 20 },
+  itemName: { fontSize: 15, fontWeight: '600', color: Colors.textSecondary },
+  itemNameActive: { color: Colors.primary },
+  itemCurrency: { fontSize: 12, color: Colors.textMuted, marginTop: 1 },
+  sep: { height: 1, backgroundColor: Colors.border, marginHorizontal: 20 },
 });

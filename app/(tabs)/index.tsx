@@ -17,6 +17,8 @@ import { HintBanner } from '../../src/components/HintBanner';
 import { QuickClockIn } from '../../src/components/QuickClockIn';
 import { CountrySwitcher } from '../../src/components/CountrySwitcher';
 import { COUNTRIES } from '../../src/config/countries';
+import { Colors } from '../../src/constants/colors';
+import { Typography } from '../../src/constants/typography';
 import type { Shift } from '../../src/types';
 
 const MONTHS = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
@@ -47,7 +49,6 @@ function calcStreak(shifts: Shift[], todayStr: string): number {
   return streak;
 }
 
-/** ローカル日付を YYYY-MM-DD で返す（UTCではなく端末の時刻を使用） */
 function localDateStr(d: Date): string {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -55,10 +56,9 @@ function localDateStr(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-/** 指定日を含む週の月曜・日曜を返す */
 function getWeekRange(date: Date): { monday: string; sunday: string; label: string } {
   const d = new Date(date);
-  const day = d.getDay(); // 0=Sun
+  const day = d.getDay();
   const diffToMonday = day === 0 ? -6 : 1 - day;
   const monday = new Date(d);
   monday.setDate(d.getDate() + diffToMonday);
@@ -101,7 +101,6 @@ export default function HomeScreen() {
   const currency = countryConfig.currency;
   const rate = jpyRate();
 
-  // 現在の国でフィルタ
   const countryShifts = shifts.filter((s) => s.country === currentCountry);
   const countryEmployers = employers.filter((e) => e.country === currentCountry);
 
@@ -119,7 +118,6 @@ export default function HomeScreen() {
 
   const recentShifts = countryShifts.slice(0, 5);
 
-  // 勤務終了済みシフトのみで月次集計を計算
   const monthPrefix = `${currentYear}-${String(currentMonth).padStart(2, '0')}`;
   const completedSummary = useMemo(() => {
     const now = new Date();
@@ -167,7 +165,6 @@ export default function HomeScreen() {
         <CountrySwitcher />
       </View>
 
-      {/* レベル・ストリーク */}
       <View style={styles.statusBar}>
         <View style={styles.statusChip}>
           <Text style={styles.statusEmoji}>{level.emoji}</Text>
@@ -184,16 +181,14 @@ export default function HomeScreen() {
       <HintBanner hintKey="home" message="まず「雇用主」タブで職場を登録すると、シフト記録がかんたんになります。" />
       <ScrollView contentContainerStyle={styles.scroll}>
 
-        {/* ワンタップ出勤ボタン */}
         <Pressable
           style={[styles.quickBtn, !hasQuickEmployers && styles.quickBtnDisabled]}
           onPress={() => setQuickVisible(true)}
         >
-          <Ionicons name="time-outline" size={22} color="#fff" />
+          <Ionicons name="time-outline" size={22} color={Colors.textInverse} />
           <Text style={styles.quickBtnText}>ワンタップ出勤</Text>
         </Pressable>
 
-        {/* 月ナビゲーション */}
         <View style={styles.monthNav}>
           <Pressable style={styles.navBtn} onPress={prevMonth}>
             <Text style={styles.navBtnText}>‹</Text>
@@ -209,7 +204,6 @@ export default function HomeScreen() {
           </Pressable>
         </View>
 
-        {/* 月次メインカード */}
         <View style={styles.mainCard}>
           <Text style={styles.mainLabel}>手取り合計（勤務終了分）</Text>
           <Text style={styles.mainNet}>{currency} {netPay.toFixed(2)}</Text>
@@ -236,7 +230,6 @@ export default function HomeScreen() {
             </View>
           </View>
 
-          {/* 税内訳 */}
           {grossPay > 0 && (
             <View style={styles.taxBreakdown}>
               <View style={styles.taxRow}>
@@ -259,7 +252,6 @@ export default function HomeScreen() {
           )}
         </View>
 
-        {/* 今週のサマリー */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>今週の予想</Text>
           <Text style={styles.weekRangeLabel}>{weekLabel}</Text>
@@ -283,7 +275,6 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* 直近のシフト */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>直近のシフト</Text>
           <Pressable onPress={() => router.push('/shifts')}>
@@ -310,29 +301,28 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   topBar: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 10,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: Colors.border,
   },
-  appName: { fontSize: 18, fontWeight: '800', color: '#16a34a' },
+  appName: { fontSize: 18, fontWeight: '800', color: Colors.primary },
   scroll: { padding: 16, paddingBottom: 32 },
 
   quickBtn: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 8, backgroundColor: '#16a34a', borderRadius: 14,
+    gap: 8, backgroundColor: Colors.primary, borderRadius: 14,
     paddingVertical: 14, marginBottom: 16,
   },
-  quickBtnDisabled: { backgroundColor: '#86efac' },
-  quickBtnText: { color: '#fff', fontSize: 16, fontWeight: '700' },
+  quickBtnDisabled: { backgroundColor: Colors.primaryMuted },
+  quickBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },
 
-  // 月ナビ
   monthNav: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -343,98 +333,93 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: Colors.border,
   },
-  navBtnDisabled: { borderColor: '#f3f4f6' },
-  navBtnText: { fontSize: 22, color: '#16a34a', lineHeight: 26 },
-  navBtnTextDisabled: { color: '#d1d5db' },
-  monthLabel: { fontSize: 18, fontWeight: '700', color: '#111827' },
-  monthLabelPast: { color: '#16a34a' },
+  navBtnDisabled: { borderColor: Colors.borderSubtle },
+  navBtnText: { fontSize: 22, color: Colors.primary, lineHeight: 26 },
+  navBtnTextDisabled: { color: Colors.textMuted },
+  monthLabel: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary },
+  monthLabelPast: { color: Colors.primary },
 
   statusBar: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
     paddingHorizontal: 16, paddingVertical: 8,
-    backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#f3f4f6',
+    backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   statusChip: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: '#f9fafb', borderRadius: 20,
+    backgroundColor: Colors.background, borderRadius: 20,
     paddingHorizontal: 10, paddingVertical: 4,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    borderWidth: 1, borderColor: Colors.border,
   },
-  streakChip: { borderColor: '#fed7aa', backgroundColor: '#fff7ed' },
+  streakChip: { borderColor: '#7a3a00', backgroundColor: '#1a0e00' },
   statusEmoji: { fontSize: 14 },
-  statusLabel: { fontSize: 12, color: '#6b7280', fontWeight: '600' },
-  streakLabel: { fontSize: 12, color: '#ea580c', fontWeight: '700' },
+  statusLabel: { fontSize: 12, color: Colors.textSecondary, fontWeight: '600' },
+  streakLabel: { fontSize: 12, color: Colors.warning, fontWeight: '700' },
 
-  // メインカード
   mainCard: {
-    backgroundColor: '#16a34a',
+    backgroundColor: Colors.surface,
     borderRadius: 20,
     padding: 20,
     marginBottom: 20,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
-  mainLabel: { fontSize: 13, color: '#bbf7d0', marginBottom: 4 },
-  mainNet: { fontSize: 36, fontWeight: '800', color: '#fff' },
-  mainJpy: { fontSize: 16, color: '#86efac', marginTop: 2 },
-  divider: { height: 1, backgroundColor: '#15803d', marginVertical: 16 },
+  mainLabel: { ...Typography.bodySmall, color: Colors.textSecondary, marginBottom: 4 },
+  mainNet: { ...Typography.monoXL, color: Colors.primary },
+  mainJpy: { ...Typography.monoSmall, color: Colors.textSecondary, marginTop: 2 },
+  divider: { height: 1, backgroundColor: Colors.border, marginVertical: 16 },
   breakdown: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
   breakdownItem: { flex: 1, minWidth: '40%' },
-  breakdownLabel: { fontSize: 12, color: '#86efac', marginBottom: 2 },
-  breakdownValue: { fontSize: 15, fontWeight: '600', color: '#fff' },
-  breakdownValueNeg: { fontSize: 15, fontWeight: '600', color: '#fca5a5' },
+  breakdownLabel: { fontSize: 12, color: Colors.textMuted, marginBottom: 2 },
+  breakdownValue: { ...Typography.monoSmall, color: Colors.textPrimary },
+  breakdownValueNeg: { ...Typography.monoSmall, color: Colors.negative },
   taxBreakdown: {
     marginTop: 14,
-    backgroundColor: '#15803d',
+    backgroundColor: Colors.surfaceElevated,
     borderRadius: 12,
     padding: 12,
     gap: 6,
   },
   taxRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  taxLabel: { fontSize: 13, color: '#86efac' },
-  taxValue: { fontSize: 13, color: '#bbf7d0' },
+  taxLabel: { fontSize: 13, color: Colors.textSecondary },
+  taxValue: { ...Typography.monoSmall, color: Colors.textMuted },
 
-  // 今週
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
   },
-  sectionTitle: { fontSize: 16, fontWeight: '700', color: '#374151', marginBottom: 8 },
-  sectionLink: { fontSize: 14, color: '#16a34a', fontWeight: '600' },
-  weekRangeLabel: { fontSize: 13, color: '#9ca3af', marginBottom: 8 },
+  sectionTitle: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
+  sectionLink: { fontSize: 14, color: Colors.primary, fontWeight: '600' },
+  weekRangeLabel: { fontSize: 13, color: Colors.textMuted, marginBottom: 8 },
   weekCard: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 16,
     padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.04,
-    shadowRadius: 4,
-    elevation: 1,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   weekItem: { flex: 1, alignItems: 'center' },
-  weekSep: { width: 1, height: 36, backgroundColor: '#f3f4f6' },
-  weekLabel: { fontSize: 12, color: '#9ca3af', marginBottom: 4 },
-  weekValue: { fontSize: 18, fontWeight: '700', color: '#111827' },
-  weekValueGreen: { color: '#16a34a', fontSize: 15 },
+  weekSep: { width: 1, height: 36, backgroundColor: Colors.border },
+  weekLabel: { fontSize: 12, color: Colors.textMuted, marginBottom: 4 },
+  weekValue: { ...Typography.mono, color: Colors.textPrimary },
+  weekValueGreen: { color: Colors.primary, fontSize: 15 },
 
-  // 直近シフト
   recentCard: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.surface,
     borderRadius: 16,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOpacity: 0.04,
-    shadowRadius: 4,
-    elevation: 1,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   shiftRow: {
     flexDirection: 'row',
@@ -443,12 +428,12 @@ const styles = StyleSheet.create({
     padding: 14,
   },
   shiftLeft: { flex: 1 },
-  shiftDate: { fontSize: 11, color: '#9ca3af', marginBottom: 2 },
-  shiftEmployer: { fontSize: 15, fontWeight: '600', color: '#111827', marginBottom: 2 },
-  shiftTime: { fontSize: 12, color: '#6b7280' },
+  shiftDate: { fontSize: 11, color: Colors.textMuted, marginBottom: 2 },
+  shiftEmployer: { fontSize: 15, fontWeight: '600', color: Colors.textPrimary, marginBottom: 2 },
+  shiftTime: { fontSize: 12, color: Colors.textSecondary },
   shiftRight: { alignItems: 'flex-end', marginLeft: 12 },
-  shiftNet: { fontSize: 15, fontWeight: '700', color: '#16a34a' },
-  shiftJpy: { fontSize: 11, color: '#9ca3af', marginTop: 2 },
-  rowSep: { height: 1, backgroundColor: '#f9fafb', marginHorizontal: 14 },
-  emptyText: { color: '#9ca3af', textAlign: 'center', padding: 24 },
+  shiftNet: { ...Typography.monoSmall, color: Colors.primary },
+  shiftJpy: { fontSize: 11, color: Colors.textMuted, marginTop: 2 },
+  rowSep: { height: 1, backgroundColor: Colors.borderSubtle, marginHorizontal: 14 },
+  emptyText: { color: Colors.textMuted, textAlign: 'center', padding: 24 },
 });

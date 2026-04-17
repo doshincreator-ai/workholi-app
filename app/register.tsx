@@ -12,6 +12,7 @@ import {
 import { useState } from 'react';
 import { router } from 'expo-router';
 import { useAuthStore } from '../src/store/authStore';
+import { Colors } from '../src/constants/colors';
 
 export default function RegisterScreen() {
   const { register, loading } = useAuthStore();
@@ -116,31 +117,37 @@ function errorMessage(code: string): string {
 }
 
 const styles = StyleSheet.create({
-  flex: { flex: 1, backgroundColor: '#f9fafb' },
+  flex: { flex: 1, backgroundColor: Colors.background },
   container: { flexGrow: 1, justifyContent: 'center', padding: 24 },
   header: { alignItems: 'center', marginBottom: 40 },
-  logo: { fontSize: 36, fontWeight: '800', color: '#16a34a' },
-  subtitle: { fontSize: 16, color: '#6b7280', marginTop: 8 },
-  form: { backgroundColor: '#fff', borderRadius: 20, padding: 24, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 8, elevation: 2 },
-  label: { fontSize: 13, fontWeight: '600', color: '#6b7280', marginBottom: 8 },
+  logo: { fontSize: 36, fontWeight: '800', color: Colors.primary },
+  subtitle: { fontSize: 16, color: Colors.textSecondary, marginTop: 8 },
+  form: {
+    backgroundColor: Colors.surface,
+    borderRadius: 20,
+    padding: 24,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  label: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   input: {
-    backgroundColor: '#f9fafb',
+    backgroundColor: Colors.surfaceElevated,
     borderRadius: 12,
     padding: 14,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
-    color: '#111827',
+    borderColor: Colors.border,
+    color: Colors.textPrimary,
   },
   btn: {
-    backgroundColor: '#16a34a',
+    backgroundColor: Colors.primary,
     borderRadius: 14,
     padding: 16,
     alignItems: 'center',
     marginTop: 24,
   },
-  btnDisabled: { backgroundColor: '#d1d5db' },
-  btnText: { color: '#fff', fontSize: 17, fontWeight: '700' },
+  btnDisabled: { backgroundColor: Colors.textMuted },
+  btnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
   linkBtn: { alignItems: 'center', marginTop: 16 },
-  linkText: { color: '#16a34a', fontSize: 14 },
+  linkText: { color: Colors.primary, fontSize: 14 },
 });

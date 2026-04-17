@@ -16,6 +16,8 @@ import { calcHours, calculateAnnualPAYE } from '../../src/utils/payCalculator';
 import { COUNTRIES } from '../../src/config/countries';
 import { AdBanner } from '../../src/components/AdBanner';
 import { HintBanner } from '../../src/components/HintBanner';
+import { Colors } from '../../src/constants/colors';
+import { Typography } from '../../src/constants/typography';
 
 const MONTHS_JP = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 
@@ -311,81 +313,82 @@ export default function ReportScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   scroll: { padding: 16, paddingBottom: 40 },
 
   totalCard: {
-    backgroundColor: '#16a34a', borderRadius: 20, padding: 20, marginBottom: 20,
+    backgroundColor: Colors.surface, borderRadius: 20, padding: 20, marginBottom: 20,
+    borderWidth: 1, borderColor: Colors.border,
   },
-  totalLabel: { fontSize: 13, color: '#bbf7d0', marginBottom: 4 },
-  totalNet: { fontSize: 34, fontWeight: '800', color: '#fff', marginBottom: 14 },
+  totalLabel: { fontSize: 13, color: Colors.textSecondary, marginBottom: 4 },
+  totalNet: { ...Typography.monoLarge, color: Colors.primary, marginBottom: 14 },
   totalRow: { flexDirection: 'row', justifyContent: 'space-between' },
   totalItem: { alignItems: 'center' },
-  totalItemLabel: { fontSize: 11, color: '#86efac', marginBottom: 2 },
-  totalItemValue: { fontSize: 15, fontWeight: '700', color: '#fff' },
+  totalItemLabel: { fontSize: 11, color: Colors.textMuted, marginBottom: 2 },
+  totalItemValue: { ...Typography.monoSmall, color: Colors.textPrimary },
 
-  sectionTitle: { fontSize: 15, fontWeight: '700', color: '#374151', marginBottom: 8 },
+  sectionTitle: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
 
   taxCard: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 16, marginBottom: 20,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    borderWidth: 1, borderColor: Colors.border,
   },
   taxRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },
-  taxLabel: { fontSize: 14, color: '#6b7280' },
-  taxValue: { fontSize: 14, color: '#374151' },
-  taxTotal: { borderTopWidth: 1, borderTopColor: '#f3f4f6', marginTop: 4, paddingTop: 10 },
-  taxTotalLabel: { fontSize: 15, fontWeight: '700', color: '#111827' },
-  taxTotalValue: { fontSize: 15, fontWeight: '700', color: '#ef4444' },
+  taxLabel: { fontSize: 14, color: Colors.textSecondary },
+  taxValue: { fontSize: 14, color: Colors.textPrimary },
+  taxTotal: { borderTopWidth: 1, borderTopColor: Colors.border, marginTop: 4, paddingTop: 10 },
+  taxTotalLabel: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
+  taxTotalValue: { ...Typography.monoSmall, color: Colors.negative },
 
   chartCard: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 16, marginBottom: 20,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    borderWidth: 1, borderColor: Colors.border,
   },
   chartBars: { flexDirection: 'row', alignItems: 'flex-end', height: 140, gap: 6 },
   barCol: { flex: 1, alignItems: 'center', height: '100%', justifyContent: 'flex-end' },
-  barValue: { fontSize: 9, color: '#9ca3af', marginBottom: 2, textAlign: 'center' },
+  barValue: { fontSize: 9, color: Colors.textMuted, marginBottom: 2, textAlign: 'center' },
   barTrack: { flex: 1, width: '70%', justifyContent: 'flex-end', maxHeight: 100 },
-  barFill: { backgroundColor: '#16a34a', borderRadius: 4, width: '100%' },
-  barLabel: { fontSize: 11, color: '#6b7280', marginTop: 4 },
+  barFill: { backgroundColor: Colors.primary, borderRadius: 4, width: '100%' },
+  barLabel: { fontSize: 11, color: Colors.textSecondary, marginTop: 4 },
 
   tableCard: {
-    backgroundColor: '#fff', borderRadius: 14, overflow: 'hidden', marginBottom: 20,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14, overflow: 'hidden', marginBottom: 20,
+    borderWidth: 1, borderColor: Colors.border,
   },
   tableRow: {
     flexDirection: 'row', justifyContent: 'space-between',
     alignItems: 'center', padding: 14,
   },
-  tableMonth: { fontSize: 15, color: '#374151', fontWeight: '500' },
+  tableMonth: { fontSize: 15, color: Colors.textSecondary, fontWeight: '500' },
   tableRight: { alignItems: 'flex-end' },
-  tableNet: { fontSize: 15, fontWeight: '700', color: '#16a34a' },
-  tableSub: { fontSize: 12, color: '#9ca3af', marginTop: 2 },
-  rowSep: { height: 1, backgroundColor: '#f9fafb', marginHorizontal: 14 },
-  emptyText: { color: '#9ca3af', textAlign: 'center', padding: 24 },
+  tableNet: { ...Typography.monoSmall, color: Colors.primary },
+  tableSub: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
+  rowSep: { height: 1, backgroundColor: Colors.borderSubtle, marginHorizontal: 14 },
+  emptyText: { color: Colors.textMuted, textAlign: 'center', padding: 24 },
 
   refundCard: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 16, marginBottom: 20,
-    borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16, marginBottom: 20,
+    borderWidth: 1, borderColor: Colors.border,
   },
-  refundYear: { fontSize: 13, color: '#9ca3af', marginBottom: 12 },
-  refundEmpty: { fontSize: 14, color: '#9ca3af', textAlign: 'center', paddingVertical: 8 },
+  refundYear: { fontSize: 13, color: Colors.textMuted, marginBottom: 12 },
+  refundEmpty: { fontSize: 14, color: Colors.textMuted, textAlign: 'center', paddingVertical: 8 },
   refundRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 5 },
-  refundLabel: { fontSize: 13, color: '#6b7280' },
-  refundValue: { fontSize: 13, color: '#374151' },
+  refundLabel: { fontSize: 13, color: Colors.textSecondary },
+  refundValue: { fontSize: 13, color: Colors.textPrimary },
   refundResultRow: {
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    borderTopWidth: 1, borderTopColor: '#f3f4f6', marginTop: 6, paddingTop: 10, marginBottom: 10,
+    borderTopWidth: 1, borderTopColor: Colors.border, marginTop: 6, paddingTop: 10, marginBottom: 10,
   },
-  refundResultLabel: { fontSize: 15, fontWeight: '700', color: '#111827' },
+  refundResultLabel: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
   refundResultValue: { fontSize: 20, fontWeight: '800' },
-  refundPositive: { color: '#16a34a' },
-  refundNegative: { color: '#ef4444' },
-  refundNote: { fontSize: 12, color: '#6b7280', lineHeight: 17, marginBottom: 6 },
-  refundDisclaimer: { fontSize: 11, color: '#d1d5db', lineHeight: 15 },
+  refundPositive: { color: Colors.positive },
+  refundNegative: { color: Colors.negative },
+  refundNote: { fontSize: 12, color: Colors.textSecondary, lineHeight: 17, marginBottom: 6 },
+  refundDisclaimer: { fontSize: 11, color: Colors.textMuted, lineHeight: 15 },
 
   exportBtn: {
-    backgroundColor: '#fff', borderRadius: 14, padding: 16,
-    alignItems: 'center', borderWidth: 1, borderColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderRadius: 14, padding: 16,
+    alignItems: 'center', borderWidth: 1, borderColor: Colors.border,
   },
-  exportBtnText: { fontSize: 16, fontWeight: '600', color: '#374151' },
+  exportBtnText: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
 });

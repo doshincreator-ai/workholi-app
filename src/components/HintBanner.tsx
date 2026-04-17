@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../constants/colors';
 
 interface Props {
   hintKey: string;
@@ -47,10 +48,10 @@ export function HintBanner({ hintKey, message }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity, transform: [{ translateY }] }]}>
-      <Ionicons name="bulb-outline" size={16} color="#16a34a" style={styles.icon} />
+      <Ionicons name="bulb-outline" size={16} color={Colors.primary} style={styles.icon} />
       <Text style={styles.message}>{message}</Text>
       <Pressable onPress={dismiss} hitSlop={8}>
-        <Ionicons name="close" size={16} color="#6b7280" />
+        <Ionicons name="close" size={16} color={Colors.textMuted} />
       </Pressable>
     </Animated.View>
   );
@@ -60,9 +61,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f0fdf4',
+    backgroundColor: Colors.primarySubtle,
     borderBottomWidth: 1,
-    borderBottomColor: '#bbf7d0',
+    borderBottomColor: Colors.primaryMuted,
     paddingHorizontal: 14,
     paddingVertical: 10,
     gap: 8,
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   message: {
     flex: 1,
     fontSize: 13,
-    color: '#166534',
+    color: Colors.primary,
     lineHeight: 18,
   },
 });
