@@ -37,7 +37,7 @@ export function CountrySwitcher() {
                     }}
                   >
                     <Text style={styles.itemFlag}>{item.flag}</Text>
-                    <View style={{ flex: 1 }}>
+                    <View style={styles.itemContent}>
                       <Text style={[styles.itemName, active && styles.itemNameActive]}>
                         {item.name}
                       </Text>
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
   },
   itemActive: { backgroundColor: Colors.primarySubtle },
+  itemContent: { flex: 1 },
   itemFlag: { fontSize: 26 },
   itemName: { fontSize: 15, fontWeight: '600', color: Colors.textSecondary },
   itemNameActive: { color: Colors.primary },

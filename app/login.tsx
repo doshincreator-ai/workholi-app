@@ -12,6 +12,7 @@ import {
 import { useState } from 'react';
 import { router } from 'expo-router';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 import { auth } from '../src/lib/firebase';
 import { useAuthStore } from '../src/store/authStore';
 import { Colors } from '../src/constants/colors';
@@ -42,8 +43,9 @@ export default function LoginScreen() {
     }
     try {
       await login(email.trim(), password);
-    } catch (e: any) {
-      Alert.alert('ログイン失敗', errorMessage(e.code));
+    } catch (error) {
+      const code = error instanceof FirebaseError ? error.code : 'unknown';
+      Alert.alert('ログイン失敗', errorMessage(code));
     }
   }
 
