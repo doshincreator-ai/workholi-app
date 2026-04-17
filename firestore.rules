@@ -108,6 +108,20 @@ service cloud.firestore {
         && request.resource.data.userId == request.auth.uid;
     }
 
+    // ── ソーシャル週次統計（フレンド限定） ───────────────────
+    // パス: users/{uid}/social/weeklyStats
+    // currentWeekNetPay, currentWeekStart, incomeRankingOptOut を保持
+    match /users/{uid}/social/{docId} {
+      // 本人またはフレンドのみ読める（週次収入はフレンド以外に非公開）
+      allow read: if request.auth != null && (
+        request.auth.uid == uid
+        || exists(/databases/$(database)/documents/friendships/$(uid + '_' + request.auth.uid))
+        || exists(/databases/$(database)/documents/friendships/$(request.auth.uid + '_' + uid))
+      );
+      // 書き込みは本人のみ
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+
     // ── アクティビティフィード ────────────────────────────────
     match /activities/{activityId} {
       // 本人、またはフレンドのアクティビティのみ読める

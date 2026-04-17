@@ -15,7 +15,8 @@ import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useSettingsStore } from '../../src/store/settingsStore';
 import { useAuthStore } from '../../src/store/authStore';
-import { getUserProfile, updateRankingOptOut } from '../../src/lib/userService';
+import { getUserProfile } from '../../src/lib/userService';
+import { getMyWeeklyStats, updateRankingOptOut } from '../../src/lib/socialService';
 import { COUNTRIES } from '../../src/config/countries';
 import { Colors } from '../../src/constants/colors';
 
@@ -52,10 +53,8 @@ export default function SettingsScreen() {
 
   useEffect(() => {
     if (user) {
-      getUserProfile(user.uid).then((p) => {
-        setTickets(p?.tickets ?? 0);
-        setRankingOptOut(p?.incomeRankingOptOut ?? false);
-      }).catch(() => {});
+      getUserProfile(user.uid).then((p) => setTickets(p?.tickets ?? 0)).catch(() => {});
+      getMyWeeklyStats(user.uid).then((s) => setRankingOptOut(s?.incomeRankingOptOut ?? false)).catch(() => {});
     }
   }, [user]);
 

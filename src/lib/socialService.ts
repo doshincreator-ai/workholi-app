@@ -7,13 +7,13 @@ import {
   orderBy,
   limit,
   onSnapshot,
-  updateDoc,
+  setDoc,
   getDoc,
   serverTimestamp,
+  Timestamp,
   type Unsubscribe,
 } from 'firebase/firestore';
 import { db } from './firebase';
-import type { UserProfile } from './userService';
 import type { BadgeId } from '../db/badges';
 
 export type ActivityType = 'shift' | 'badge_earned' | 'badge_shared';
@@ -26,7 +26,7 @@ export interface ActivityItem {
   badgeId?: BadgeId;
   badgeEmoji?: string;
   badgeName?: string;
-  createdAt: any;
+  createdAt: Timestamp | null;
 }
 
 export interface RankingEntry {
@@ -36,13 +36,26 @@ export interface RankingEntry {
   isMe: boolean;
 }
 
+interface WeeklyStats {
+  currentWeekNetPay: number;
+  currentWeekStart: string;
+  incomeRankingOptOut: boolean;
+}
+
+function weeklyStatsDoc(uid: string) {
+  return doc(db, 'users', uid, 'social', 'weeklyStats');
+}
+
 export function getWeekStart(): string {
   const d = new Date();
   const day = d.getDay();
   const diff = d.getDate() - day + (day === 0 ? -6 : 1);
   const monday = new Date(d);
   monday.setDate(diff);
-  return monday.toISOString().slice(0, 10);
+  const y = monday.getFullYear();
+  const m = String(monday.getMonth() + 1).padStart(2, '0');
+  const dd = String(monday.getDate()).padStart(2, '0');
+  return `${y}-${m}-${dd}`;
 }
 
 export async function postActivity(
@@ -77,23 +90,40 @@ export function subscribeToFriendFeed(
     orderBy('createdAt', 'desc'),
     limit(30),
   );
-  return onSnapshot(q, (snap) => {
-    const items: ActivityItem[] = snap.docs.map((d) => ({
-      id: d.id,
-      ...(d.data() as Omit<ActivityItem, 'id'>),
-    }));
-    onUpdate(items);
-  });
+  return onSnapshot(
+    q,
+    (snap) => {
+      const items: ActivityItem[] = snap.docs.map((d) => ({
+        id: d.id,
+        ...(d.data() as Omit<ActivityItem, 'id'>),
+      }));
+      onUpdate(items);
+    },
+    (error) => {
+      console.error('[Feed] onSnapshot error:', error);
+      onUpdate([]);
+    },
+  );
 }
 
 export async function refreshMyWeeklyStats(
   uid: string,
   weeklyNetPay: number,
 ): Promise<void> {
-  await updateDoc(doc(db, 'users', uid), {
-    currentWeekNetPay: weeklyNetPay,
-    currentWeekStart: getWeekStart(),
-  });
+  await setDoc(
+    weeklyStatsDoc(uid),
+    { currentWeekNetPay: weeklyNetPay, currentWeekStart: getWeekStart() },
+    { merge: true },
+  );
+}
+
+export async function updateRankingOptOut(uid: string, optOut: boolean): Promise<void> {
+  await setDoc(weeklyStatsDoc(uid), { incomeRankingOptOut: optOut }, { merge: true });
+}
+
+export async function getMyWeeklyStats(uid: string): Promise<WeeklyStats | null> {
+  const snap = await getDoc(weeklyStatsDoc(uid));
+  return snap.exists() ? (snap.data() as WeeklyStats) : null;
 }
 
 export async function getFriendRankings(
@@ -107,16 +137,19 @@ export async function getFriendRankings(
     { uid: myUid, displayName: myDisplayName, weeklyNetPay: myWeeklyNetPay, isMe: true },
   ];
 
-  const profileSnaps = await Promise.all(
-    friends.map((f) => getDoc(doc(db, 'users', f.uid))),
+  const statsSnaps = await Promise.all(
+    friends.map((f) => getDoc(weeklyStatsDoc(f.uid))),
   );
 
   for (let i = 0; i < friends.length; i++) {
-    const snap = profileSnaps[i];
-    if (!snap.exists()) continue;
-    const p = snap.data() as UserProfile;
-    if (p.incomeRankingOptOut) continue;
-    const pay = p.currentWeekStart === weekStart ? (p.currentWeekNetPay ?? 0) : 0;
+    const snap = statsSnaps[i];
+    if (!snap.exists()) {
+      entries.push({ uid: friends[i].uid, displayName: friends[i].displayName, weeklyNetPay: 0, isMe: false });
+      continue;
+    }
+    const stats = snap.data() as WeeklyStats;
+    if (stats.incomeRankingOptOut) continue;
+    const pay = stats.currentWeekStart === weekStart ? (stats.currentWeekNetPay ?? 0) : 0;
     entries.push({
       uid: friends[i].uid,
       displayName: friends[i].displayName,
