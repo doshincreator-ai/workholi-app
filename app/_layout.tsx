@@ -8,12 +8,14 @@ import { useSettingsStore } from '../src/store/settingsStore';
 import { useEmployerStore } from '../src/store/employerStore';
 import { useShiftStore } from '../src/store/shiftStore';
 import { useAuthStore } from '../src/store/authStore';
+import { useGoalStore } from '../src/store/goalStore';
 import { recordWorker, toCompanyId } from '../src/lib/firestoreService';
 
 export default function RootLayout() {
   const loadSettings = useSettingsStore((s) => s.load);
   const loadEmployers = useEmployerStore((s) => s.load);
   const loadShifts = useShiftStore((s) => s.load);
+  const loadGoals = useGoalStore((s) => s.load);
   const { user, initialized, init } = useAuthStore();
   const segments = useSegments();
 
@@ -23,6 +25,7 @@ export default function RootLayout() {
     loadSettings();
     loadEmployers();
     loadShifts();
+    loadGoals();
     return unsubscribe;
   }, []);
 
