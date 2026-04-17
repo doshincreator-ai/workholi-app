@@ -217,8 +217,8 @@ const styles = StyleSheet.create({
     flex: 1, textAlign: 'center', fontSize: 12,
     fontWeight: '600', color: Colors.textSecondary, paddingVertical: 8,
   },
-  sat: { color: '#60a5fa' },
-  sun: { color: '#f87171' },
+  sat: { color: Colors.saturdayText },
+  sun: { color: Colors.sundayText },
 
   grid: {
     flexDirection: 'row', flexWrap: 'wrap',
@@ -238,8 +238,8 @@ const styles = StyleSheet.create({
   todayCircle: { backgroundColor: Colors.primary },
   dayNum: { fontSize: 14, color: Colors.textSecondary, fontWeight: '500' },
   todayNum: { color: Colors.textInverse, fontWeight: '700' },
-  satNum: { color: '#60a5fa' },
-  sunNum: { color: '#f87171' },
+  satNum: { color: Colors.saturdayText },
+  sunNum: { color: Colors.sundayText },
   selectedNum: { fontWeight: '700' },
   checkIcon: { marginTop: 2 },
 

@@ -334,8 +334,8 @@ const styles = StyleSheet.create({
     fontSize: 12, fontWeight: '600', color: Colors.textMuted,
     paddingVertical: 8,
   },
-  sat: { color: '#2563eb' },
-  sun: { color: '#dc2626' },
+  sat: { color: Colors.saturdayText },
+  sun: { color: Colors.sundayText },
 
   grid: {
     flexDirection: 'row',
@@ -362,8 +362,8 @@ const styles = StyleSheet.create({
   todayCircle: { backgroundColor: Colors.primary },
   dayNum: { fontSize: 13, color: Colors.textSecondary, fontWeight: '500' },
   todayNum: { color: Colors.textInverse, fontWeight: '700' },
-  satNum: { color: '#2563eb' },
-  sunNum: { color: '#dc2626' },
+  satNum: { color: Colors.saturdayText },
+  sunNum: { color: Colors.sundayText },
 
   holidayNum: { color: Colors.warning },
   holidayDot: { fontSize: 7, color: Colors.warning, lineHeight: 9 },

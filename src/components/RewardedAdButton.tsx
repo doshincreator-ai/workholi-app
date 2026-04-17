@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Pressable, Text, StyleSheet, ActivityIndicator, Platform } from 'react-native';
 import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads';
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../constants/colors';
 
 const AD_UNIT_ID = __DEV__
   ? TestIds.REWARDED
@@ -53,9 +54,9 @@ export function RewardedAdButton({ onRewarded }: Props) {
       disabled={!loaded}
     >
       {loading ? (
-        <ActivityIndicator size="small" color="#16a34a" />
+        <ActivityIndicator size="small" color={Colors.primary} />
       ) : (
-        <Ionicons name="play-circle-outline" size={18} color={loaded ? '#16a34a' : '#9ca3af'} />
+        <Ionicons name="play-circle-outline" size={18} color={loaded ? Colors.primary : Colors.textSecondary} />
       )}
       <Text style={[styles.text, !loaded && styles.textDisabled]}>
         {loaded ? '広告を見てチケット+1' : '広告を読み込み中...'}
@@ -67,11 +68,11 @@ export function RewardedAdButton({ onRewarded }: Props) {
 const styles = StyleSheet.create({
   btn: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
-    borderWidth: 1, borderColor: '#16a34a', borderRadius: 12,
+    borderWidth: 1, borderColor: Colors.primary, borderRadius: 12,
     paddingHorizontal: 16, paddingVertical: 12,
-    backgroundColor: '#f0fdf4',
+    backgroundColor: Colors.primarySubtle,
   },
-  btnDisabled: { borderColor: '#e5e7eb', backgroundColor: '#f9fafb' },
-  text: { fontSize: 14, fontWeight: '600', color: '#16a34a' },
-  textDisabled: { color: '#9ca3af' },
+  btnDisabled: { borderColor: Colors.border, backgroundColor: Colors.surface },
+  text: { fontSize: 14, fontWeight: '600', color: Colors.primary },
+  textDisabled: { color: Colors.textSecondary },
 });

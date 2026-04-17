@@ -2,13 +2,14 @@ import { View, Text, ScrollView, StyleSheet, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../src/constants/colors';
 
 export default function PrivacyPolicyScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Pressable onPress={() => router.back()} style={styles.backBtn}>
-          <Ionicons name="chevron-back" size={24} color="#16a34a" />
+          <Ionicons name="chevron-back" size={24} color={Colors.primary} />
         </Pressable>
         <Text style={styles.headerTitle}>プライバシーポリシー</Text>
         <View style={{ width: 36 }} />
@@ -70,16 +71,16 @@ export default function PrivacyPolicyScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f9fafb' },
+  container: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     paddingHorizontal: 12, paddingVertical: 10,
-    backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#e5e7eb',
+    backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   backBtn: { padding: 6 },
-  headerTitle: { fontSize: 17, fontWeight: '700', color: '#111827' },
+  headerTitle: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
   content: { padding: 20, paddingBottom: 40 },
-  updated: { fontSize: 12, color: '#9ca3af', marginBottom: 20 },
-  section: { fontSize: 15, fontWeight: '700', color: '#111827', marginTop: 20, marginBottom: 8 },
-  body: { fontSize: 14, color: '#374151', lineHeight: 22 },
+  updated: { fontSize: 12, color: Colors.textMuted, marginBottom: 20 },
+  section: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary, marginTop: 20, marginBottom: 8 },
+  body: { fontSize: 14, color: Colors.textSecondary, lineHeight: 22 },
 });

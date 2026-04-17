@@ -1,0 +1,38 @@
+{
+  "id": "7a",
+  "title": "デザイン統一 — 高優先度クリティカル修正",
+  "overview": "design-audit.md で発見されたダークテーマと完全乖離している箇所を修正する。ユーザーが目視で違和感を覚える箇所に絞り、まずクリティカルな3点を解消する。",
+  "features": [
+    {
+      "id": "F7a-1",
+      "name": "privacy.tsx / terms.tsx のダークテーマ対応",
+      "description": "ライトモード専用カラーの直書きを全て colors.ts のトークンに置換する。背景・テキスト・ボーダーの全色をトークン経由にする",
+      "priority": "high"
+    },
+    {
+      "id": "F7a-2",
+      "name": "RewardedAdButton.tsx のカラートークン適用",
+      "description": "Colors.* を一切使用していない状態を解消する。コンポーネント内の全色指定を colors.ts トークンに置換する",
+      "priority": "high"
+    },
+    {
+      "id": "F7a-3",
+      "name": "土曜・日曜カラーの統一",
+      "description": "shifts/index.tsx と CopyShiftModal.tsx で不一致になっている土曜・日曜の強調色を colors.ts に定数として定義し、両ファイルで同じトークンを参照するようにする",
+      "priority": "high"
+    }
+  ],
+  "acceptance_criteria": [
+    "privacy.tsx と terms.tsx をダークテーマで開いたとき、背景・テキストが他画面と統一されている",
+    "RewardedAdButton.tsx 内に色の直書きが0件である",
+    "shifts/index.tsx と CopyShiftModal.tsx の土曜カラーが同一トークンを参照している",
+    "shifts/index.tsx と CopyShiftModal.tsx の日曜カラーが同一トークンを参照している",
+    "tsc --noEmit がクリーンである"
+  ],
+  "out_of_scope": [
+    "borderRadius・paddingの統一（Sprint 7b）",
+    "直書き色42件・fontSize88件の全置換（Sprint 7c）",
+    "新規UIの追加"
+  ],
+  "estimated_days": 2
+}
