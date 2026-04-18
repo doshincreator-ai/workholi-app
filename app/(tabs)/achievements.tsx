@@ -17,7 +17,7 @@ import { BADGE_DEFS } from '../../src/db/badges';
 import { postActivity } from '../../src/lib/socialService';
 import type { Settings } from '../../src/types';
 import { Colors } from '../../src/constants/colors';
-import { Typography } from '../../src/constants/typography';
+import { Typography, FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 
 const DOW_LABELS = ['日', '月', '火', '水', '木', '金', '土'];
@@ -201,9 +201,9 @@ const paydayStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  cardTitle: { fontSize: 16, fontWeight: '800', color: Colors.textPrimary, marginBottom: 6 },
-  employers: { fontSize: 12, color: Colors.textMuted, marginBottom: 12 },
-  label: { fontSize: 12, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8, marginTop: 4 },
+  cardTitle: { fontSize: FontSize.lg, fontWeight: '800', color: Colors.textPrimary, marginBottom: 6 },
+  employers: { fontSize: FontSize.sm, color: Colors.textMuted, marginBottom: 12 },
+  label: { fontSize: FontSize.sm, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8, marginTop: 4 },
   typeRow: { flexDirection: 'row', gap: 6, marginBottom: 12 },
   typeBtn: {
     flex: 1,
@@ -215,7 +215,7 @@ const paydayStyles = StyleSheet.create({
     borderColor: Colors.border,
   },
   typeBtnActive: { backgroundColor: Colors.primarySubtle, borderColor: Colors.primary },
-  typeBtnText: { fontSize: 12, color: Colors.textMuted, fontWeight: '600' },
+  typeBtnText: { fontSize: FontSize.sm, color: Colors.textMuted, fontWeight: '600' },
   typeBtnTextActive: { color: Colors.primary },
   dowRow: { flexDirection: 'row', gap: 8, marginBottom: 12 },
   dowBtn: {
@@ -229,7 +229,7 @@ const paydayStyles = StyleSheet.create({
     borderColor: Colors.border,
   },
   dowBtnActive: { backgroundColor: Colors.primarySubtle, borderColor: Colors.primary },
-  dowText: { fontSize: 14, color: Colors.textMuted, fontWeight: '600' },
+  dowText: { fontSize: FontSize.md, color: Colors.textMuted, fontWeight: '600' },
   dowTextActive: { color: Colors.primary },
   dayGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12 },
   dayBtn: {
@@ -241,7 +241,7 @@ const paydayStyles = StyleSheet.create({
     borderColor: Colors.border,
   },
   dayBtnActive: { backgroundColor: Colors.primarySubtle, borderColor: Colors.primary },
-  dayText: { fontSize: 13, color: Colors.textMuted, fontWeight: '600' },
+  dayText: { fontSize: FontSize.sm, color: Colors.textMuted, fontWeight: '600' },
   dayTextActive: { color: Colors.primary },
   countdownBox: {
     backgroundColor: Colors.background,
@@ -250,13 +250,13 @@ const paydayStyles = StyleSheet.create({
     marginTop: 8,
     alignItems: 'center',
   },
-  nextLabel: { fontSize: 12, color: Colors.textSecondary, marginBottom: 10 },
+  nextLabel: { fontSize: FontSize.sm, color: Colors.textSecondary, marginBottom: 10 },
   countdownRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   countUnit: { alignItems: 'center' },
   countNum: { ...Typography.h2, color: Colors.primary },
-  countUnitLabel: { fontSize: 11, color: Colors.textMuted, marginTop: 2 },
+  countUnitLabel: { fontSize: FontSize.xs, color: Colors.textMuted, marginTop: 2 },
   countSep: { ...Typography.h3, color: Colors.textMuted, marginBottom: 14 },
-  hint: { fontSize: 13, color: Colors.textMuted, textAlign: 'center', marginTop: 8 },
+  hint: { fontSize: FontSize.sm, color: Colors.textMuted, textAlign: 'center', marginTop: 8 },
 });
 
 // ── AchievementsScreen ────────────────────────────────────────
@@ -346,7 +346,7 @@ const badgeStyles = StyleSheet.create({
   streakEmoji: { fontSize: 32 },
   streakInfo: { flex: 1 },
   streakNum: { ...Typography.h3, color: Colors.primary },
-  streakSub: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
+  streakSub: { fontSize: FontSize.sm, color: Colors.textSecondary, marginTop: 2 },
   badgeLabel: { marginTop: 4 },
   grid: {
     flexDirection: 'row',
@@ -366,15 +366,15 @@ const badgeStyles = StyleSheet.create({
   badgeLocked: { borderColor: Colors.border, opacity: 0.5 },
   badgeEmoji: { fontSize: 28, marginBottom: 4 },
   badgeEmojiLocked: { opacity: 0.4 },
-  badgeName: { fontSize: 11, fontWeight: '700', color: Colors.textPrimary, textAlign: 'center', marginBottom: 2 },
+  badgeName: { fontSize: FontSize.xs, fontWeight: '700', color: Colors.textPrimary, textAlign: 'center', marginBottom: 2 },
   badgeNameLocked: { color: Colors.textMuted },
-  badgeDesc: { fontSize: 10, color: Colors.textMuted, textAlign: 'center', lineHeight: 13 },
-  hint: { fontSize: 11, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
+  badgeDesc: { fontSize: FontSize.xs, color: Colors.textMuted, textAlign: 'center', lineHeight: 13 },
+  hint: { fontSize: FontSize.xs, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
   shareBtn: {
     marginTop: 6, paddingHorizontal: 8, paddingVertical: 3,
     borderRadius: Spacing.radius.sm, borderWidth: 1, borderColor: Colors.primary,
   },
-  shareBtnText: { fontSize: 10, color: Colors.primary, fontWeight: '600' },
+  shareBtnText: { fontSize: FontSize.xs, color: Colors.primary, fontWeight: '600' },
 });
 
 // ── AchievementsScreen ────────────────────────────────────────
@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  title: { fontSize: 20, fontWeight: '800', color: Colors.textPrimary },
+  title: { fontSize: FontSize.xl, fontWeight: '800', color: Colors.textPrimary },
   scroll: { padding: Spacing.padding.md, paddingBottom: 32 },
-  sectionLabel: { fontSize: 14, fontWeight: '700', color: Colors.textPrimary, marginBottom: 10 },
+  sectionLabel: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary, marginBottom: 10 },
 });

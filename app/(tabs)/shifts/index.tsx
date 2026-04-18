@@ -21,6 +21,7 @@ import { COUNTRIES } from '../../../src/config/countries';
 import type { Shift } from '../../../src/types';
 import { HintBanner } from '../../../src/components/HintBanner';
 import { Colors } from '../../../src/constants/colors';
+import { FontSize } from '../../../src/constants/typography';
 import { Spacing } from '../../../src/constants/spacing';
 
 const WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日'];
@@ -315,14 +316,14 @@ const styles = StyleSheet.create({
   monthNav: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   monthCenter: { alignItems: 'center', minWidth: 110 },
   navBtn: { padding: 6 },
-  monthLabel: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary, textAlign: 'center' },
-  monthNetLabel: { fontSize: 11, color: Colors.primary, fontWeight: '600', marginTop: 1 },
+  monthLabel: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary, textAlign: 'center' },
+  monthNetLabel: { fontSize: FontSize.xs, color: Colors.primary, fontWeight: '600', marginTop: 1 },
   addBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
     backgroundColor: Colors.primary, borderRadius: Spacing.radius.lg,
     paddingHorizontal: 14, paddingVertical: 8,
   },
-  addBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 14 },
+  addBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: FontSize.md },
 
   weekdayRow: {
     flexDirection: 'row',
@@ -332,7 +333,7 @@ const styles = StyleSheet.create({
   },
   weekdayLabel: {
     flex: 1, textAlign: 'center',
-    fontSize: 12, fontWeight: '600', color: Colors.textMuted,
+    fontSize: FontSize.sm, fontWeight: '600', color: Colors.textMuted,
     paddingVertical: 8,
   },
   sat: { color: Colors.saturdayText },
@@ -361,7 +362,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
   },
   todayCircle: { backgroundColor: Colors.primary },
-  dayNum: { fontSize: 13, color: Colors.textSecondary, fontWeight: '500' },
+  dayNum: { fontSize: FontSize.sm, color: Colors.textSecondary, fontWeight: '500' },
   todayNum: { color: Colors.textInverse, fontWeight: '700' },
   satNum: { color: Colors.saturdayText },
   sunNum: { color: Colors.sundayText },
@@ -378,9 +379,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center',
     justifyContent: 'space-between', marginBottom: 10,
   },
-  detailDate: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
-  holidayName: { fontSize: 11, color: Colors.warning, marginTop: 2 },
-  detailCount: { fontSize: 13, color: Colors.textMuted },
+  detailDate: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
+  holidayName: { fontSize: FontSize.xs, color: Colors.warning, marginTop: 2 },
+  detailCount: { fontSize: FontSize.sm, color: Colors.textMuted },
 
   shiftList: { gap: 8 },
   shiftCard: {
@@ -395,21 +396,21 @@ const styles = StyleSheet.create({
   shiftAccent: { width: 5, alignSelf: 'stretch' },
   shiftCardBody: { flex: 1, padding: 12 },
   shiftCardTop: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
-  shiftCardEmployer: { fontSize: 15, fontWeight: '600', color: Colors.textPrimary },
-  shiftCardNet: { fontSize: 15, fontWeight: '700', color: Colors.primary },
+  shiftCardEmployer: { fontSize: FontSize.md, fontWeight: '600', color: Colors.textPrimary },
+  shiftCardNet: { fontSize: FontSize.md, fontWeight: '700', color: Colors.primary },
   shiftCardBottom: { flexDirection: 'row', justifyContent: 'space-between' },
-  shiftCardTime: { fontSize: 12, color: Colors.textMuted },
-  shiftCardJpy: { fontSize: 12, color: Colors.textSecondary },
+  shiftCardTime: { fontSize: FontSize.sm, color: Colors.textMuted },
+  shiftCardJpy: { fontSize: FontSize.sm, color: Colors.textSecondary },
   copyIconBtn: { alignItems: 'center', paddingHorizontal: 10, paddingVertical: 12 },
-  copyIconLabel: { fontSize: 10, color: Colors.textMuted, marginTop: 2 },
-  copyHint: { fontSize: 11, color: Colors.textSecondary, marginBottom: 8, textAlign: 'center' },
+  copyIconLabel: { fontSize: FontSize.xs, color: Colors.textMuted, marginTop: 2 },
+  copyHint: { fontSize: FontSize.xs, color: Colors.textSecondary, marginBottom: 8, textAlign: 'center' },
   deleteIconBtn: { padding: 12 },
 
   emptyDay: { alignItems: 'center', paddingVertical: 20, gap: 10 },
-  emptyDayText: { fontSize: 14, color: Colors.textSecondary },
+  emptyDayText: { fontSize: FontSize.md, color: Colors.textSecondary },
   addDayBtn: {
     borderWidth: 1, borderColor: Colors.primary, borderRadius: Spacing.radius.sm,
     paddingHorizontal: Spacing.padding.md, paddingVertical: 8,
   },
-  addDayBtnText: { color: Colors.primary, fontWeight: '600', fontSize: 14 },
+  addDayBtnText: { color: Colors.primary, fontWeight: '600', fontSize: FontSize.md },
 });

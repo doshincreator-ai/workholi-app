@@ -25,3 +25,15 @@ export const Typography = {
   mono: { fontSize: 16, fontWeight: '600' as const, fontFamily: MONO_FONT },
   monoSmall: { fontSize: 13, fontWeight: '500' as const, fontFamily: MONO_FONT },
 } as const;
+
+export const FontSize = {
+  xs: 11,       // caption / tiny labels
+  sm: 13,       // small body
+  md: 15,       // standard body (Note: existing body=14 is rounded up)
+  lg: 17,       // large body / h4
+  xl: 20,       // h3 / section headers
+  xxl: 24,      // h2
+  hero: 32,     // h1 / display numbers
+  display: 36,  // logo / large amounts
+  giant: 48,    // very large display (goal amounts)
+} as const;

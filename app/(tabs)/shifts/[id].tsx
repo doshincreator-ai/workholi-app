@@ -3,6 +3,7 @@ import { View, Text, Pressable, StyleSheet, Alert } from 'react-native';
 import { useShiftStore } from '../../../src/store/shiftStore';
 import { ShiftForm } from '../../../src/components/ShiftForm';
 import { Colors } from '../../../src/constants/colors';
+import { FontSize } from '../../../src/constants/typography';
 import { Spacing } from '../../../src/constants/spacing';
 
 export default function EditShiftScreen() {
@@ -45,7 +46,7 @@ export default function EditShiftScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   notFound: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  notFoundText: { color: Colors.textSecondary, fontSize: 16 },
+  notFoundText: { color: Colors.textSecondary, fontSize: FontSize.lg },
   deleteBtn: {
     marginHorizontal: 16,
     marginBottom: 32,
@@ -56,5 +57,5 @@ const styles = StyleSheet.create({
     borderColor: Colors.primaryMuted,
     backgroundColor: Colors.primarySubtle,
   },
-  deleteBtnText: { color: Colors.negative, fontWeight: '600', fontSize: 15 },
+  deleteBtnText: { color: Colors.negative, fontWeight: '600', fontSize: FontSize.md },
 });

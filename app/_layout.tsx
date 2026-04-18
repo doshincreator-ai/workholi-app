@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Stack, router, useSegments } from 'expo-router';
 import { View, ActivityIndicator } from 'react-native';
 import { ShiftToast } from '../src/components/ShiftToast';
+import { Colors } from '../src/constants/colors';
 import { initDatabase } from '../src/db/database';
 import { useSettingsStore } from '../src/store/settingsStore';
 import { useEmployerStore } from '../src/store/employerStore';
@@ -61,8 +62,8 @@ export default function RootLayout() {
 
   if (!initialized) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#0e1117' }}>
-        <ActivityIndicator size="large" color="#39d98a" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.background }}>
+        <ActivityIndicator size="large" color={Colors.primary} />
       </View>
     );
   }
@@ -82,8 +83,8 @@ export default function RootLayout() {
         options={{
           headerShown: true,
           title: '企業詳細',
-          headerStyle: { backgroundColor: '#12151f' },
-          headerTintColor: '#ffffff',
+          headerStyle: { backgroundColor: Colors.headerBackground },
+          headerTintColor: Colors.headerTint,
           headerTitleStyle: { fontWeight: 'bold' },
         }}
       />

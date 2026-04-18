@@ -18,6 +18,7 @@ import { calculatePay, calculatePayAU, calcHours } from '../utils/payCalculator'
 import { COUNTRIES } from '../config/countries';
 import type { Employer } from '../types';
 import { Colors } from '../constants/colors';
+import { FontSize } from '../constants/typography';
 import { Spacing } from '../constants/spacing';
 
 interface Props {
@@ -251,12 +252,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  title: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary },
+  title: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
   closeBtn: { padding: 4 },
   scroll: { padding: 16, paddingBottom: 40 },
 
   sectionLabel: {
-    fontSize: 12, fontWeight: '700', color: Colors.textSecondary,
+    fontSize: FontSize.sm, fontWeight: '700', color: Colors.textSecondary,
     textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 10,
   },
 
@@ -271,18 +272,18 @@ const styles = StyleSheet.create({
     width: 40, height: 40, borderRadius: Spacing.radius.lg,
     backgroundColor: Colors.primarySubtle, alignItems: 'center', justifyContent: 'center',
   },
-  employerIconText: { fontSize: 16, fontWeight: '700', color: Colors.primary },
+  employerIconText: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.primary },
   employerInfo: { flex: 1 },
-  employerName: { fontSize: 15, fontWeight: '600', color: Colors.textPrimary, marginBottom: 2 },
+  employerName: { fontSize: FontSize.md, fontWeight: '600', color: Colors.textPrimary, marginBottom: 2 },
   employerNameSelected: { color: Colors.primary },
-  employerDefault: { fontSize: 12, color: Colors.textMuted },
+  employerDefault: { fontSize: FontSize.sm, color: Colors.textMuted },
 
   timeCard: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     borderWidth: 1, borderColor: Colors.border, gap: 16,
   },
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
-  timeSep: { fontSize: 20, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
+  timeSep: { fontSize: FontSize.xl, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
   breakRow: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   breakLabel: { fontSize: 13, color: Colors.textSecondary, marginRight: 4 },
   breakBtn: {

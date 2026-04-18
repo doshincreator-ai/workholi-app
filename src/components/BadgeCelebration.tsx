@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 2,
     borderColor: Colors.primary,
-    shadowColor: '#000',
+    shadowColor: Colors.shadow,
     shadowOpacity: 0.4,
     shadowRadius: 16,
     elevation: 12,

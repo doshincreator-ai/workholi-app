@@ -1,0 +1,38 @@
+{
+  "id": "7c",
+  "title": "デザイン統一 — 直書き色42件・fontSize88件の全トークン化",
+  "overview": "design-audit.md で発覚した残りの直書き色42件とfontSize88件を全てトークン参照に置換する。これによりデザインシステムが完全に一元管理された状態になる。",
+  "features": [
+    {
+      "id": "F7c-1",
+      "name": "直書き色42件のトークン化",
+      "description": "9ファイルに散在する直書き色（#ffffff, #000000, rgba等）を Colors.ts のトークンに置換する。Colors.ts に未定義のトークンが必要な場合は追加してから置換する。ダークテーマで正しく表示されることを優先する",
+      "priority": "high"
+    },
+    {
+      "id": "F7c-2",
+      "name": "typography.ts の定義確認・拡充",
+      "description": "src/constants/typography.ts が存在しない場合は新規作成する。fontSize スケール: xs=11 / sm=13 / md=15 / lg=17 / xl=20 / xxl=24 / hero=32 を定義する。fontWeight も定義する",
+      "priority": "high"
+    },
+    {
+      "id": "F7c-3",
+      "name": "直書き fontSize88件のトークン化",
+      "description": "18ファイルに散在する fontSize 直書きを typography.ts のトークンに置換する。最も近いスケール値に丸める。lineHeight の直書きも同様に対応する",
+      "priority": "high"
+    }
+  ],
+  "acceptance_criteria": [
+    "src/constants/typography.ts が存在しfontSizeスケールが定義されている",
+    "design-audit.md 記載の9ファイルで色の直書きが0件である",
+    "design-audit.md 記載の18ファイルでfontSizeの直書きが0件である",
+    "ダークテーマで全画面のテキストが読める（コントラスト比 4.5:1 以上）",
+    "tsc --noEmit がクリーンである"
+  ],
+  "out_of_scope": [
+    "design-audit.md 対象外ファイルの直書き",
+    "アイコンサイズ・lineHeightの完全統一",
+    "ライトモード対応"
+  ],
+  "estimated_days": 3
+}

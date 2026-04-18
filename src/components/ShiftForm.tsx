@@ -17,6 +17,7 @@ import { useSettingsStore } from '../store/settingsStore';
 import { calculatePay, calculatePayAU, calcHours, calcNightShiftHours, calcOvertimeExtra } from '../utils/payCalculator';
 import { COUNTRIES } from '../config/countries';
 import { Colors } from '../constants/colors';
+import { FontSize } from '../constants/typography';
 import { Spacing } from '../constants/spacing';
 import type { Shift } from '../types';
 
@@ -360,18 +361,18 @@ export function ShiftForm({ existing, initialDate }: Props) {
 const styles = StyleSheet.create({
   scroll: { flex: 1, backgroundColor: Colors.background },
   content: { padding: 16, paddingBottom: 40 },
-  sectionLabel: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
+  sectionLabel: { fontSize: FontSize.sm, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   textInput: {
     backgroundColor: Colors.surfaceElevated,
     borderRadius: Spacing.radius.md,
     padding: Spacing.padding.sm,
-    fontSize: 16,
+    fontSize: FontSize.lg,
     borderWidth: 1,
     borderColor: Colors.border,
     color: Colors.textPrimary,
   },
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
-  timeSep: { fontSize: 20, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
+  timeSep: { fontSize: FontSize.xl, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
   switchRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -383,8 +384,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  switchLabel: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
-  switchSub: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
+  switchLabel: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
+  switchSub: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
   calcCard: {
     backgroundColor: Colors.surface,
     borderRadius: Spacing.radius.md,
@@ -394,7 +395,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.primaryMuted,
   },
   calcTitle: {
-    fontSize: 13,
+    fontSize: FontSize.sm,
     fontWeight: '600',
     color: Colors.primary,
     marginBottom: 12,
@@ -403,10 +404,10 @@ const styles = StyleSheet.create({
   },
   calcRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
   calcDivider: { borderTopWidth: 1, borderTopColor: Colors.border, paddingTop: 8, marginTop: 4 },
-  calcLabel: { fontSize: 15, color: Colors.textSecondary },
-  calcValue: { fontSize: 15, color: Colors.textSecondary, fontWeight: '500' },
-  calcLabelSub: { fontSize: 13, color: Colors.textMuted },
-  calcValueSub: { fontSize: 13, color: Colors.textMuted },
+  calcLabel: { fontSize: FontSize.md, color: Colors.textSecondary },
+  calcValue: { fontSize: FontSize.md, color: Colors.textSecondary, fontWeight: '500' },
+  calcLabelSub: { fontSize: FontSize.sm, color: Colors.textMuted },
+  calcValueSub: { fontSize: FontSize.sm, color: Colors.textMuted },
   calcTotal: {
     borderTopWidth: 1,
     borderTopColor: Colors.border,
@@ -414,9 +415,9 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 0,
   },
-  calcTotalLabel: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
-  calcTotalValue: { fontSize: 20, fontWeight: '700', color: Colors.primary },
-  calcJpy: { fontSize: 13, color: Colors.textMuted, marginTop: 2 },
+  calcTotalLabel: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
+  calcTotalValue: { fontSize: FontSize.xl, fontWeight: '700', color: Colors.primary },
+  calcJpy: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
   calcPlaceholder: {
     backgroundColor: Colors.surface,
     borderRadius: Spacing.radius.md,
@@ -424,7 +425,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
     alignItems: 'center',
   },
-  calcPlaceholderText: { color: Colors.textMuted, fontSize: 14, textAlign: 'center' },
+  calcPlaceholderText: { color: Colors.textMuted, fontSize: FontSize.md, textAlign: 'center' },
   saveBtn: {
     backgroundColor: Colors.primary,
     borderRadius: Spacing.radius.md,
@@ -433,29 +434,29 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   saveBtnDisabled: { backgroundColor: Colors.textMuted },
-  saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
+  saveBtnText: { color: Colors.textInverse, fontSize: FontSize.lg, fontWeight: '700' },
   segmentRow: { flexDirection: 'row', gap: 8 },
   segment: {
     flex: 1, paddingVertical: Spacing.padding.sm, borderRadius: Spacing.radius.md, borderWidth: 1,
     borderColor: Colors.border, backgroundColor: Colors.surface, alignItems: 'center',
   },
   segmentActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  segmentText: { fontSize: 14, color: Colors.textSecondary, fontWeight: '500' },
+  segmentText: { fontSize: FontSize.md, color: Colors.textSecondary, fontWeight: '500' },
   segmentTextActive: { color: Colors.textInverse },
   memoInput: { height: 80, textAlignVertical: 'top', paddingTop: 12 },
-  restHint: { fontSize: 12, color: Colors.primary, marginTop: 6, lineHeight: 17 },
+  restHint: { fontSize: FontSize.sm, color: Colors.primary, marginTop: 6, lineHeight: 17 },
   hpCard: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border,
   },
-  hpTitle: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
+  hpTitle: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
   hpRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   hpBreakdown: {
     marginTop: 10, backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm, padding: Spacing.padding.sm,
   },
-  hpBreakdownText: { fontSize: 13, color: Colors.primary, fontWeight: '500' },
+  hpBreakdownText: { fontSize: FontSize.sm, color: Colors.primary, fontWeight: '500' },
   hpAmountInput: {
     flex: 1, backgroundColor: Colors.surfaceElevated, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
-    fontSize: 16, borderWidth: 1, borderColor: Colors.border, color: Colors.textPrimary,
+    fontSize: FontSize.lg, borderWidth: 1, borderColor: Colors.border, color: Colors.textPrimary,
   },
 });

@@ -16,6 +16,7 @@ import { FirebaseError } from 'firebase/app';
 import { auth } from '../src/lib/firebase';
 import { useAuthStore } from '../src/store/authStore';
 import { Colors } from '../src/constants/colors';
+import { FontSize } from '../src/constants/typography';
 import { Spacing } from '../src/constants/spacing';
 
 export default function LoginScreen() {
@@ -118,8 +119,8 @@ const styles = StyleSheet.create({
   flex: { flex: 1, backgroundColor: Colors.background },
   container: { flexGrow: 1, justifyContent: 'center', padding: 24 },
   header: { alignItems: 'center', marginBottom: 40 },
-  logo: { fontSize: 36, fontWeight: '800', color: Colors.primary },
-  subtitle: { fontSize: 14, color: Colors.textSecondary, marginTop: 8, textAlign: 'center' },
+  logo: { fontSize: FontSize.display, fontWeight: '800', color: Colors.primary },
+  subtitle: { fontSize: FontSize.md, color: Colors.textSecondary, marginTop: 8, textAlign: 'center' },
   form: {
     backgroundColor: Colors.surface,
     borderRadius: Spacing.radius.lg,
@@ -127,12 +128,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  label: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
+  label: { fontSize: FontSize.sm, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   input: {
     backgroundColor: Colors.surfaceElevated,
     borderRadius: Spacing.radius.md,
     padding: Spacing.padding.sm,
-    fontSize: 16,
+    fontSize: FontSize.lg,
     borderWidth: 1,
     borderColor: Colors.border,
     color: Colors.textPrimary,
@@ -145,8 +146,8 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   btnDisabled: { backgroundColor: Colors.textMuted },
-  btnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
+  btnText: { color: Colors.textInverse, fontSize: FontSize.lg, fontWeight: '700' },
   linkBtn: { alignItems: 'center', marginTop: 16 },
-  linkText: { color: Colors.primary, fontSize: 14 },
-  linkTextSub: { color: Colors.textMuted, fontSize: 13 },
+  linkText: { color: Colors.primary, fontSize: FontSize.md },
+  linkTextSub: { color: Colors.textMuted, fontSize: FontSize.sm },
 });

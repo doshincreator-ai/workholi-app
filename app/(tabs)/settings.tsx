@@ -19,6 +19,7 @@ import { getUserProfile } from '../../src/lib/userService';
 import { getMyWeeklyStats, updateRankingOptOut } from '../../src/lib/socialService';
 import { COUNTRIES } from '../../src/config/countries';
 import { Colors } from '../../src/constants/colors';
+import { FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 
 function SectionHeader({ title }: { title: string }) {
@@ -331,10 +332,10 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
   scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
-  pageTitle: { fontSize: 28, fontWeight: '800', color: Colors.textPrimary, marginBottom: 20 },
+  pageTitle: { fontSize: FontSize.hero, fontWeight: '800', color: Colors.textPrimary, marginBottom: 20 },
 
   sectionHeader: {
-    fontSize: 12,
+    fontSize: FontSize.sm,
     fontWeight: '700',
     color: Colors.textMuted,
     textTransform: 'uppercase',
@@ -360,8 +361,8 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   rowLeft: { flex: 1 },
-  rowLabel: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
-  rowHint: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
+  rowLabel: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
+  rowHint: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
   rowSep: { height: 1, backgroundColor: Colors.border },
 
   rateInputWrap: {
@@ -374,14 +375,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surfaceElevated,
   },
   rateInput: {
-    fontSize: 17,
+    fontSize: FontSize.lg,
     fontWeight: '600',
     color: Colors.textPrimary,
     paddingVertical: 8,
     minWidth: 60,
     textAlign: 'right',
   },
-  rateUnit: { fontSize: 15, color: Colors.textSecondary, marginLeft: 4 },
+  rateUnit: { fontSize: FontSize.md, color: Colors.textSecondary, marginLeft: 4 },
 
   ratePreview: {
     flexDirection: 'row',
@@ -391,8 +392,8 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.padding.sm,
     backgroundColor: Colors.primarySubtle,
   },
-  ratePreviewText: { fontSize: 14, color: Colors.primary, fontWeight: '600' },
-  rateLink: { fontSize: 13, color: Colors.primary },
+  ratePreviewText: { fontSize: FontSize.md, color: Colors.primary, fontWeight: '600' },
+  rateLink: { fontSize: FontSize.sm, color: Colors.primary },
 
   taxTableRow: {
     flexDirection: 'row',
@@ -400,8 +401,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.padding.sm,
     paddingVertical: 11,
   },
-  taxRange: { fontSize: 14, color: Colors.textSecondary },
-  taxRate: { fontSize: 14, fontWeight: '700', color: Colors.textPrimary },
+  taxRange: { fontSize: FontSize.md, color: Colors.textSecondary },
+  taxRate: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
 
   infoRow: {
     flexDirection: 'row',
@@ -409,11 +410,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.padding.sm,
     paddingVertical: 12,
   },
-  infoLabel: { fontSize: 14, color: Colors.textSecondary },
-  infoValue: { fontSize: 14, color: Colors.textPrimary, fontWeight: '500' },
+  infoLabel: { fontSize: FontSize.md, color: Colors.textSecondary },
+  infoValue: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
 
   footer: {
-    fontSize: 12,
+    fontSize: FontSize.sm,
     color: Colors.textMuted,
     marginTop: 24,
     lineHeight: 18,
@@ -424,7 +425,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logoutText: {
-    fontSize: 15,
+    fontSize: FontSize.md,
     color: Colors.negative,
     fontWeight: '600',
   },
@@ -432,5 +433,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
     paddingHorizontal: Spacing.padding.sm, paddingVertical: 6,
   },
-  ticketBadgeText: { fontSize: 16, fontWeight: '700', color: Colors.primary },
+  ticketBadgeText: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.primary },
 });

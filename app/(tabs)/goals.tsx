@@ -18,7 +18,7 @@ import { useGoalStore } from '../../src/store/goalStore';
 import { useShiftStore } from '../../src/store/shiftStore';
 import { useSettingsStore } from '../../src/store/settingsStore';
 import { Colors } from '../../src/constants/colors';
-import { Typography } from '../../src/constants/typography';
+import { Typography, FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 import type { Shift } from '../../src/types';
 import type { Goal } from '../../src/db/goals';
@@ -143,9 +143,9 @@ const cardStyles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 },
   emoji: { fontSize: 28 },
   titleBlock: { flex: 1 },
-  name: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
-  target: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
-  achievedBadge: { fontSize: 13, fontWeight: '700', color: Colors.primary },
+  name: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
+  target: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
+  achievedBadge: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.primary },
   deleteBtn: { padding: 4 },
   barBg: {
     height: 8,
@@ -157,8 +157,8 @@ const cardStyles = StyleSheet.create({
   barFill: { height: '100%', backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm },
   progressRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 },
   progressPct: { ...Typography.monoSmall, color: Colors.primary },
-  remaining: { fontSize: 12, color: Colors.textMuted },
-  prediction: { fontSize: 12, color: Colors.textSecondary, marginTop: 4 },
+  remaining: { fontSize: FontSize.sm, color: Colors.textMuted },
+  prediction: { fontSize: FontSize.sm, color: Colors.textSecondary, marginTop: 4 },
 });
 
 // ── AddGoalModal ──────────────────────────────────────────────
@@ -270,8 +270,8 @@ const modalStyles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: Colors.border,
   },
-  title: { fontSize: 18, fontWeight: '800', color: Colors.textPrimary, marginBottom: 16 },
-  label: { fontSize: 12, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
+  title: { fontSize: FontSize.lg, fontWeight: '800', color: Colors.textPrimary, marginBottom: 16 },
+  label: { fontSize: FontSize.sm, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   emojiList: { marginBottom: 16 },
   emojiBtn: {
     width: 44,
@@ -285,12 +285,12 @@ const modalStyles = StyleSheet.create({
     borderColor: Colors.border,
   },
   emojiBtnActive: { borderColor: Colors.primary, backgroundColor: Colors.primarySubtle },
-  emojiText: { fontSize: 22 },
+  emojiText: { fontSize: FontSize.xxl },
   input: {
     backgroundColor: Colors.surfaceElevated,
     borderRadius: Spacing.radius.md,
     padding: Spacing.padding.sm,
-    fontSize: 16,
+    fontSize: FontSize.lg,
     color: Colors.textPrimary,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -313,7 +313,7 @@ const modalStyles = StyleSheet.create({
     backgroundColor: Colors.primary,
     alignItems: 'center',
   },
-  addText: { color: Colors.textInverse, fontWeight: '700', fontSize: 16 },
+  addText: { color: Colors.textInverse, fontWeight: '700', fontSize: FontSize.lg },
 });
 
 // ── GoalsScreen ───────────────────────────────────────────────
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  title: { fontSize: 20, fontWeight: '800', color: Colors.textPrimary },
+  title: { fontSize: FontSize.xl, fontWeight: '800', color: Colors.textPrimary },
   addBtn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -413,7 +413,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.padding.sm,
     paddingVertical: 8,
   },
-  addBtnText: { color: Colors.textInverse, fontWeight: '700', fontSize: 14 },
+  addBtnText: { color: Colors.textInverse, fontWeight: '700', fontSize: FontSize.md },
   scroll: { padding: Spacing.padding.md, paddingBottom: 32 },
 
   savingsCard: {
@@ -424,11 +424,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  savingsLabel: { fontSize: 12, color: Colors.textMuted, marginBottom: 4 },
+  savingsLabel: { fontSize: FontSize.sm, color: Colors.textMuted, marginBottom: 4 },
   savingsAmount: { ...Typography.monoLarge, color: Colors.primary },
 
   emptyState: { alignItems: 'center', paddingTop: 60 },
   emptyEmoji: { fontSize: 48, marginBottom: 16 },
-  emptyTitle: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
-  emptyDesc: { fontSize: 14, color: Colors.textSecondary, textAlign: 'center', lineHeight: 22 },
+  emptyTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
+  emptyDesc: { fontSize: FontSize.md, color: Colors.textSecondary, textAlign: 'center', lineHeight: 22 },
 });

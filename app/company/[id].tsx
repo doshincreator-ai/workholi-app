@@ -24,6 +24,7 @@ import type { CompanyDoc } from '../../src/lib/firestoreService';
 import { addTicket } from '../../src/lib/userService';
 import { RewardedAdButton } from '../../src/components/RewardedAdButton';
 import { Colors } from '../../src/constants/colors';
+import { FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 
 const PAY_METHOD_LABEL: Record<string, string> = {
@@ -557,21 +558,21 @@ const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 
   backBtn: { flexDirection: 'row', alignItems: 'center', marginBottom: 16 },
-  backText: { color: Colors.primary, fontSize: 15 },
+  backText: { color: Colors.primary, fontSize: FontSize.md },
 
   companyHeader: { marginBottom: 20 },
-  companyName: { fontSize: 26, fontWeight: '800', color: Colors.textPrimary, marginBottom: 10 },
+  companyName: { fontSize: FontSize.xxl, fontWeight: '800', color: Colors.textPrimary, marginBottom: 10 },
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   badge: {
     flexDirection: 'row', alignItems: 'center',
     backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
     paddingHorizontal: 10, paddingVertical: 4,
   },
-  badgeText: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
-  starIcon: { color: Colors.warning, fontSize: 13 },
+  badgeText: { fontSize: FontSize.sm, color: Colors.primary, fontWeight: '600' },
+  starIcon: { color: Colors.warning, fontSize: FontSize.sm },
 
   sectionTitle: {
-    fontSize: 12, fontWeight: '700', color: Colors.textMuted,
+    fontSize: FontSize.sm, fontWeight: '700', color: Colors.textMuted,
     marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.5,
   },
   card: {
@@ -579,33 +580,33 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: Colors.border, marginBottom: 20,
   },
   infoRow: { flexDirection: 'row', justifyContent: 'space-between', padding: Spacing.padding.sm },
-  infoLabel: { fontSize: 14, color: Colors.textSecondary },
-  infoValue: { fontSize: 14, fontWeight: '600', color: Colors.textPrimary, flex: 1, textAlign: 'right' },
+  infoLabel: { fontSize: FontSize.md, color: Colors.textSecondary },
+  infoValue: { fontSize: FontSize.md, fontWeight: '600', color: Colors.textPrimary, flex: 1, textAlign: 'right' },
   descRow: { padding: Spacing.padding.sm, gap: 6 },
-  descText: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20 },
+  descText: { fontSize: FontSize.md, color: Colors.textSecondary, lineHeight: 20 },
   rowSep: { height: 1, backgroundColor: Colors.borderSubtle },
 
   // 評価分布
   ratingDistRow: { padding: Spacing.padding.sm, gap: 6 },
   ratingBarRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  ratingBarLabel: { fontSize: 12, color: Colors.textSecondary, width: 24 },
+  ratingBarLabel: { fontSize: FontSize.sm, color: Colors.textSecondary, width: 24 },
   ratingBarTrack: { flex: 1, height: 8, backgroundColor: Colors.borderSubtle, borderRadius: Spacing.radius.sm, overflow: 'hidden' },
   ratingBarFill: { height: '100%', backgroundColor: Colors.warning, borderRadius: Spacing.radius.sm },
-  ratingBarCount: { fontSize: 12, color: Colors.textMuted, width: 20, textAlign: 'right' },
+  ratingBarCount: { fontSize: FontSize.sm, color: Colors.textMuted, width: 20, textAlign: 'right' },
 
   // シフト行
   shiftRow: { flexDirection: 'row', justifyContent: 'space-between', padding: Spacing.padding.sm },
   shiftLeft: { flex: 1 },
-  shiftDate: { fontSize: 12, color: Colors.textMuted, marginBottom: 2 },
-  shiftTime: { fontSize: 14, color: Colors.textSecondary, marginBottom: 4 },
+  shiftDate: { fontSize: FontSize.sm, color: Colors.textMuted, marginBottom: 2 },
+  shiftTime: { fontSize: FontSize.md, color: Colors.textSecondary, marginBottom: 4 },
   shiftTagRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   holidayBadge: { backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm, paddingHorizontal: 6, paddingVertical: 2 },
-  holidayBadgeText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
-  payMethod: { fontSize: 12, color: Colors.textMuted },
+  holidayBadgeText: { fontSize: FontSize.xs, color: Colors.primary, fontWeight: '600' },
+  payMethod: { fontSize: FontSize.sm, color: Colors.textMuted },
   shiftRight: { alignItems: 'flex-end', gap: 4 },
-  rating: { fontSize: 12, color: Colors.warning },
-  shiftRate: { fontSize: 12, color: Colors.textSecondary },
-  shiftNet: { fontSize: 16, fontWeight: '700', color: Colors.primary },
+  rating: { fontSize: FontSize.sm, color: Colors.warning },
+  shiftRate: { fontSize: FontSize.sm, color: Colors.textSecondary },
+  shiftNet: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.primary },
 
   // ロック
   lockWrapper: { marginBottom: 20, borderRadius: Spacing.radius.md, overflow: 'hidden' },
@@ -627,22 +628,22 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surfaceElevated,
     alignItems: 'center', justifyContent: 'center',
   },
-  lockTitle: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
-  lockDesc: { fontSize: 14, color: Colors.textSecondary, textAlign: 'center', lineHeight: 20 },
+  lockTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
+  lockDesc: { fontSize: FontSize.md, color: Colors.textSecondary, textAlign: 'center', lineHeight: 20 },
   ticketBadge: {
     flexDirection: 'row', alignItems: 'center',
     backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
     paddingHorizontal: Spacing.padding.sm, paddingVertical: 6,
   },
-  ticketBadgeText: { fontSize: 14, color: Colors.primary, fontWeight: '700' },
+  ticketBadgeText: { fontSize: FontSize.md, color: Colors.primary, fontWeight: '700' },
   unlockBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
     backgroundColor: Colors.primary, borderRadius: Spacing.radius.md,
     paddingHorizontal: 24, paddingVertical: Spacing.padding.sm,
   },
   unlockBtnDisabled: { backgroundColor: Colors.textMuted },
-  unlockBtnText: { color: Colors.textInverse, fontSize: 15, fontWeight: '700' },
-  noTicketHint: { fontSize: 12, color: Colors.textMuted, textAlign: 'center' },
+  unlockBtnText: { color: Colors.textInverse, fontSize: FontSize.md, fontWeight: '700' },
+  noTicketHint: { fontSize: FontSize.sm, color: Colors.textMuted, textAlign: 'center' },
 
   emptyText: { color: Colors.textMuted, textAlign: 'center', padding: 16 },
   // コメント
@@ -650,30 +651,30 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.lg,
     alignItems: 'center', borderWidth: 1, borderColor: Colors.border, marginBottom: 12,
   },
-  emptyCommentsText: { color: Colors.textMuted, fontSize: 14 },
+  emptyCommentsText: { color: Colors.textMuted, fontSize: FontSize.md },
   commentRow: { padding: Spacing.padding.sm },
   commentHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' },
-  commentName: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary },
+  commentName: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.textSecondary },
   workedBadge: {
     backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.sm,
     paddingHorizontal: 6, paddingVertical: 2,
   },
-  workedBadgeText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
-  commentRating: { fontSize: 12, color: Colors.warning },
+  workedBadgeText: { fontSize: FontSize.xs, color: Colors.primary, fontWeight: '600' },
+  commentRating: { fontSize: FontSize.sm, color: Colors.warning },
   deleteCommentBtn: { marginLeft: 'auto' as any },
-  commentText: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20 },
+  commentText: { fontSize: FontSize.md, color: Colors.textSecondary, lineHeight: 20 },
   commentInputCard: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     borderWidth: 1, borderColor: Colors.border, marginBottom: 12, gap: 12,
   },
-  commentInputTitle: { fontSize: 14, fontWeight: '700', color: Colors.textSecondary },
+  commentInputTitle: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textSecondary },
   starRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  star: { fontSize: 28, color: Colors.border },
+  star: { fontSize: FontSize.hero, color: Colors.border },
   starActive: { color: Colors.warning },
-  ratingHint: { fontSize: 13, color: Colors.textSecondary, marginLeft: 4 },
+  ratingHint: { fontSize: FontSize.sm, color: Colors.textSecondary, marginLeft: 4 },
   commentInput: {
     backgroundColor: Colors.surfaceElevated, borderRadius: Spacing.radius.sm, padding: 12,
-    fontSize: 14, borderWidth: 1, borderColor: Colors.border,
+    fontSize: FontSize.md, borderWidth: 1, borderColor: Colors.border,
     color: Colors.textPrimary, minHeight: 80, textAlignVertical: 'top',
   },
   commentSubmitBtn: {
@@ -681,13 +682,13 @@ const styles = StyleSheet.create({
     padding: 12, alignItems: 'center',
   },
   commentSubmitBtnDisabled: { backgroundColor: Colors.textMuted },
-  commentSubmitText: { color: Colors.textInverse, fontWeight: '700', fontSize: 15 },
+  commentSubmitText: { color: Colors.textInverse, fontWeight: '700', fontSize: FontSize.md },
   commentLocked: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border, marginBottom: 12,
   },
-  commentLockedText: { fontSize: 13, color: Colors.textMuted },
+  commentLockedText: { fontSize: FontSize.sm, color: Colors.textMuted },
 
   friendBadge: {
     flexDirection: 'row', alignItems: 'center',
@@ -695,5 +696,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12, paddingVertical: 8,
     marginBottom: 10,
   },
-  friendBadgeText: { fontSize: 13, color: Colors.audAccent, fontWeight: '600' },
+  friendBadgeText: { fontSize: FontSize.sm, color: Colors.audAccent, fontWeight: '600' },
 });

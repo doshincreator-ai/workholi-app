@@ -19,10 +19,13 @@ import { getOrCreateUserProfile } from '../../src/lib/userService';
 import { AdBanner } from '../../src/components/AdBanner';
 import { HintBanner } from '../../src/components/HintBanner';
 import { Colors } from '../../src/constants/colors';
+import { FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 
 const DIFFICULTY_COLOR: Record<string, string> = {
-  easy: '#16a34a', normal: '#f59e0b', hard: '#ef4444',
+  easy: Colors.difficultyEasy,
+  normal: Colors.warning,
+  hard: Colors.difficultyHard,
 };
 const DIFFICULTY_LABEL: Record<string, string> = {
   easy: 'ラク', normal: '普通', hard: 'きつい',
@@ -243,8 +246,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  headerTitle: { fontSize: 20, fontWeight: '700', color: Colors.textPrimary },
-  headerSub: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
+  headerTitle: { fontSize: FontSize.xl, fontWeight: '700', color: Colors.textPrimary },
+  headerSub: { fontSize: FontSize.sm, color: Colors.textSecondary, marginTop: 2 },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   filterBar: { backgroundColor: Colors.surface, borderBottomWidth: 0 },
   filterBarCategory: { backgroundColor: Colors.surfaceElevated, borderBottomWidth: 1, borderBottomColor: Colors.border },
@@ -254,14 +257,14 @@ const styles = StyleSheet.create({
     borderRadius: Spacing.radius.lg, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
   },
   filterChipActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  filterChipText: { fontSize: 13, color: Colors.textSecondary },
+  filterChipText: { fontSize: FontSize.sm, color: Colors.textSecondary },
   filterChipTextActive: { color: Colors.textInverse, fontWeight: '600' },
   filterChipSm: {
     paddingHorizontal: 10, paddingVertical: 4,
     borderRadius: Spacing.radius.md, borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surface,
   },
-  filterChipSmActive: { backgroundColor: '#0f766e', borderColor: '#0f766e' },
-  filterChipSmText: { fontSize: 12, color: Colors.textMuted },
+  filterChipSmActive: { backgroundColor: Colors.teal, borderColor: Colors.teal },
+  filterChipSmText: { fontSize: FontSize.sm, color: Colors.textMuted },
   filterChipSmTextActive: { color: Colors.textInverse, fontWeight: '600' },
   list: { padding: 12, paddingBottom: 24 },
   card: {
@@ -271,20 +274,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    shadowColor: '#000',
+    shadowColor: Colors.shadow,
     shadowOpacity: 0.04,
     shadowRadius: 4,
     elevation: 1,
   },
   cardLeft: { flex: 1 },
   cardNameRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 },
-  cardName: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
+  cardName: { fontSize: FontSize.lg, fontWeight: '600', color: Colors.textPrimary },
   hiringBadge: { backgroundColor: Colors.primaryMuted, borderRadius: Spacing.radius.sm, paddingHorizontal: 6, paddingVertical: 2 },
-  hiringText: { fontSize: 11, color: Colors.primary, fontWeight: '700' },
+  hiringText: { fontSize: FontSize.xs, color: Colors.primary, fontWeight: '700' },
   cardMeta: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' },
-  cardCount: { fontSize: 12, color: Colors.textSecondary },
-  cardRegion: { fontSize: 12, color: Colors.textSecondary },
-  difficultyText: { fontSize: 12, fontWeight: '600' },
+  cardCount: { fontSize: FontSize.sm, color: Colors.textSecondary },
+  cardRegion: { fontSize: FontSize.sm, color: Colors.textSecondary },
+  difficultyText: { fontSize: FontSize.sm, fontWeight: '600' },
   lockBadge: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -294,9 +297,9 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     marginLeft: 12,
   },
-  lockText: { fontSize: 11, color: Colors.textMuted },
-  cardUpdated: { fontSize: 10, color: Colors.textMuted, marginTop: 4 },
+  lockText: { fontSize: FontSize.xs, color: Colors.textMuted },
+  cardUpdated: { fontSize: FontSize.xs, color: Colors.textMuted, marginTop: 4 },
   empty: { alignItems: 'center', marginTop: 80, gap: 8 },
-  emptyText: { fontSize: 16, color: Colors.textSecondary },
-  emptyHint: { fontSize: 13, color: Colors.textMuted, textAlign: 'center' },
+  emptyText: { fontSize: FontSize.lg, color: Colors.textSecondary },
+  emptyHint: { fontSize: FontSize.sm, color: Colors.textMuted, textAlign: 'center' },
 });

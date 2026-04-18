@@ -18,7 +18,7 @@ import { QuickClockIn } from '../../src/components/QuickClockIn';
 import { CountrySwitcher } from '../../src/components/CountrySwitcher';
 import { COUNTRIES } from '../../src/config/countries';
 import { Colors } from '../../src/constants/colors';
-import { Typography } from '../../src/constants/typography';
+import { Typography, FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 import { useGoalStore } from '../../src/store/goalStore';
 import type { Shift } from '../../src/types';
@@ -78,7 +78,7 @@ const statStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  label: { fontSize: 11, color: Colors.textMuted, marginBottom: 6, textAlign: 'center' },
+  label: { fontSize: FontSize.xs, color: Colors.textMuted, marginBottom: 6, textAlign: 'center' },
   value: { ...Typography.mono, color: Colors.textPrimary, textAlign: 'center' },
 });
 
@@ -134,20 +134,20 @@ const shiftCardStyles = StyleSheet.create({
     marginBottom: 8,
   },
   dayTag: {
-    fontSize: 11,
+    fontSize: FontSize.xs,
     fontWeight: '700',
     color: Colors.primary,
     textTransform: 'uppercase',
     minWidth: 24,
   },
   employer: {
-    fontSize: 15,
+    fontSize: FontSize.md,
     fontWeight: '700',
     color: Colors.textPrimary,
     flex: 1,
   },
   phBadge: {
-    fontSize: 10,
+    fontSize: FontSize.xs,
     fontWeight: '700',
     color: Colors.primary,
     backgroundColor: Colors.primarySubtle,
@@ -161,9 +161,9 @@ const shiftCardStyles = StyleSheet.create({
     alignItems: 'center',
   },
   timeBlock: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  timeText: { fontSize: 13, color: Colors.textSecondary },
+  timeText: { fontSize: FontSize.sm, color: Colors.textSecondary },
   net: { ...Typography.monoSmall, color: Colors.primary },
-  jpy: { fontSize: 11, color: Colors.textMuted, marginTop: 4, textAlign: 'right' },
+  jpy: { fontSize: FontSize.xs, color: Colors.textMuted, marginTop: 4, textAlign: 'right' },
   offCard: {
     backgroundColor: Colors.surface,
     borderRadius: Spacing.radius.md,
@@ -175,7 +175,7 @@ const shiftCardStyles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
-  offText: { fontSize: 14, color: Colors.textMuted },
+  offText: { fontSize: FontSize.md, color: Colors.textMuted },
 });
 
 // ── WeeklyBarChart ────────────────────────────────────────────
@@ -247,9 +247,9 @@ const chartStyles = StyleSheet.create({
   },
   barToday: { backgroundColor: Colors.primary },
   barEmpty: { backgroundColor: Colors.border, height: 2 },
-  dowLabel: { fontSize: 10, color: Colors.textMuted, marginTop: 4 },
+  dowLabel: { fontSize: FontSize.xs, color: Colors.textMuted, marginTop: 4 },
   dowLabelToday: { color: Colors.primary, fontWeight: '700' },
-  hint: { fontSize: 11, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
+  hint: { fontSize: FontSize.xs, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
 });
 
 // ── HomeScreen ────────────────────────────────────────────────
@@ -485,7 +485,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  appName: { fontSize: 18, fontWeight: '800', color: Colors.primary },
+  appName: { fontSize: FontSize.lg, fontWeight: '800', color: Colors.primary },
   scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
 
   heroCard: {
@@ -513,16 +513,16 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
   },
   navBtnDisabled: { borderColor: Colors.borderSubtle },
-  navBtnText: { fontSize: 20, color: Colors.primary, lineHeight: 24 },
+  navBtnText: { fontSize: FontSize.xl, color: Colors.primary, lineHeight: 24 },
   navBtnTextDisabled: { color: Colors.textMuted },
-  monthLabel: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary },
+  monthLabel: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
   monthLabelPast: { color: Colors.primary },
 
   heroLabel: { ...Typography.bodySmall, color: Colors.textSecondary, marginBottom: 4 },
   heroNet: { ...Typography.monoXL, color: Colors.primary },
   heroJpy: { ...Typography.monoSmall, color: Colors.textSecondary, marginTop: 2, marginBottom: 10 },
   deltaRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  deltaText: { fontSize: 13, fontWeight: '600' },
+  deltaText: { fontSize: FontSize.sm, fontWeight: '600' },
   deltaPos: { color: Colors.positive },
   deltaNeg: { color: Colors.negative },
 
@@ -535,8 +535,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
-  sectionTitle: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
-  sectionLink: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
+  sectionTitle: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
+  sectionLink: { fontSize: FontSize.sm, color: Colors.primary, fontWeight: '600' },
 
   quickBtn: {
     flexDirection: 'row',
@@ -549,7 +549,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   quickBtnDisabled: { backgroundColor: Colors.primaryMuted },
-  quickBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },
+  quickBtnText: { color: Colors.textInverse, fontSize: FontSize.lg, fontWeight: '700' },
 });
 
 const goalCardStyles = StyleSheet.create({
@@ -564,8 +564,8 @@ const goalCardStyles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 },
   emoji: { fontSize: 24 },
   info: { flex: 1 },
-  name: { fontSize: 14, fontWeight: '700', color: Colors.textPrimary },
-  sub: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
+  name: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
+  sub: { fontSize: FontSize.sm, color: Colors.textSecondary, marginTop: 2 },
   pct: { ...Typography.monoSmall, color: Colors.primary },
   barBg: {
     height: 6,

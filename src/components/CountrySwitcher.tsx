@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width: 280,
     paddingTop: 20,
     paddingBottom: 8,
-    shadowColor: '#000',
+    shadowColor: Colors.shadow,
     shadowOpacity: 0.4,
     shadowRadius: 12,
     elevation: 8,

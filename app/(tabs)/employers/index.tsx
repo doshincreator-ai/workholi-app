@@ -16,6 +16,7 @@ import { getShiftsByEmployer } from '../../../src/db/shifts';
 import { COUNTRIES } from '../../../src/config/countries';
 import type { Employer } from '../../../src/types';
 import { Colors } from '../../../src/constants/colors';
+import { FontSize } from '../../../src/constants/typography';
 import { Spacing } from '../../../src/constants/spacing';
 
 function EmployerCard({ employer, onPress, onDelete }: {
@@ -130,14 +131,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  headerTitle: { fontSize: 20, fontWeight: '700', color: Colors.textPrimary },
+  headerTitle: { fontSize: FontSize.xl, fontWeight: '700', color: Colors.textPrimary },
   addBtn: {
     backgroundColor: Colors.primary,
     borderRadius: Spacing.radius.lg,
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
-  addBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 15 },
+  addBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: FontSize.md },
   list: { padding: 12, paddingBottom: 24 },
 
   // カード
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    shadowColor: '#000',
+    shadowColor: Colors.shadow,
     shadowOpacity: 0.04,
     shadowRadius: 4,
     elevation: 1,
@@ -164,9 +165,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cardIconText: { fontSize: 18, fontWeight: '700', color: Colors.primary },
+  cardIconText: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.primary },
   cardBody: { flex: 1 },
-  cardName: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary, marginBottom: 6 },
+  cardName: { fontSize: FontSize.lg, fontWeight: '600', color: Colors.textPrimary, marginBottom: 6 },
   cardMeta: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   badge: {
     backgroundColor: Colors.primarySubtle,
@@ -176,25 +177,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.primaryMuted,
   },
-  badgeText: { fontSize: 12, fontWeight: '700', color: Colors.primary },
-  cardRate: { fontSize: 13, color: Colors.textSecondary, fontWeight: '500' },
-  cardIrd: { fontSize: 12, color: Colors.textSecondary },
+  badgeText: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.primary },
+  cardRate: { fontSize: FontSize.sm, color: Colors.textSecondary, fontWeight: '500' },
+  cardIrd: { fontSize: FontSize.sm, color: Colors.textSecondary },
   cardRight: { alignItems: 'center', minWidth: 40 },
-  cardShiftCount: { fontSize: 20, fontWeight: '700', color: Colors.textPrimary },
-  cardShiftLabel: { fontSize: 11, color: Colors.textSecondary },
+  cardShiftCount: { fontSize: FontSize.xl, fontWeight: '700', color: Colors.textPrimary },
+  cardShiftLabel: { fontSize: FontSize.xs, color: Colors.textSecondary },
   reviewBanner: {
     position: 'absolute', bottom: 0, left: 0, right: 0,
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 4,
     backgroundColor: Colors.primarySubtle, paddingVertical: 5,
     borderTopWidth: 1, borderTopColor: Colors.primaryMuted,
   },
-  reviewBannerText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
+  reviewBannerText: { fontSize: FontSize.xs, color: Colors.primary, fontWeight: '600' },
 
   // 空状態
   empty: { alignItems: 'center', marginTop: 80, gap: 8 },
-  emptyIcon: { fontSize: 48, marginBottom: 4 },
-  emptyText: { fontSize: 17, color: Colors.textMuted, fontWeight: '600' },
-  emptyHint: { fontSize: 14, color: Colors.textMuted, marginBottom: 8 },
+  emptyIcon: { fontSize: FontSize.giant, marginBottom: 4 },
+  emptyText: { fontSize: FontSize.lg, color: Colors.textMuted, fontWeight: '600' },
+  emptyHint: { fontSize: FontSize.md, color: Colors.textMuted, marginBottom: 8 },
   emptyBtn: {
     backgroundColor: Colors.primary,
     borderRadius: Spacing.radius.md,
@@ -202,5 +203,5 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     marginTop: 4,
   },
-  emptyBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 15 },
+  emptyBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: FontSize.md },
 });

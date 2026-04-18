@@ -19,6 +19,7 @@ import { TaxCodeGuideModal } from './TaxCodeGuideModal';
 import { COUNTRIES } from '../config/countries';
 import type { Employer, TaxCode, PaymentMethod } from '../types';
 import { Colors } from '../constants/colors';
+import { FontSize } from '../constants/typography';
 import { Spacing } from '../constants/spacing';
 
 const JOB_CATEGORIES = [
@@ -642,28 +643,28 @@ export function EmployerForm({ existing }: Props) {
 const styles = StyleSheet.create({
   scroll: { flex: 1, backgroundColor: Colors.background },
   content: { padding: 16, paddingBottom: 40 },
-  label: { fontSize: 13, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
+  label: { fontSize: FontSize.sm, fontWeight: '600', color: Colors.textSecondary, marginBottom: 8 },
   labelSpacing: { marginTop: 20 },
   input: {
     backgroundColor: Colors.surfaceElevated,
     borderRadius: Spacing.radius.md,
     padding: Spacing.padding.sm,
-    fontSize: 16,
+    fontSize: FontSize.lg,
     borderWidth: 1,
     borderColor: Colors.border,
     color: Colors.textPrimary,
   },
   rateRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  ratePrefix: { fontSize: 24, color: Colors.textSecondary, fontWeight: '600' },
-  rateInput: { flex: 1, fontSize: 24, fontWeight: '700' },
-  hint: { fontSize: 12, color: Colors.textMuted, marginTop: 6 },
+  ratePrefix: { fontSize: FontSize.xxl, color: Colors.textSecondary, fontWeight: '600' },
+  rateInput: { flex: 1, fontSize: FontSize.xxl, fontWeight: '700' },
+  hint: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 6 },
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
-  timeSep: { fontSize: 20, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
+  timeSep: { fontSize: FontSize.xl, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
 
   // 税コードラベル行
   taxCodeLabelRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 },
   guideBtn: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingVertical: 4, paddingHorizontal: 8 },
-  guideBtnText: { fontSize: 13, color: Colors.primary, fontWeight: '500' },
+  guideBtnText: { fontSize: FontSize.sm, color: Colors.primary, fontWeight: '500' },
 
   // 税コード選択
   taxCodeList: {
@@ -694,7 +695,7 @@ const styles = StyleSheet.create({
   radioSelected: { borderColor: Colors.primary },
   radioDot: { width: 10, height: 10, borderRadius: Spacing.radius.sm, backgroundColor: Colors.primary },
   taxCodeTextWrap: { flex: 1 },
-  taxCodeText: { fontSize: 14, color: Colors.textPrimary },
+  taxCodeText: { fontSize: FontSize.md, color: Colors.textPrimary },
   taxCodeTextSelected: { color: Colors.primary, fontWeight: '600' },
 
   // 地域
@@ -705,7 +706,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
   },
   regionChipSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  regionChipText: { fontSize: 13, color: Colors.textPrimary },
+  regionChipText: { fontSize: FontSize.sm, color: Colors.textPrimary },
   regionChipTextSelected: { color: Colors.textInverse, fontWeight: '600' },
 
   // Holiday Pay
@@ -713,7 +714,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border,
   },
-  hpTitle: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
+  hpTitle: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.textSecondary, marginBottom: 12 },
   hpRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
 
   // 公開設定
@@ -725,7 +726,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
   },
   chipSelected: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  chipText: { fontSize: 13, color: Colors.textPrimary },
+  chipText: { fontSize: FontSize.sm, color: Colors.textPrimary },
   chipTextSelected: { color: Colors.textInverse, fontWeight: '600' },
 
   // レビューロック
@@ -734,13 +735,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm, marginTop: 16,
     borderWidth: 1, borderColor: Colors.border,
   },
-  reviewLockTitle: { fontSize: 14, fontWeight: '600', color: Colors.textSecondary, marginBottom: 4 },
-  reviewLockSub: { fontSize: 12, color: Colors.textMuted, lineHeight: 17 },
+  reviewLockTitle: { fontSize: FontSize.md, fontWeight: '600', color: Colors.textSecondary, marginBottom: 4 },
+  reviewLockSub: { fontSize: FontSize.sm, color: Colors.textMuted, lineHeight: 17 },
   reviewUnlockBadge: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
     backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm, marginTop: 16,
   },
-  reviewUnlockText: { fontSize: 13, color: Colors.positive, fontWeight: '600' },
+  reviewUnlockText: { fontSize: FontSize.sm, color: Colors.positive, fontWeight: '600' },
 
   // AU税情報
   auTaxInfo: {
@@ -748,8 +749,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surfaceElevated, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
     borderWidth: 1, borderColor: Colors.border,
   },
-  auTaxTitle: { fontSize: 14, fontWeight: '700', color: Colors.primary, marginBottom: 4 },
-  auTaxBody: { fontSize: 13, color: Colors.textSecondary, lineHeight: 19 },
+  auTaxTitle: { fontSize: FontSize.md, fontWeight: '700', color: Colors.primary, marginBottom: 4 },
+  auTaxBody: { fontSize: FontSize.sm, color: Colors.textSecondary, lineHeight: 19 },
 
   // 詳細情報カード
   detailCard: {
@@ -757,7 +758,7 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: Colors.primaryMuted,
   },
   detailHeader: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  detailHeaderText: { fontSize: 13, fontWeight: '700', color: Colors.positive },
+  detailHeaderText: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.positive },
 
   // 保存
   saveBtn: {
@@ -767,11 +768,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 28,
   },
-  saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
+  saveBtnText: { color: Colors.textInverse, fontSize: FontSize.lg, fontWeight: '700' },
   deleteBtn: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
     borderWidth: 1, borderColor: Colors.negative, borderRadius: Spacing.radius.md,
     padding: 14, marginTop: 12, marginBottom: 8,
   },
-  deleteBtnText: { color: Colors.negative, fontSize: 15, fontWeight: '600' },
+  deleteBtnText: { color: Colors.negative, fontSize: FontSize.md, fontWeight: '600' },
 });

@@ -17,7 +17,7 @@ import { COUNTRIES } from '../../src/config/countries';
 import { AdBanner } from '../../src/components/AdBanner';
 import { HintBanner } from '../../src/components/HintBanner';
 import { Colors } from '../../src/constants/colors';
-import { Typography } from '../../src/constants/typography';
+import { Typography, FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 
 const MONTHS_JP = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
@@ -371,24 +371,24 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.lg, padding: Spacing.padding.lg, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
-  totalLabel: { fontSize: 13, color: Colors.textSecondary, marginBottom: 4 },
+  totalLabel: { fontSize: FontSize.sm, color: Colors.textSecondary, marginBottom: 4 },
   totalNet: { ...Typography.monoLarge, color: Colors.primary, marginBottom: 14 },
   totalRow: { flexDirection: 'row', justifyContent: 'space-between' },
   totalItem: { alignItems: 'center' },
-  totalItemLabel: { fontSize: 11, color: Colors.textMuted, marginBottom: 2 },
+  totalItemLabel: { fontSize: FontSize.xs, color: Colors.textMuted, marginBottom: 2 },
   totalItemValue: { ...Typography.monoSmall, color: Colors.textPrimary },
 
-  sectionTitle: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
+  sectionTitle: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
 
   taxCard: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
   taxRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },
-  taxLabel: { fontSize: 14, color: Colors.textSecondary },
-  taxValue: { fontSize: 14, color: Colors.textPrimary },
+  taxLabel: { fontSize: FontSize.md, color: Colors.textSecondary },
+  taxValue: { fontSize: FontSize.md, color: Colors.textPrimary },
   taxTotal: { borderTopWidth: 1, borderTopColor: Colors.border, marginTop: 4, paddingTop: 10 },
-  taxTotalLabel: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
+  taxTotalLabel: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
   taxTotalValue: { ...Typography.monoSmall, color: Colors.negative },
 
   chartCard: {
@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
   barValue: { fontSize: 9, color: Colors.textMuted, marginBottom: 2, textAlign: 'center' },
   barTrack: { flex: 1, width: '70%', justifyContent: 'flex-end', maxHeight: 100 },
   barFill: { backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm, width: '100%' },
-  barLabel: { fontSize: 11, color: Colors.textSecondary, marginTop: 4 },
+  barLabel: { fontSize: FontSize.xs, color: Colors.textSecondary, marginTop: 4 },
 
   tableCard: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, overflow: 'hidden', marginBottom: 20,
@@ -410,10 +410,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row', justifyContent: 'space-between',
     alignItems: 'center', padding: Spacing.padding.sm,
   },
-  tableMonth: { fontSize: 15, color: Colors.textSecondary, fontWeight: '500' },
+  tableMonth: { fontSize: FontSize.md, color: Colors.textSecondary, fontWeight: '500' },
   tableRight: { alignItems: 'flex-end' },
   tableNet: { ...Typography.monoSmall, color: Colors.primary },
-  tableSub: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
+  tableSub: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
   rowSep: { height: 1, backgroundColor: Colors.borderSubtle, marginHorizontal: 14 },
   emptyText: { color: Colors.textMuted, textAlign: 'center', padding: 24 },
 
@@ -421,27 +421,27 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md, marginBottom: 20,
     borderWidth: 1, borderColor: Colors.border,
   },
-  refundYear: { fontSize: 13, color: Colors.textMuted, marginBottom: 12 },
-  refundEmpty: { fontSize: 14, color: Colors.textMuted, textAlign: 'center', paddingVertical: 8 },
+  refundYear: { fontSize: FontSize.sm, color: Colors.textMuted, marginBottom: 12 },
+  refundEmpty: { fontSize: FontSize.md, color: Colors.textMuted, textAlign: 'center', paddingVertical: 8 },
   refundRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 5 },
-  refundLabel: { fontSize: 13, color: Colors.textSecondary },
-  refundValue: { fontSize: 13, color: Colors.textPrimary },
+  refundLabel: { fontSize: FontSize.sm, color: Colors.textSecondary },
+  refundValue: { fontSize: FontSize.sm, color: Colors.textPrimary },
   refundResultRow: {
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
     borderTopWidth: 1, borderTopColor: Colors.border, marginTop: 6, paddingTop: 10, marginBottom: 10,
   },
-  refundResultLabel: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary },
-  refundResultValue: { fontSize: 20, fontWeight: '800' },
+  refundResultLabel: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
+  refundResultValue: { fontSize: FontSize.xl, fontWeight: '800' },
   refundPositive: { color: Colors.positive },
   refundNegative: { color: Colors.negative },
-  refundNote: { fontSize: 12, color: Colors.textSecondary, lineHeight: 17, marginBottom: 6 },
-  refundDisclaimer: { fontSize: 11, color: Colors.textMuted, lineHeight: 15 },
+  refundNote: { fontSize: FontSize.sm, color: Colors.textSecondary, lineHeight: 17, marginBottom: 6 },
+  refundDisclaimer: { fontSize: FontSize.xs, color: Colors.textMuted, lineHeight: 15 },
 
   exportBtn: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     alignItems: 'center', borderWidth: 1, borderColor: Colors.border,
   },
-  exportBtnText: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
+  exportBtnText: { fontSize: FontSize.lg, fontWeight: '600', color: Colors.textPrimary },
 
   refundHero: {
     borderRadius: Spacing.radius.lg, padding: Spacing.padding.lg, marginBottom: 16,
@@ -449,9 +449,9 @@ const styles = StyleSheet.create({
   },
   refundHeroPos: { backgroundColor: Colors.primarySubtle, borderColor: Colors.primary },
   refundHeroNeg: { backgroundColor: Colors.surface, borderColor: Colors.border },
-  refundHeroLabel: { fontSize: 12, color: Colors.textSecondary, marginBottom: 4 },
+  refundHeroLabel: { fontSize: FontSize.sm, color: Colors.textSecondary, marginBottom: 4 },
   refundHeroAmount: { ...Typography.monoXL, color: Colors.primary, marginBottom: 6 },
-  refundHeroSub: { fontSize: 12, color: Colors.textSecondary, lineHeight: 18 },
+  refundHeroSub: { fontSize: FontSize.sm, color: Colors.textSecondary, lineHeight: 18 },
 
   explainCard: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.md, marginBottom: 20,
@@ -459,8 +459,8 @@ const styles = StyleSheet.create({
   },
   explainRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
   explainLeft: { flex: 1, marginRight: 12 },
-  explainLabel: { fontSize: 14, fontWeight: '600', color: Colors.textPrimary, marginBottom: 2 },
-  explainNote: { fontSize: 11, color: Colors.textMuted, lineHeight: 16 },
+  explainLabel: { fontSize: FontSize.md, fontWeight: '600', color: Colors.textPrimary, marginBottom: 2 },
+  explainNote: { fontSize: FontSize.xs, color: Colors.textMuted, lineHeight: 16 },
   explainAmount: { ...Typography.monoSmall, color: Colors.textPrimary },
   explainAmountPos: { color: Colors.positive },
 });

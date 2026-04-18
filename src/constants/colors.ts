@@ -24,6 +24,12 @@ export const Colors = {
   negative: '#f87171',
   warning: '#f59e0b',
 
+  // Difficulty levels
+  difficultyEasy: '#16a34a',
+  difficultyHard: '#ef4444',
+  // Community teal accent
+  teal: '#0f766e',
+
   // Borders
   border: '#2a2d3a',
   borderSubtle: '#1e2130',

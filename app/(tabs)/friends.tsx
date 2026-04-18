@@ -35,6 +35,7 @@ import {
   type SendRequestResult,
 } from '../../src/lib/friendService';
 import { Colors } from '../../src/constants/colors';
+import { FontSize } from '../../src/constants/typography';
 import { Spacing } from '../../src/constants/spacing';
 
 type Tab = 'friends' | 'ranking' | 'feed';
@@ -468,38 +469,38 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 0,
   },
-  pageTitle: { fontSize: 24, fontWeight: '800', color: Colors.textPrimary, marginBottom: 12 },
+  pageTitle: { fontSize: FontSize.xxl, fontWeight: '800', color: Colors.textPrimary, marginBottom: 12 },
   tabBar: { flexDirection: 'row', gap: 4 },
   tabBtn: {
     flex: 1, paddingVertical: 8, alignItems: 'center',
     borderBottomWidth: 2, borderBottomColor: 'transparent',
   },
   tabBtnActive: { borderBottomColor: Colors.primary },
-  tabBtnText: { fontSize: 13, fontWeight: '600', color: Colors.textMuted },
+  tabBtnText: { fontSize: FontSize.sm, fontWeight: '600', color: Colors.textMuted },
   tabBtnTextActive: { color: Colors.primary },
 
   scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
-  sectionLabel: { fontSize: 13, fontWeight: '700', color: Colors.textSecondary, marginBottom: 8, textTransform: 'uppercase' },
-  hint: { fontSize: 12, color: Colors.textMuted, marginTop: 4, marginBottom: 12 },
+  sectionLabel: { fontSize: FontSize.sm, fontWeight: '700', color: Colors.textSecondary, marginBottom: 8, textTransform: 'uppercase' },
+  hint: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 4, marginBottom: 12 },
 
   codeCard: {
     backgroundColor: Colors.primarySubtle, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
     gap: 12, borderWidth: 1, borderColor: Colors.primaryMuted,
   },
-  codeText: { fontSize: 28, fontWeight: '800', color: Colors.primary, letterSpacing: 4, textAlign: 'center' },
+  codeText: { fontSize: FontSize.hero, fontWeight: '800', color: Colors.primary, letterSpacing: 4, textAlign: 'center' },
   codeActions: { flexDirection: 'row', gap: 8 },
   codeActionBtn: {
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
     borderWidth: 1, borderColor: Colors.primary, borderRadius: Spacing.radius.md, paddingVertical: 8,
   },
   shareActionBtn: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  copyText: { fontSize: 14, color: Colors.primary, fontWeight: '600' },
-  shareText: { fontSize: 14, color: '#fff', fontWeight: '600' },
+  copyText: { fontSize: FontSize.md, color: Colors.primary, fontWeight: '600' },
+  shareText: { fontSize: FontSize.md, color: '#fff', fontWeight: '600' },
 
   inputRow: { flexDirection: 'row', gap: 8 },
   input: {
     flex: 1, backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, padding: Spacing.padding.sm,
-    fontSize: 16, borderWidth: 1, borderColor: Colors.border, color: Colors.textPrimary,
+    fontSize: FontSize.lg, borderWidth: 1, borderColor: Colors.border, color: Colors.textPrimary,
     letterSpacing: 2,
   },
   sendBtn: {
@@ -507,7 +508,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20, justifyContent: 'center',
   },
   sendBtnDisabled: { backgroundColor: Colors.border },
-  sendBtnText: { color: Colors.textInverse, fontWeight: '700', fontSize: 15 },
+  sendBtnText: { color: Colors.textInverse, fontWeight: '700', fontSize: FontSize.md },
 
   listCard: {
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md, overflow: 'hidden',
@@ -520,33 +521,33 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center',
     justifyContent: 'space-between', padding: Spacing.padding.sm,
   },
-  requestName: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
+  requestName: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
   acceptBtn: {
     backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm,
     paddingHorizontal: Spacing.padding.sm, paddingVertical: 6,
   },
-  acceptBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: 13 },
+  acceptBtnText: { color: Colors.textInverse, fontWeight: '600', fontSize: FontSize.sm },
 
   friendRow: { flexDirection: 'row', alignItems: 'center', padding: Spacing.padding.sm, gap: 12 },
   friendAvatar: {
     width: 40, height: 40, borderRadius: Spacing.radius.lg,
     backgroundColor: Colors.primarySubtle, alignItems: 'center', justifyContent: 'center',
   },
-  friendAvatarText: { fontSize: 18, fontWeight: '700', color: Colors.primary },
+  friendAvatarText: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.primary },
   friendInfo: { flex: 1, gap: 3 },
-  friendName: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
+  friendName: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
   regionBadge: { flexDirection: 'row', alignItems: 'center', gap: 3, alignSelf: 'flex-start' },
-  regionBadgeText: { fontSize: 11, color: Colors.primary },
+  regionBadgeText: { fontSize: FontSize.xs, color: Colors.primary },
   removeBtn: { padding: 6 },
 
   rankRow: { flexDirection: 'row', alignItems: 'center', padding: Spacing.padding.sm, gap: 12 },
   rankRowMe: { backgroundColor: Colors.primarySubtle },
-  rankNum: { fontSize: 18, width: 30, textAlign: 'center', color: Colors.textSecondary, fontWeight: '700' },
+  rankNum: { fontSize: FontSize.lg, width: 30, textAlign: 'center', color: Colors.textSecondary, fontWeight: '700' },
   rankNumGold: { color: Colors.warning },
   rankInfo: { flex: 1 },
-  rankName: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
+  rankName: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
   rankNameMe: { color: Colors.primary, fontWeight: '700' },
-  rankPay: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary },
+  rankPay: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
   rankPayMe: { color: Colors.primary },
 
   feedRow: { flexDirection: 'row', alignItems: 'flex-start', padding: Spacing.padding.sm, gap: 12 },
@@ -554,32 +555,32 @@ const styles = StyleSheet.create({
     width: 36, height: 36, borderRadius: Spacing.radius.lg,
     backgroundColor: Colors.surfaceElevated, alignItems: 'center', justifyContent: 'center',
   },
-  feedAvatarText: { fontSize: 16, fontWeight: '700', color: Colors.textSecondary },
+  feedAvatarText: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textSecondary },
   feedContent: { flex: 1 },
-  feedText: { fontSize: 14, color: Colors.textPrimary, lineHeight: 20 },
-  feedTime: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
+  feedText: { fontSize: FontSize.md, color: Colors.textPrimary, lineHeight: 20 },
+  feedTime: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
 
   inviteHintBtn: {
     paddingHorizontal: Spacing.padding.md, paddingVertical: 8,
     borderRadius: Spacing.radius.sm, borderWidth: 1, borderColor: Colors.primary,
   },
-  inviteHintText: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
+  inviteHintText: { fontSize: FontSize.sm, color: Colors.primary, fontWeight: '600' },
 
   empty: { padding: 24, alignItems: 'center' },
-  emptyText: { fontSize: 15, color: Colors.textSecondary, textAlign: 'center' },
-  emptyHint: { fontSize: 13, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
+  emptyText: { fontSize: FontSize.md, color: Colors.textSecondary, textAlign: 'center' },
+  emptyHint: { fontSize: FontSize.sm, color: Colors.textMuted, textAlign: 'center', marginTop: 4 },
 
   modalContainer: { flex: 1, backgroundColor: Colors.background },
   modalHeader: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
     padding: Spacing.padding.md, backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
-  modalTitle: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary },
+  modalTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
   modalClose: { padding: 4 },
   modalScroll: { padding: Spacing.padding.md, paddingBottom: 40 },
   employerItem: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     padding: Spacing.padding.sm, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
-  employerItemText: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500' },
+  employerItemText: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
 });
