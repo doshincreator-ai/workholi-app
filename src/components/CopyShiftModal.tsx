@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useState, useMemo } from 'react';
 import { useShiftStore } from '../store/shiftStore';
 import { Colors } from '../constants/colors';
+import { FontSize } from '../constants/typography';
 import { Spacing } from '../constants/spacing';
 import type { Shift } from '../types';
 
@@ -194,13 +195,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   closeBtn: { padding: 4 },
-  title: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
+  title: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
 
   sourceCard: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
     backgroundColor: Colors.surfaceElevated, paddingHorizontal: Spacing.padding.md, paddingVertical: 10,
   },
-  sourceText: { fontSize: 13, color: Colors.textSecondary },
+  sourceText: { fontSize: FontSize.sm, color: Colors.textSecondary },
 
   monthNav: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
@@ -208,14 +209,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   navBtn: { padding: 6 },
-  monthLabel: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary },
+  monthLabel: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
 
   weekdayRow: {
     flexDirection: 'row', backgroundColor: Colors.surface,
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   weekdayLabel: {
-    flex: 1, textAlign: 'center', fontSize: 12,
+    flex: 1, textAlign: 'center', fontSize: FontSize.sm,
     fontWeight: '600', color: Colors.textSecondary, paddingVertical: 8,
   },
   sat: { color: Colors.saturdayText },
@@ -237,14 +238,14 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
   },
   todayCircle: { backgroundColor: Colors.primary },
-  dayNum: { fontSize: 14, color: Colors.textSecondary, fontWeight: '500' },
+  dayNum: { fontSize: FontSize.md, color: Colors.textSecondary, fontWeight: '500' },
   todayNum: { color: Colors.textInverse, fontWeight: '700' },
   satNum: { color: Colors.saturdayText },
   sunNum: { color: Colors.sundayText },
   selectedNum: { fontWeight: '700' },
   checkIcon: { marginTop: 2 },
 
-  hint: { textAlign: 'center', fontSize: 12, color: Colors.textMuted, padding: 16 },
+  hint: { textAlign: 'center', fontSize: FontSize.sm, color: Colors.textMuted, padding: 16 },
 
   footer: {
     padding: Spacing.padding.md, backgroundColor: Colors.surface,
@@ -255,5 +256,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
   },
   confirmBtnDisabled: { backgroundColor: Colors.textMuted },
-  confirmBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },
+  confirmBtnText: { color: Colors.textInverse, fontSize: FontSize.lg, fontWeight: '700' },
 });

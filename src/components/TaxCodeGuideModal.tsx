@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Colors } from '../constants/colors';
+import { FontSize } from '../constants/typography';
 import { Spacing } from '../constants/spacing';
 import type { TaxCode } from '../types';
 
@@ -198,7 +199,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   closeBtn: { padding: 4 },
-  title: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
+  title: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
 
   stepRow: {
     flexDirection: 'row', gap: 8, justifyContent: 'center',
@@ -211,10 +212,10 @@ const styles = StyleSheet.create({
   body: { flex: 1, padding: 24 },
 
   iconHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 20 },
-  iconHeaderText: { fontSize: 14, color: Colors.textSecondary },
+  iconHeaderText: { fontSize: FontSize.md, color: Colors.textSecondary },
 
-  questionText: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary, lineHeight: 26, marginBottom: 8 },
-  questionSub: { fontSize: 13, color: Colors.textMuted, marginBottom: 24, lineHeight: 18 },
+  questionText: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary, lineHeight: 26, marginBottom: 8 },
+  questionSub: { fontSize: FontSize.sm, color: Colors.textMuted, marginBottom: 24, lineHeight: 18 },
 
   btnCol: { gap: 12 },
   choiceBtn: {
@@ -222,22 +223,22 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface, borderRadius: Spacing.radius.md,
     padding: Spacing.padding.md, borderWidth: 1, borderColor: Colors.border,
   },
-  choiceBtnText: { fontSize: 15, color: Colors.textPrimary, fontWeight: '500', flex: 1 },
+  choiceBtnText: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500', flex: 1 },
 
   resultBox: { alignItems: 'center', paddingTop: 8 },
   resultIconRow: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 },
-  resultCode: { fontSize: 32, fontWeight: '800', color: Colors.primary },
-  resultTitle: { fontSize: 18, fontWeight: '700', color: Colors.textPrimary, marginBottom: 10, textAlign: 'center' },
-  resultDesc: { fontSize: 14, color: Colors.textSecondary, lineHeight: 20, textAlign: 'center', marginBottom: 28 },
+  resultCode: { fontSize: FontSize.hero, fontWeight: '800', color: Colors.primary },
+  resultTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary, marginBottom: 10, textAlign: 'center' },
+  resultDesc: { fontSize: FontSize.md, color: Colors.textSecondary, lineHeight: 20, textAlign: 'center', marginBottom: 28 },
 
   applyBtn: {
     backgroundColor: Colors.primary, borderRadius: Spacing.radius.md, paddingVertical: Spacing.padding.sm, paddingHorizontal: 32,
     width: '100%', alignItems: 'center', marginBottom: 12,
   },
-  applyBtnText: { color: Colors.textInverse, fontSize: 16, fontWeight: '700' },
+  applyBtnText: { color: Colors.textInverse, fontSize: FontSize.lg, fontWeight: '700' },
   retryBtn: { paddingVertical: 10 },
-  retryBtnText: { fontSize: 14, color: Colors.textMuted },
+  retryBtnText: { fontSize: FontSize.md, color: Colors.textMuted },
 
   footer: { padding: 16, borderTopWidth: 1, borderTopColor: Colors.border, backgroundColor: Colors.surface },
-  footerNote: { fontSize: 11, color: Colors.textMuted, textAlign: 'center', lineHeight: 16 },
+  footerNote: { fontSize: FontSize.xs, color: Colors.textMuted, textAlign: 'center', lineHeight: 16 },
 });

@@ -285,13 +285,13 @@ const styles = StyleSheet.create({
   timeRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 12 },
   timeSep: { fontSize: FontSize.xl, color: Colors.textMuted, marginBottom: 14, paddingHorizontal: 4 },
   breakRow: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
-  breakLabel: { fontSize: 13, color: Colors.textSecondary, marginRight: 4 },
+  breakLabel: { fontSize: FontSize.sm, color: Colors.textSecondary, marginRight: 4 },
   breakBtn: {
     paddingHorizontal: Spacing.padding.sm, paddingVertical: 6, borderRadius: Spacing.radius.sm,
     borderWidth: 1, borderColor: Colors.border, backgroundColor: Colors.surfaceElevated,
   },
   breakBtnActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
-  breakBtnText: { fontSize: 13, color: Colors.textSecondary },
+  breakBtnText: { fontSize: FontSize.sm, color: Colors.textSecondary },
   breakBtnTextActive: { color: Colors.textInverse, fontWeight: '600' },
 
   calcCard: {
@@ -299,15 +299,15 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: Colors.primaryMuted, marginTop: 16,
   },
   calcRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
-  calcLabel: { fontSize: 14, color: Colors.textSecondary },
-  calcValue: { fontSize: 14, color: Colors.textPrimary, fontWeight: '500' },
+  calcLabel: { fontSize: FontSize.md, color: Colors.textSecondary },
+  calcValue: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '500' },
   calcTotalRow: {
     borderTopWidth: 1, borderTopColor: Colors.border,
     paddingTop: 12, marginTop: 4, marginBottom: 0,
   },
-  calcTotalLabel: { fontSize: 16, fontWeight: '700', color: Colors.textPrimary },
-  calcTotalValue: { fontSize: 20, fontWeight: '700', color: Colors.positive },
-  calcJpy: { fontSize: 12, color: Colors.textMuted, marginTop: 2 },
+  calcTotalLabel: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
+  calcTotalValue: { fontSize: FontSize.xl, fontWeight: '700', color: Colors.positive },
+  calcJpy: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
 
   saveBtn: {
     backgroundColor: Colors.primary, borderRadius: Spacing.radius.md, padding: Spacing.padding.md,
@@ -315,9 +315,9 @@ const styles = StyleSheet.create({
     gap: 8, marginTop: 20,
   },
   saveBtnDisabled: { backgroundColor: Colors.border },
-  saveBtnText: { color: Colors.textInverse, fontSize: 17, fontWeight: '700' },
+  saveBtnText: { color: Colors.textInverse, fontSize: FontSize.lg, fontWeight: '700' },
 
   empty: { alignItems: 'center', marginTop: 60, gap: 12 },
-  emptyText: { fontSize: 16, color: Colors.textSecondary, fontWeight: '600' },
-  emptyHint: { fontSize: 13, color: Colors.textMuted, textAlign: 'center' },
+  emptyText: { fontSize: FontSize.lg, color: Colors.textSecondary, fontWeight: '600' },
+  emptyHint: { fontSize: FontSize.sm, color: Colors.textMuted, textAlign: 'center' },
 });

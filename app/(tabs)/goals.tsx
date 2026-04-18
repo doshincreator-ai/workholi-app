@@ -141,7 +141,7 @@ const cardStyles = StyleSheet.create({
   },
   cardAchieved: { borderColor: Colors.primary, borderWidth: 1.5 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 },
-  emoji: { fontSize: 28 },
+  emoji: { fontSize: FontSize.hero },
   titleBlock: { flex: 1 },
   name: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
   target: { fontSize: FontSize.sm, color: Colors.textMuted, marginTop: 2 },
@@ -428,7 +428,7 @@ const styles = StyleSheet.create({
   savingsAmount: { ...Typography.monoLarge, color: Colors.primary },
 
   emptyState: { alignItems: 'center', paddingTop: 60 },
-  emptyEmoji: { fontSize: 48, marginBottom: 16 },
+  emptyEmoji: { fontSize: FontSize.giant, marginBottom: 16 },
   emptyTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary, marginBottom: 8 },
   emptyDesc: { fontSize: FontSize.md, color: Colors.textSecondary, textAlign: 'center', lineHeight: 22 },
 });

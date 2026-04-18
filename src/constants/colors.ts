@@ -52,4 +52,13 @@ export const Colors = {
 
   // Overlay
   overlay: 'rgba(0,0,0,0.6)',
+
+  // Employer dot colors
+  employerColors: [
+    '#16a34a', '#2563eb', '#dc2626', '#d97706',
+    '#7c3aed', '#db2777', '#0891b2', '#65a30d',
+  ] as const,
+
+  // Warning subtle (holiday background)
+  warningSubtle: 'rgba(245,158,11,0.15)',
 } as const;

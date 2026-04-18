@@ -239,7 +239,7 @@ export function ShiftForm({ existing, initialDate }: Props) {
               <Text style={styles.switchLabel}>別途支給（雇用主設定）</Text>
               <Text style={[styles.switchSub, { marginTop: 4 }]}>今回の受取額（NZD）</Text>
               <View style={[styles.hpRow, { marginTop: 6 }]}>
-                <Text style={{ fontSize: 18, color: Colors.textSecondary, fontWeight: '600', marginRight: 8 }}>$</Text>
+                <Text style={{ fontSize: FontSize.lg, color: Colors.textSecondary, fontWeight: '600', marginRight: 8 }}>$</Text>
                 <TextInput
                   style={styles.hpAmountInput}
                   value={holidayPayAmount}

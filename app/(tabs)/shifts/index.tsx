@@ -28,10 +28,7 @@ const WEEKDAYS = ['月', '火', '水', '木', '金', '土', '日'];
 const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 
 // 雇用主IDに対応する色
-const EMPLOYER_COLORS = [
-  '#16a34a', '#2563eb', '#dc2626', '#d97706',
-  '#7c3aed', '#db2777', '#0891b2', '#65a30d',
-];
+const EMPLOYER_COLORS = Colors.employerColors;
 function employerColor(employerId: number): string {
   return EMPLOYER_COLORS[employerId % EMPLOYER_COLORS.length];
 }
@@ -356,7 +353,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.borderSubtle,
   },
   dayCellSelected: { backgroundColor: Colors.primarySubtle },
-  dayCellHoliday: { backgroundColor: 'rgba(245,158,11,0.15)' },
+  dayCellHoliday: { backgroundColor: Colors.warningSubtle },
   dayNumWrap: {
     width: 28, height: 28, borderRadius: Spacing.radius.md,
     alignItems: 'center', justifyContent: 'center',

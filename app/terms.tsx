@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../src/constants/colors';
+import { FontSize } from '../src/constants/typography';
 
 export default function TermsScreen() {
   return (
@@ -69,9 +70,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border,
   },
   backBtn: { padding: 6 },
-  headerTitle: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
+  headerTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
   content: { padding: 20, paddingBottom: 40 },
-  updated: { fontSize: 12, color: Colors.textMuted, marginBottom: 20 },
-  section: { fontSize: 15, fontWeight: '700', color: Colors.textPrimary, marginTop: 20, marginBottom: 8 },
-  body: { fontSize: 14, color: Colors.textSecondary, lineHeight: 22 },
+  updated: { fontSize: FontSize.sm, color: Colors.textMuted, marginBottom: 20 },
+  section: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary, marginTop: 20, marginBottom: 8 },
+  body: { fontSize: FontSize.md, color: Colors.textSecondary, lineHeight: 22 },
 });

@@ -562,7 +562,7 @@ const goalCardStyles = StyleSheet.create({
     borderColor: Colors.primaryMuted,
   },
   row: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 },
-  emoji: { fontSize: 24 },
+  emoji: { fontSize: FontSize.xxl },
   info: { flex: 1 },
   name: { fontSize: FontSize.md, fontWeight: '700', color: Colors.textPrimary },
   sub: { fontSize: FontSize.sm, color: Colors.textSecondary, marginTop: 2 },

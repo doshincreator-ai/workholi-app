@@ -3,6 +3,7 @@ import { Pressable, Text, StyleSheet, ActivityIndicator, Platform } from 'react-
 import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/colors';
+import { FontSize } from '../constants/typography';
 
 const AD_UNIT_ID = __DEV__
   ? TestIds.REWARDED
@@ -73,6 +74,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primarySubtle,
   },
   btnDisabled: { borderColor: Colors.border, backgroundColor: Colors.surface },
-  text: { fontSize: 14, fontWeight: '600', color: Colors.primary },
+  text: { fontSize: FontSize.md, fontWeight: '600', color: Colors.primary },
   textDisabled: { color: Colors.textSecondary },
 });

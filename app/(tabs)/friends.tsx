@@ -278,7 +278,7 @@ export default function FriendsScreen() {
                       <Text style={styles.copyText}>コピー</Text>
                     </Pressable>
                     <Pressable style={[styles.codeActionBtn, styles.shareActionBtn]} onPress={handleShareCode}>
-                      <Ionicons name="share-outline" size={16} color="#fff" />
+                      <Ionicons name="share-outline" size={16} color={Colors.textPrimary} />
                       <Text style={styles.shareText}>シェア</Text>
                     </Pressable>
                   </View>
@@ -495,7 +495,7 @@ const styles = StyleSheet.create({
   },
   shareActionBtn: { backgroundColor: Colors.primary, borderColor: Colors.primary },
   copyText: { fontSize: FontSize.md, color: Colors.primary, fontWeight: '600' },
-  shareText: { fontSize: FontSize.md, color: '#fff', fontWeight: '600' },
+  shareText: { fontSize: FontSize.md, color: Colors.textPrimary, fontWeight: '600' },
 
   inputRow: { flexDirection: 'row', gap: 8 },
   input: {
