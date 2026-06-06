@@ -42,7 +42,7 @@ function SettingRow({ label, hint, children }: {
   );
 }
 
-export default function SettingsScreen() {
+export function SettingsContent() {
   const { currentCountry, nzdJpyRate, audJpyRate, useStudentLoan, studentLoanRate, update } = useSettingsStore();
   const countryConfig = COUNTRIES[currentCountry as keyof typeof COUNTRIES] ?? COUNTRIES.NZ;
   const isNZ = currentCountry === 'NZ';
@@ -111,7 +111,7 @@ export default function SettingsScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.pageTitle}>設定</Text>
 
@@ -325,6 +325,14 @@ export default function SettingsScreen() {
           ※ 給与計算はあくまで参考値です。正確な税額は IRD またはお勤め先の給与担当にご確認ください。
         </Text>
       </ScrollView>
+    </View>
+  );
+}
+
+export default function SettingsScreen() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <SettingsContent />
     </SafeAreaView>
   );
 }

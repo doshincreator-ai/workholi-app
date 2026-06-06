@@ -4,6 +4,7 @@ import { RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mo
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/colors';
 import { FontSize } from '../constants/typography';
+import { Spacing } from '../constants/spacing';
 
 const AD_UNIT_ID = __DEV__
   ? TestIds.REWARDED
@@ -69,7 +70,7 @@ export function RewardedAdButton({ onRewarded }: Props) {
 const styles = StyleSheet.create({
   btn: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
-    borderWidth: 1, borderColor: Colors.primary, borderRadius: 12,
+    borderWidth: 1, borderColor: Colors.primary, borderRadius: Spacing.radius.md,
     paddingHorizontal: 16, paddingVertical: 12,
     backgroundColor: Colors.primarySubtle,
   },

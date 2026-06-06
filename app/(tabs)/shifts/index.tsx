@@ -176,13 +176,21 @@ export default function ShiftsScreen() {
             <Ionicons name="chevron-forward" size={20} color={Colors.primary} />
           </Pressable>
         </View>
-        <Pressable
-          style={styles.addBtn}
-          onPress={() => router.push({ pathname: '/shifts/add', params: { date: selectedDate } })}
-        >
-          <Ionicons name="add" size={20} color={Colors.textInverse} />
-          <Text style={styles.addBtnText}>追加</Text>
-        </Pressable>
+        <View style={styles.headerRight}>
+          <Pressable
+            style={styles.employerBtn}
+            onPress={() => router.push('/(tabs)/employers')}
+          >
+            <Ionicons name="briefcase-outline" size={20} color={Colors.primary} />
+          </Pressable>
+          <Pressable
+            style={styles.addBtn}
+            onPress={() => router.push({ pathname: '/shifts/add', params: { date: selectedDate } })}
+          >
+            <Ionicons name="add" size={20} color={Colors.textInverse} />
+            <Text style={styles.addBtnText}>追加</Text>
+          </Pressable>
+        </View>
       </View>
 
       <CopyShiftModal shift={copyingShift} onClose={() => setCopyingShift(null)} />
@@ -315,6 +323,12 @@ const styles = StyleSheet.create({
   navBtn: { padding: 6 },
   monthLabel: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary, textAlign: 'center' },
   monthNetLabel: { fontSize: FontSize.xs, color: Colors.primary, fontWeight: '600', marginTop: 1 },
+  headerRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  employerBtn: {
+    width: 38, height: 38, borderRadius: Spacing.radius.lg,
+    alignItems: 'center', justifyContent: 'center',
+    borderWidth: 1, borderColor: Colors.primary,
+  },
   addBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
     backgroundColor: Colors.primary, borderRadius: Spacing.radius.lg,

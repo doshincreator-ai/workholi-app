@@ -288,9 +288,10 @@ export default function HomeScreen() {
 
   // ── This month completed stats ──
   const completedSummary = useMemo(() => {
+    const cutoff = new Date();
     const completed = countryShifts.filter((s) => {
       if (!s.date.startsWith(monthPrefix)) return false;
-      return new Date(`${s.date}T${s.endTime}`) <= now;
+      return new Date(`${s.date}T${s.endTime}`) <= cutoff;
     });
     const totalHours = completed.reduce((sum, s) => sum + calcShiftHours(s), 0);
     const netPay = completed.reduce((sum, s) => sum + s.netPay, 0);
@@ -403,7 +404,7 @@ export default function HomeScreen() {
         <View style={styles.statsRow}>
           <StatCard label="総労働時間" value={`${completedSummary.totalHours.toFixed(1)}h`} />
           <View style={styles.statGap} />
-          <StatCard label="平均時給" value={`${completedSummary.avgRate.toFixed(2)}`} />
+          <StatCard label="平均時給" value={`${currency} ${completedSummary.avgRate.toFixed(2)}`} />
           <View style={styles.statGap} />
           <StatCard label="シフト数" value={`${completedSummary.shiftCount}回`} />
         </View>
@@ -430,7 +431,7 @@ export default function HomeScreen() {
         }
 
         {tomorrowShifts.length === 0
-          ? <OffCard dayLabel="明日" message="明日はオフ" />
+          ? <OffCard dayLabel="明日" message="明日はオフ 🌙" />
           : tomorrowShifts.map((s) => (
             <TodayShiftCard key={s.id} shift={s} rate={rate} currency={currency} dayLabel="明日" />
           ))
@@ -462,7 +463,7 @@ export default function HomeScreen() {
         {/* ── Quick Clock-in ── */}
         <Pressable
           style={[styles.quickBtn, !hasQuickEmployers && styles.quickBtnDisabled]}
-          onPress={() => setQuickVisible(true)}
+          onPress={() => hasQuickEmployers && setQuickVisible(true)}
         >
           <Ionicons name="time-outline" size={22} color={Colors.textInverse} />
           <Text style={styles.quickBtnText}>ワンタップ出勤</Text>

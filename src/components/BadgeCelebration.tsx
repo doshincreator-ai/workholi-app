@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Colors } from '../constants/colors';
 import { Spacing } from '../constants/spacing';
-import { Typography } from '../constants/typography';
+import { Typography, FontSize } from '../constants/typography';
 import { BADGE_DEFS, type BadgeId } from '../db/badges';
 
 interface Props {
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     minWidth: 220,
   },
   emoji: { fontSize: 56, marginBottom: 12 },
-  title: { fontSize: 14, fontWeight: '700', color: Colors.primary, marginBottom: 6 },
+  title: { fontSize: FontSize.body, fontWeight: '700', color: Colors.primary, marginBottom: 6 },
   name: { ...Typography.h4, color: Colors.textPrimary, marginBottom: 4, textAlign: 'center' },
-  desc: { fontSize: 13, color: Colors.textSecondary, textAlign: 'center' },
+  desc: { fontSize: FontSize.sm, color: Colors.textSecondary, textAlign: 'center' },
 });

@@ -85,17 +85,34 @@ export function calculatePay(
 }
 
 /**
- * AU ワーホリ給与計算（一律 15% PAYE、ACC Levy なし）
+ * AU WHM 年収から PAYE 税額を計算（ATO Schedule 15 / 2025-26）
+ * 417・462ビザ保持者向けブラケット税率
+ */
+export function calculateAnnualWHMTax(annualGross: number): number {
+  if (annualGross <= 45000) return annualGross * 0.15;
+  if (annualGross <= 135000) return 45000 * 0.15 + (annualGross - 45000) * 0.325;
+  if (annualGross <= 190000) return 45000 * 0.15 + 90000 * 0.325 + (annualGross - 135000) * 0.37;
+  return 45000 * 0.15 + 90000 * 0.325 + 55000 * 0.37 + (annualGross - 190000) * 0.45;
+}
+
+/**
+ * AU ワーホリ給与計算（ATO Schedule 15、ACC Levy なし）
+ * 公休日は Fair Work Act カジュアル標準 ×2.5
  */
 export function calculatePayAU(
   hoursWorked: number,
   hourlyRate: number,
   isPublicHoliday: boolean,
   extraAllowances: number = 0,
+  weeksPerYear: number = 52,
 ): PayCalculation {
-  const effectiveRate = isPublicHoliday ? hourlyRate * 2.25 : hourlyRate;
+  const effectiveRate = isPublicHoliday ? hourlyRate * 2.5 : hourlyRate;
   const grossPay = hoursWorked * effectiveRate + extraAllowances;
-  const taxAmount = grossPay * 0.15; // WHV flat rate
+
+  const annualGross = grossPay * weeksPerYear;
+  const annualTax = calculateAnnualWHMTax(annualGross);
+  const taxAmount = annualTax / weeksPerYear;
+
   const netPay = grossPay - taxAmount;
 
   return {

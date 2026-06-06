@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { useToastStore } from './toastStore';
 import {
   getAllShifts,
+  getShiftById,
   insertShift,
   updateShift,
   deleteShift,
@@ -137,10 +138,11 @@ export const useShiftStore = create<ShiftStore>((set, get) => ({
     // 既存通知をキャンセル
     cancelShiftReminder(previousShift?.notificationId).catch(() => {});
     updateShift(id, { ...data, notificationId: undefined });
+    const updatedShift = getShiftById(id);
+    if (!updatedShift) return;
     const { currentYear, currentMonth } = get();
-    const updated = { ...data, id, notificationId: undefined } as Shift;
     set((s) => ({
-      shifts: s.shifts.map((sh) => (sh.id === id ? { ...sh, ...updated } : sh)),
+      shifts: s.shifts.map((sh) => (sh.id === id ? updatedShift : sh)),
       monthlySummary: getMonthlySummary(currentYear, currentMonth),
     }));
     // Firestoreバックアップ

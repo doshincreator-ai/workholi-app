@@ -228,7 +228,7 @@ export function QuickClockIn({ visible, onClose }: Props) {
                     onPress={handleSave}
                     disabled={!calc}
                   >
-                    <Ionicons name="checkmark" size={20} color="#fff" />
+                    <Ionicons name="checkmark" size={20} color={Colors.textPrimary} />
                     <Text style={styles.saveBtnText}>今日の出勤を記録する</Text>
                   </Pressable>
                 </>

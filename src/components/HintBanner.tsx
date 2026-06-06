@@ -3,6 +3,7 @@ import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/colors';
+import { FontSize } from '../constants/typography';
 
 interface Props {
   hintKey: string;
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
   icon: { flexShrink: 0 },
   message: {
     flex: 1,
-    fontSize: 13,
+    fontSize: FontSize.sm,
     color: Colors.primary,
     lineHeight: 18,
   },

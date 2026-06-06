@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import { FriendsContent } from './friends';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { fetchCompanies, type CompanyDoc } from '../../src/lib/firestoreService';
@@ -88,6 +89,7 @@ function CompanyCard({ company, onPress }: { company: CompanyDoc; onPress: () =>
 }
 
 export default function CommunityScreen() {
+  const [activeTab, setActiveTab] = useState<'community' | 'friends'>('community');
   const [companies, setCompanies] = useState<CompanyDoc[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -146,6 +148,23 @@ export default function CommunityScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.topTabBar}>
+        {(['community', 'friends'] as const).map((tab) => (
+          <Pressable
+            key={tab}
+            style={[styles.topTab, activeTab === tab && styles.topTabActive]}
+            onPress={() => setActiveTab(tab)}
+          >
+            <Text style={[styles.topTabText, activeTab === tab && styles.topTabTextActive]}>
+              {tab === 'community' ? 'みんな' : '友達'}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
+      {activeTab === 'friends' ? (
+        <FriendsContent />
+      ) : (
+        <>
       <HintBanner hintKey="community" message="職場を公開するとチケットがもらえます。チケットは企業の詳細情報（時給など）を閲覧する時に使います。" />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>みんなの企業情報</Text>
@@ -233,12 +252,38 @@ export default function CommunityScreen() {
           }
         />
       )}
+        </>
+      )}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
+  topTabBar: {
+    flexDirection: 'row',
+    backgroundColor: Colors.surface,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  topTab: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 2,
+    borderBottomColor: 'transparent',
+  },
+  topTabActive: {
+    borderBottomColor: Colors.primary,
+  },
+  topTabText: {
+    fontSize: FontSize.md,
+    fontWeight: '600',
+    color: Colors.textSecondary,
+  },
+  topTabTextActive: {
+    color: Colors.primary,
+  },
   header: {
     paddingHorizontal: Spacing.padding.md,
     paddingVertical: Spacing.padding.sm,

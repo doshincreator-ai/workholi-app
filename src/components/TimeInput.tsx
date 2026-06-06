@@ -9,6 +9,8 @@ import {
 import { useState, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
+import { FontSize } from '../constants/typography';
 
 // 15分刻みで 00:00〜23:45 を生成
 const TIMES: string[] = [];
@@ -90,10 +92,10 @@ export function TimeInput({ label, value, onChange }: Props) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  label: { fontSize: 13, color: Colors.textSecondary, marginBottom: 6 },
+  label: { fontSize: FontSize.sm, color: Colors.textSecondary, marginBottom: 6 },
   btn: {
     backgroundColor: Colors.surfaceElevated,
-    borderRadius: 12,
+    borderRadius: Spacing.radius.md,
     paddingVertical: 14,
     paddingHorizontal: 14,
     borderWidth: 1,
@@ -102,8 +104,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  btnText: { fontSize: 20, fontWeight: '600', color: Colors.textPrimary },
-  chevron: { fontSize: 14, color: Colors.textMuted },
+  btnText: { fontSize: FontSize.xl, fontWeight: '600', color: Colors.textPrimary },
+  chevron: { fontSize: FontSize.body, color: Colors.textMuted },
 
   modal: { flex: 1, backgroundColor: Colors.background },
   modalHeader: {
@@ -115,9 +117,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  modalTitle: { fontSize: 17, fontWeight: '700', color: Colors.textPrimary },
+  modalTitle: { fontSize: FontSize.lg, fontWeight: '700', color: Colors.textPrimary },
   cancelBtn: { padding: 4 },
-  cancelText: { fontSize: 15, color: Colors.textSecondary },
+  cancelText: { fontSize: FontSize.md, color: Colors.textSecondary },
 
   item: {
     height: 56,
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
   },
   itemSelected: { backgroundColor: Colors.primarySubtle },
-  itemText: { fontSize: 20, color: Colors.textSecondary },
+  itemText: { fontSize: FontSize.xl, color: Colors.textSecondary },
   itemTextSelected: { color: Colors.primary, fontWeight: '700' },
   check: { fontSize: 18, color: Colors.primary },
 });

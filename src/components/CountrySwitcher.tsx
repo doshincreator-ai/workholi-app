@@ -4,6 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSettingsStore } from '../store/settingsStore';
 import { COUNTRY_LIST } from '../config/countries';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
+import { FontSize } from '../constants/typography';
 
 export function CountrySwitcher() {
   const { currentCountry, update } = useSettingsStore();
@@ -63,13 +65,13 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 20,
+    borderRadius: Spacing.radius.lg,
     borderWidth: 1.5,
     borderColor: Colors.primaryMuted,
     backgroundColor: Colors.primarySubtle,
   },
-  flag: { fontSize: 16 },
-  name: { fontSize: 14, fontWeight: '600', color: Colors.primary },
+  flag: { fontSize: FontSize.bodyLarge },
+  name: { fontSize: FontSize.body, fontWeight: '600', color: Colors.primary },
 
   overlay: {
     flex: 1,
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
   },
   sheet: {
     backgroundColor: Colors.surface,
-    borderRadius: 20,
+    borderRadius: Spacing.radius.lg,
     width: 280,
     paddingTop: 20,
     paddingBottom: 8,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
   },
   sheetTitle: {
-    fontSize: 16,
+    fontSize: FontSize.bodyLarge,
     fontWeight: '700',
     color: Colors.textPrimary,
     textAlign: 'center',
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
   itemActive: { backgroundColor: Colors.primarySubtle },
   itemContent: { flex: 1 },
   itemFlag: { fontSize: 26 },
-  itemName: { fontSize: 15, fontWeight: '600', color: Colors.textSecondary },
+  itemName: { fontSize: FontSize.md, fontWeight: '600', color: Colors.textSecondary },
   itemNameActive: { color: Colors.primary },
   itemCurrency: { fontSize: 12, color: Colors.textMuted, marginTop: 1 },
   sep: { height: 1, backgroundColor: Colors.border, marginHorizontal: 20 },

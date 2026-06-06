@@ -3,6 +3,8 @@ import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useToastStore } from '../store/toastStore';
 import { Colors } from '../constants/colors';
+import { Spacing } from '../constants/spacing';
+import { FontSize } from '../constants/typography';
 
 const DURATION = 3500;
 
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     left: 16,
     right: 16,
     backgroundColor: Colors.surface,
-    borderRadius: 16,
+    borderRadius: Spacing.radius.md,
     shadowColor: Colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.25,
@@ -79,18 +81,18 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   milestoneTitle: {
-    fontSize: 15,
+    fontSize: FontSize.md,
     fontWeight: '800',
     color: Colors.warning,
     marginBottom: 2,
   },
   earning: {
-    fontSize: 20,
+    fontSize: FontSize.xl,
     fontWeight: '800',
     color: Colors.textPrimary,
   },
   message: {
-    fontSize: 13,
+    fontSize: FontSize.sm,
     color: Colors.textSecondary,
     lineHeight: 18,
   },

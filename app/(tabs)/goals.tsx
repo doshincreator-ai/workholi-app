@@ -318,7 +318,7 @@ const modalStyles = StyleSheet.create({
 
 // ── GoalsScreen ───────────────────────────────────────────────
 
-export default function GoalsScreen() {
+export function GoalsContent() {
   const { goals, add, remove } = useGoalStore();
   const { shifts } = useShiftStore();
   const { currentCountry } = useSettingsStore();
@@ -341,7 +341,7 @@ export default function GoalsScreen() {
   const countryGoals = goals.filter((g) => g.country === currentCountry);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>目標</Text>
         <Pressable style={styles.addBtn} onPress={() => setShowModal(true)}>
@@ -387,6 +387,14 @@ export default function GoalsScreen() {
         onAdd={add}
         onClose={() => setShowModal(false)}
       />
+    </View>
+  );
+}
+
+export default function GoalsScreen() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <GoalsContent />
     </SafeAreaView>
   );
 }

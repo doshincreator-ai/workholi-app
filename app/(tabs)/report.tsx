@@ -7,7 +7,8 @@ import {
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { GoalsContent } from './goals';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
 import { useShiftStore } from '../../src/store/shiftStore';
@@ -48,6 +49,7 @@ function getLast6Months(): { year: number; month: number; label: string }[] {
 }
 
 export default function ReportScreen() {
+  const [activeTab, setActiveTab] = useState<'report' | 'goals'>('report');
   const { shifts } = useShiftStore();
   const { currentCountry, jpyRate } = useSettingsStore();
   const countryConfig = COUNTRIES[currentCountry as keyof typeof COUNTRIES] ?? COUNTRIES.NZ;
@@ -104,7 +106,11 @@ export default function ReportScreen() {
 
   const taxYearRefund = useMemo(() => {
     const ty = getNZTaxYear();
-    const tyShifts = completedShifts.filter((s) => s.date >= ty.start && s.date <= ty.end);
+    // M / M SL コード相当のシフトのみ対象（ACCあり = NZ主収入）
+    // Secondary コード（SB/S/SH/ST/SA）は定率課税のため年換算計算から除外
+    const tyShifts = completedShifts.filter(
+      (s) => s.date >= ty.start && s.date <= ty.end && s.accLevy > 0,
+    );
     const totalGross = tyShifts.reduce((sum, s) => sum + s.grossPay, 0);
     const totalPaidTax = tyShifts.reduce((sum, s) => sum + s.taxAmount, 0);
     const correctTax = calculateAnnualPAYE(totalGross);
@@ -142,6 +148,22 @@ export default function ReportScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <HintBanner hintKey="report" message="NZのシフトがあると、年末還付金シミュレーターで推定還付額を確認できます。" />
+      <View style={styles.topTabBar}>
+        {(['report', 'goals'] as const).map((tab) => (
+          <Pressable
+            key={tab}
+            style={[styles.topTab, activeTab === tab && styles.topTabActive]}
+            onPress={() => setActiveTab(tab)}
+          >
+            <Text style={[styles.topTabText, activeTab === tab && styles.topTabTextActive]}>
+              {tab === 'report' ? 'レポート' : '目標'}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
+      {activeTab === 'goals' ? (
+        <GoalsContent />
+      ) : (
       <ScrollView contentContainerStyle={styles.scroll}>
 
         {/* ── タックスリターン目安（NZのみ・最上部に強調） ── */}
@@ -343,7 +365,7 @@ export default function ReportScreen() {
                       : '納付済み税額は正確な税額と一致しています。'}
                   </Text>
                   <Text style={styles.refundDisclaimer}>
-                    ※ 税コード M のシフトのみ年換算計算済み。二次収入・その他控除は含みません。参考値としてご利用ください。
+                    ※ 税コード M / M SL（主収入）のシフトのみ対象。副業コード（SB/S/SH/ST/SA）・Student Loan・その他控除は含みません。参考値としてご利用ください。
                   </Text>
                 </>
               )}
@@ -359,12 +381,37 @@ export default function ReportScreen() {
         <AdBanner />
 
       </ScrollView>
+      )}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
+  topTabBar: {
+    flexDirection: 'row',
+    backgroundColor: Colors.surface,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  topTab: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 2,
+    borderBottomColor: 'transparent',
+  },
+  topTabActive: {
+    borderBottomColor: Colors.primary,
+  },
+  topTabText: {
+    fontSize: FontSize.md,
+    fontWeight: '600',
+    color: Colors.textSecondary,
+  },
+  topTabTextActive: {
+    color: Colors.primary,
+  },
   scroll: { padding: Spacing.padding.md, paddingBottom: 40 },
 
   totalCard: {
@@ -397,7 +444,7 @@ const styles = StyleSheet.create({
   },
   chartBars: { flexDirection: 'row', alignItems: 'flex-end', height: 140, gap: 6 },
   barCol: { flex: 1, alignItems: 'center', height: '100%', justifyContent: 'flex-end' },
-  barValue: { fontSize: 9, color: Colors.textMuted, marginBottom: 2, textAlign: 'center' },
+  barValue: { fontSize: FontSize.xs, color: Colors.textMuted, marginBottom: 2, textAlign: 'center' },
   barTrack: { flex: 1, width: '70%', justifyContent: 'flex-end', maxHeight: 100 },
   barFill: { backgroundColor: Colors.primary, borderRadius: Spacing.radius.sm, width: '100%' },
   barLabel: { fontSize: FontSize.xs, color: Colors.textSecondary, marginTop: 4 },

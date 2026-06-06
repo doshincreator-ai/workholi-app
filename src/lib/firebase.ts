@@ -1,9 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { initializeAuth } from 'firebase/auth';
-// @ts-ignore getReactNativePersistence is available in React Native via Metro's react-native condition
-import { getReactNativePersistence } from 'firebase/auth';
+import { initializeAuth, getAuth } from 'firebase/auth';
 import { initializeFirestore } from 'firebase/firestore';
-import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+import { Platform } from 'react-native';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDqNi6LKwFJctYXsQDed2nXgZQVefRcu0I',
@@ -16,9 +14,20 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 
-export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
-});
+function createAuth() {
+  if (Platform.OS === 'web') {
+    return getAuth(app);
+  }
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { getReactNativePersistence } = require('firebase/auth');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const ReactNativeAsyncStorage = require('@react-native-async-storage/async-storage').default;
+  return initializeAuth(app, {
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+  });
+}
+
+export const auth = createAuth();
 export const db = initializeFirestore(app, {
   experimentalForceLongPolling: true,
 });

@@ -196,7 +196,7 @@ const paydayStyles = StyleSheet.create({
   card: {
     backgroundColor: Colors.surface,
     borderRadius: Spacing.radius.lg,
-    padding: 18,
+    padding: Spacing.padding.md,
     marginBottom: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -379,9 +379,9 @@ const badgeStyles = StyleSheet.create({
 
 // ── AchievementsScreen ────────────────────────────────────────
 
-export default function AchievementsScreen() {
+export function AchievementsContent() {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>実績</Text>
       </View>
@@ -389,6 +389,14 @@ export default function AchievementsScreen() {
         <PaydayCard />
         <BadgeGrid />
       </ScrollView>
+    </View>
+  );
+}
+
+export default function AchievementsScreen() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <AchievementsContent />
     </SafeAreaView>
   );
 }

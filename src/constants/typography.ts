@@ -27,13 +27,15 @@ export const Typography = {
 } as const;
 
 export const FontSize = {
-  xs: 11,       // caption / tiny labels
-  sm: 13,       // small body
-  md: 15,       // standard body (Note: existing body=14 is rounded up)
-  lg: 17,       // large body / h4
-  xl: 20,       // h3 / section headers
-  xxl: 24,      // h2
-  hero: 32,     // h1 / display numbers
-  display: 36,  // logo / large amounts
-  giant: 48,    // very large display (goal amounts)
+  xs: 11,         // caption / tiny labels
+  sm: 13,         // small body
+  body: 14,       // standard body
+  md: 15,         // medium body
+  bodyLarge: 16,  // large body
+  lg: 17,         // large body / h4
+  xl: 20,         // h3 / section headers
+  xxl: 24,        // h2
+  hero: 32,       // h1 / display numbers
+  display: 36,    // logo / large amounts
+  giant: 48,      // very large display (goal amounts)
 } as const;

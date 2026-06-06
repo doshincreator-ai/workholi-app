@@ -51,7 +51,7 @@ function timeAgo(ts: unknown): string {
   return `${Math.floor(diffH / 24)}日前`;
 }
 
-export default function FriendsScreen() {
+export function FriendsContent() {
   const { user } = useAuthStore();
   const { shifts } = useShiftStore();
   const { load: loadBadges } = useBadgeStore();
@@ -204,7 +204,7 @@ export default function FriendsScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       {/* 友達のシフトモーダル */}
       <Modal
         visible={selectedFriend !== null}
@@ -455,6 +455,14 @@ export default function FriendsScreen() {
           </>
         )}
       </ScrollView>
+    </View>
+  );
+}
+
+export default function FriendsScreen() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <FriendsContent />
     </SafeAreaView>
   );
 }

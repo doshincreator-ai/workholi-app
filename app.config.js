@@ -13,7 +13,7 @@ module.exports = {
       policy: "appVersion",
     },
     icon: "./assets/icon.png",
-    userInterfaceStyle: "light",
+    userInterfaceStyle: "dark",
     splash: {
       image: "./assets/splash-icon.png",
       resizeMode: "contain",

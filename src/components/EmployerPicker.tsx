@@ -14,6 +14,7 @@ import { COUNTRIES } from '../config/countries';
 import type { Employer } from '../types';
 import { Colors } from '../constants/colors';
 import { Spacing } from '../constants/spacing';
+import { FontSize } from '../constants/typography';
 
 interface Props {
   selectedId: number | null;
@@ -108,9 +109,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  triggerText: { fontSize: 16, color: Colors.textPrimary },
-  placeholder: { fontSize: 16, color: Colors.textMuted },
-  chevron: { fontSize: 20, color: Colors.textMuted },
+  triggerText: { fontSize: FontSize.bodyLarge, color: Colors.textPrimary },
+  placeholder: { fontSize: FontSize.bodyLarge, color: Colors.textMuted },
+  chevron: { fontSize: FontSize.xl, color: Colors.textMuted },
   modal: { flex: 1, backgroundColor: Colors.background },
   header: {
     flexDirection: 'row',
@@ -121,8 +122,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  headerTitle: { fontSize: 17, fontWeight: '600', color: Colors.textPrimary },
-  cancel: { fontSize: 16, color: Colors.primary },
+  headerTitle: { fontSize: FontSize.lg, fontWeight: '600', color: Colors.textPrimary },
+  cancel: { fontSize: FontSize.bodyLarge, color: Colors.primary },
   search: {
     margin: 12,
     padding: Spacing.padding.sm,
@@ -130,11 +131,11 @@ const styles = StyleSheet.create({
     borderRadius: Spacing.radius.md,
     borderWidth: 1,
     borderColor: Colors.border,
-    fontSize: 16,
+    fontSize: FontSize.bodyLarge,
     color: Colors.textPrimary,
   },
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  emptyText: { color: Colors.textMuted, fontSize: 15 },
+  emptyText: { color: Colors.textMuted, fontSize: FontSize.md },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -143,8 +144,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
   },
   itemSelected: { backgroundColor: Colors.primarySubtle },
-  itemName: { fontSize: 16, color: Colors.textPrimary, marginBottom: 2 },
-  itemSub: { fontSize: 13, color: Colors.textSecondary },
+  itemName: { fontSize: FontSize.bodyLarge, color: Colors.textPrimary, marginBottom: 2 },
+  itemSub: { fontSize: FontSize.sm, color: Colors.textSecondary },
   check: { fontSize: 18, color: Colors.positive, fontWeight: '600' },
   separator: { height: 1, backgroundColor: Colors.borderSubtle, marginLeft: 16 },
 });
